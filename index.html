@@ -39,16 +39,17 @@
       z-index: 999;
       background: var(--helmet-dark);
       box-shadow: 0 2px 5px var(--shadow-color);
-      /* ADJUSTED: Right padding increased to 25rem to pull the navigation links much closer to the center. */
-      padding: 0.75rem 25rem 0.75rem 1.5rem; 
+      /* ADJUSTED: Reverting padding to normal, relying on margin for nav positioning */
+      padding: 0.75rem 1.5rem; 
       display: flex;
       align-items: center;
-      /* MODIFIED: Ensure elements are spread out */
+      /* MODIFIED: Keep flex-start to allow the custom margin on nav to work */
       justify-content: flex-start;
     }
     nav {
-        /* MODIFIED: Pushes the navigation links to the far right side of the header */
-        margin-left: auto;
+        /* UPDATED: Removed margin-left: auto; and added a large fixed margin (25% of viewport width) 
+           to push the links closer to the center, away from the logo and the far right edge. */
+        margin-left: 25vw;
     }
     nav a {
       /* MODIFIED: Reduced margin from 1rem to 0.75rem to bring links closer */
@@ -341,7 +342,8 @@
             flex-direction: column;
             width: 100%;
             text-align: center;
-            margin-left: 0; /* Remove auto-margin on mobile */
+            /* Reset margin for mobile view */
+            margin-left: 0; 
         }
         nav a {
             margin: 0.25rem 0; /* Reduced vertical margin */
