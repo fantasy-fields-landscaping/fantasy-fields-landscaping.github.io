@@ -507,31 +507,8 @@
       slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     
-    // Function to handle scroll wheel
-    let isScrolling = false;
-    const SCROLL_COOLDOWN = 600; // milliseconds to prevent rapid scrolling
-
-    document.querySelector('.slider-container').addEventListener('wheel', (event) => {
-      // Check if the scroll is vertical (deltaY) and scrolling is not currently active
-      if (Math.abs(event.deltaY) > Math.abs(event.deltaX) && !isScrolling) {
-        event.preventDefault(); // Stop the window from scrolling
-        isScrolling = true;
-
-        // Note: The wheel direction is still mapped to the standard slider logic for now
-        if (event.deltaY > 0) {
-          // Scrolling down, move to next slide (1)
-          moveSlide(1);
-        } else {
-          // Scrolling up, move to previous slide (-1)
-          moveSlide(-1);
-        }
-
-        // Apply cooldown
-        setTimeout(() => {
-          isScrolling = false;
-        }, SCROLL_COOLDOWN);
-      }
-    });
+    // Note: The scroll wheel event listener has been removed.
+    // The slider now only moves when the arrow buttons are clicked.
 
   </script>
 </body>
