@@ -435,8 +435,8 @@
 
   <!-- SLIDER SECTION -->
   <section class="slider-container" id="home">
-    <!-- LEFT BUTTON: Moves to next slide (shifts content LEFT) -->
-    <button class="slider-button left" onclick="moveSlide(1)">&#8249;</button>
+    <!-- LEFT BUTTON: Moves to PREVIOUS slide (calls moveSlide(-1)) -->
+    <button class="slider-button left" onclick="moveSlide(-1)">&#8249;</button>
     <div class="slider" id="slider">
       
       <!-- Slide 1: Lawn Maintenance (H3) -->
@@ -464,8 +464,8 @@
       </div>
       
     </div>
-    <!-- RIGHT BUTTON: Moves to previous slide (shifts content RIGHT) -->
-    <button class="slider-button right" onclick="moveSlide(-1)">&#8250;</button>
+    <!-- RIGHT BUTTON: Moves to NEXT slide (calls moveSlide(1)) -->
+    <button class="slider-button right" onclick="moveSlide(1)">&#8250;</button>
   </section>
 
   <!-- NEW MISSION STATEMENT SECTION - INCORPORATING SLOGAN -->
@@ -516,6 +516,8 @@
 
     // Function to move the slider
     function moveSlide(direction) {
+      // If direction is 1 (right arrow), currentSlide increases (moves forward)
+      // If direction is -1 (left arrow), currentSlide decreases (moves backward)
       currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
       slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
