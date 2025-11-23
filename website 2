@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Load Inter (for main text) and Playfair Display (for titles) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Fields - Professional Landscaping</title>
+  <style>
+    :root {
+      --helmet-dark: #1b2f1e; /* Deep Forest Green */
+      --helmet-accent: #8b3a2d; /* Terracotta Red/Brown */
+      --background-light: #f7f1e6; /* Clean Beige/Off-White */
+      --text-dark: #2c3e2f; /* Darker, almost black green */
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      padding-top: 80px;
+      margin: 0;
+      /* Changed to modern sans-serif for clean look */
+      font-family: 'Inter', sans-serif; 
+      color: var(--text-dark);
+      background-color: var(--background-light);
+      line-height: 1.6;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      background: var(--helmet-dark);
+      box-shadow: 0 2px 5px var(--shadow-color);
+      padding: 0.75rem 2rem; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--helmet-accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .logo-text {
+        color: white; 
+        font-size: 1.35rem; 
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    
+    /* --- NEW MISSION STATEMENT SECTION --- */
+    .mission-statement {
+        background-color: #e6f1dc; 
+        padding: 4rem 2rem;
+        text-align: center;
+        border-top: 4px solid var(--helmet-accent);
+        border-bottom: 4px solid var(--helmet-accent);
+    }
+    .mission-statement p {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        max-width: 900px;
+        margin: 0 auto;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--text-dark);
+    }
+    /* ---------------------------------- */
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 70vh; 
+    }
+    .slider {
+      display: flex;
+      flex-direction: row;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      background-color: var(--helmet-dark); 
+    }
+    /* Subtle dark overlay for contrast */
+    .slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4); 
+        z-index: 1;
+    }
+
+    /* Assign ACTUAL background images to the slides */
+    .slide:nth-child(1) {
+        background-image: url('slide1.jpg'); 
+    }
+    .slide:nth-child(2) {
+        background-image: url('slide2.jpg'); 
+    }
+    .slide:nth-child(3) {
+        background-image: url('Rita Backyard .jpg'); 
+    }
+    /* End of image assignments */
+
+    .slide-content {
+        position: relative;
+        z-index: 2;
+        padding: 0 20px;
+        max-width: 900px;
+    }
+
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2); 
+      backdrop-filter: blur(4px);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 10px 15px;
+      border-radius: 50%; 
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    .slider-button:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider-button.left { left: 20px; }
+    .slider-button.right { right: 20px; }
+
+    /* UPDATED FONT STYLE */
+    .slide-title {
+      font-family: 'Playfair Display', serif; 
+      font-weight: 700; 
+      font-size: clamp(2.2rem, 5.5vw, 3.2rem); 
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.9); 
+      margin-bottom: 30px;
+    }
+    
+    .cta-button {
+      background-color: var(--helmet-accent);
+      color: white;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 4px; 
+      font-size: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 2rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .cta-button:hover {
+        background-color: #a64b3c;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15);
+    }
+
+    #services {
+      background-color: var(--background-light);
+      padding: 8rem 2rem;
+      padding-top: 4rem; 
+    }
+    h2 {
+      font-size: 2.25rem;
+      margin-bottom: 2.5rem;
+      color: var(--helmet-dark); 
+      text-align: center;
+      font-weight: 700;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      text-align: center;
+      max-width: 1100px;
+      width: 100%;
+      margin: auto;
+    }
+    .services-grid div {
+      padding: 2rem;
+      background-color: #ffffff; 
+      border-radius: 8px;
+      box-shadow: 0 4px 12px var(--shadow-color); 
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+      border-bottom: 3px solid var(--helmet-accent); 
+    }
+    .services-grid div:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px var(--shadow-color);
+    }
+
+    .contact {
+      background-color: #ded0a4;
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+    .contact h2 {
+      color: var(--helmet-accent);
+      font-size: 2.5rem;
+    }
+    .form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .form input, .form textarea {
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 50px;
+      transition: border-color 0.3s;
+    }
+    .form input:focus, .form textarea:focus {
+        border-color: var(--helmet-accent);
+        outline: none;
+    }
+    .form textarea {
+      grid-column: 1 / -1; 
+      min-height: 150px; 
+    }
+    .form button {
+      background-color: var(--helmet-dark); 
+      color: white;
+      border: none;
+      padding: 1.2rem;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      grid-column: 1 / -1; 
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .form button:hover {
+      background-color: #2e4a30;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      background-color: var(--helmet-dark);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer div {
+        margin-bottom: 0.5rem;
+    }
+
+    /* === MOBILE RESPONSIVENESS ADJUSTMENTS (up to 768px) === */
+    @media (max-width: 768px) {
+        /* Header: Stack logo and nav, and adjust overall spacing */
+        header {
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            height: auto; 
+        }
+        
+        header div {
+            margin-bottom: 0.75rem; /* Space between logo and nav */
+        }
+
+        /* Adjust body padding top since header height is dynamic now */
+        body {
+            /* This value might need minor adjustment depending on device, but 120px is a good starting point for a stacked header */
+            padding-top: 120px; 
+        }
+        
+        /* Navigation: Make links full width and stacked */
+        nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+        }
+        nav a {
+            margin: 0.25rem 0; /* Reduced vertical margin */
+            padding: 0.5rem;
+        }
+        
+        /* Logo text size adjustment */
+        .logo-text {
+            font-size: 1.2rem;
+        }
+
+        /* Slider */
+        .slider-container {
+            height: 60vh; /* Make slider slightly shorter on mobile for less scrolling */
+        }
+        
+        .slider-button {
+            padding: 8px 12px;
+            font-size: 1.5rem;
+        }
+        .slider-button.left { left: 10px; }
+        .slider-button.right { right: 10px; }
+        
+        /* Mission Statement */
+        .mission-statement {
+            padding: 3rem 1rem;
+        }
+
+        /* Services Grid: Force single column layout */
+        .services-grid {
+            grid-template-columns: 1fr;
+            padding: 0 1rem;
+        }
+        
+        .services-grid div {
+            padding: 1.5rem;
+        }
+
+        /* Contact Form: Ensure text area width is correct */
+        .contact {
+            padding: 4rem 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 1.5rem 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <!-- Logo updated to use logo.jpg -->
+      <img 
+        src="logo.jpg" 
+        alt="Fantasy Fields Logo" 
+        style="width: 60px; height: 60px; border-radius: 50%; margin-right: 10px; border: 3px solid white; object-fit: cover;"
+      >
+      <div class="logo-text">Fantasy Fields Landscaping</div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- SLIDER SECTION -->
+  <section class="slider-container" id="home">
+    <!-- LEFT BUTTON: Moves to next slide (shifts content LEFT) -->
+    <button class="slider-button left" onclick="moveSlide(1)">&#8249;</button>
+    <div class="slider" id="slider">
+      
+      <!-- Slide 1: Lawn Maintenance (H3) -->
+      <div class="slide">
+        <div class="slide-content">
+            <h3 class="slide-title">Lawn Maintenance</h3>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Schedule An Estimate</button>
+        </div>
+      </div>
+
+      <!-- Slide 2: Garden Bed Maintenance (H3) -->
+      <div class="slide">
+        <div class="slide-content">
+            <h3 class="slide-title">Garden Bed Maintenance</h3>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Schedule An Estimate</button>
+        </div>
+      </div>
+
+      <!-- Slide 3: Landscape Design (H3) -->
+      <div class="slide">
+        <div class="slide-content">
+            <h3 class="slide-title">Landscape Design and Installation</h3>
+            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Schedule An Estimate</button>
+        </div>
+      </div>
+      
+    </div>
+    <!-- RIGHT BUTTON: Moves to previous slide (shifts content RIGHT) -->
+    <button class="slider-button right" onclick="moveSlide(-1)">&#8250;</button>
+  </section>
+
+  <!-- NEW MISSION STATEMENT SECTION - INCORPORATING SLOGAN -->
+  <section class="mission-statement">
+    <p>
+      For Brantford citizens who've carried the burden long enough — enjoy landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free.
+    </p>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <!-- Updated Title -->
+    <h2>Updated Services</h2> 
+    <div class="services-grid">
+      <div><strong>Garden Bed Maintenance</strong><br>Edging of new or existing garden beds and a layer of mulch to keep the weeds away.</div>
+      <div><strong>Lawn Maintenance</strong><br>Be the sharpest lot on the block. Regular mowing, weed snipping, and edging.</div>
+      <div><strong>Snow Removal</strong><br>Stay safe with cleared walks and driveways.</div>
+      <div><strong>Leaf Removal</strong><br>Keep your lawn breathing and gleaming into the fall!</div>
+      <div><strong>Hedge & Bush Trimming</strong><br>Keep the jungle under control.</div>
+      <div><strong>Yard Clean Ups</strong><br>The removal of small bushes, shrubs, leaves, and other yard material that has to go!</div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form class="form">
+      <input type="text" placeholder="First Name (required)" required>
+      <input type="text" placeholder="Last Name (required)" required>
+      <input type="email" placeholder="Email (required)" required>
+      <input type="tel" placeholder="Phone Number (required)" required>
+      <input type="text" placeholder="Address (required)" required>
+      <textarea placeholder="How can we help you today? Please ask about services, questions or concerns." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+  <div>Hours: Monday—Saturday 7:30am — 4:30pm | Sunday: Closed</div>
+  <div>Phone: 519-732-4649 | Email: fantasyfieldscontact@gmail.com</div>
+</footer>
+
+  <script>
+    let currentSlide = 0;
+    const slider = document.getElementById('slider');
+    const totalSlides = slider.children.length;
+
+    // Function to move the slider
+    function moveSlide(direction) {
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    
+    // Function to handle scroll wheel
+    let isScrolling = false;
+    const SCROLL_COOLDOWN = 600; // milliseconds to prevent rapid scrolling
+
+    document.querySelector('.slider-container').addEventListener('wheel', (event) => {
+      // Check if the scroll is vertical (deltaY) and scrolling is not currently active
+      if (Math.abs(event.deltaY) > Math.abs(event.deltaX) && !isScrolling) {
+        event.preventDefault(); // Stop the window from scrolling
+        isScrolling = true;
+
+        // Note: The wheel direction is still mapped to the standard slider logic for now
+        if (event.deltaY > 0) {
+          // Scrolling down, move to next slide (1)
+          moveSlide(1);
+        } else {
+          // Scrolling up, move to previous slide (-1)
+          moveSlide(-1);
+        }
+
+        // Apply cooldown
+        setTimeout(() => {
+          isScrolling = false;
+        }, SCROLL_COOLDOWN);
+      }
+    });
+
+  </script>
+</body>
