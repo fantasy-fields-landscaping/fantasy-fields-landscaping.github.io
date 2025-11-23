@@ -169,7 +169,7 @@
     }
     .slider-button:hover {
         background: rgba(255, 255, 255, 0.4);
-        transform: translateY(-50%) scale(1.1);
+        transform: translateY(-5px);
     }
 
     .slider-button.left { left: 20px; }
@@ -384,9 +384,9 @@
 <body>
   <header>
     <div style="display: flex; align-items: center;">
-      <!-- FIX 2: Added background color and text fallback if logo.jpg is missing -->
+      <!-- Logo source corrected to use 'logo.png' -->
       <img 
-        src="logo.jpg" 
+        src="logo.png" 
         alt="Fantasy Fields Logo" 
         style="
           width: 60px; 
@@ -399,7 +399,7 @@
         "
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.nextElementSibling.style.width='60px'; this.nextElementSibling.style.height='60px'; this.nextElementSibling.style.borderRadius='50%';"
       >
-      <!-- Logo Text Fallback -->
+      <!-- Logo Text Fallback (will only show if the image fails to load) -->
       <div style="
         display: none; 
         justify-content: center; 
