@@ -26,13 +26,14 @@
     body {
       padding-top: 80px;
       margin: 0;
-      /* FIX: Increased padding right to ensure content doesn't touch the scrollbar */
       padding-right: 10px; 
       font-family: 'Inter', sans-serif; 
       color: var(--text-dark);
       background-color: var(--background-light);
       line-height: 1.6;
     }
+    
+    /* === HEADER LAYOUT FIX: Reverting to Far-Left Logo / Far-Right Nav === */
     header {
       position: fixed;
       top: 0;
@@ -43,12 +44,10 @@
       padding: 0.75rem 1.5rem; 
       display: flex;
       align-items: center;
-      /* CORRECTED: Use space-between on desktop to push the navigation to the far right */
+      /* FIX: Pushes the logo-container (left) and nav (right) to opposite edges */
       justify-content: space-between; 
+      /* Removed the gap property, as space-between handles the spacing */
     }
-    
-    /* REMOVED: The problematic margin-left from nav and replaced with flex structure on header */
-    /* nav { margin-left: 21vw; } */
     
     nav a {
       margin: 0 0.75rem; 
@@ -144,12 +143,15 @@
 
     /* Assign ACTUAL background images to the slides */
     .slide:nth-child(1) {
+        /* Placeholder image URL (replace with real image if available) */
         background-image: url('slide1.jpg'); 
     }
     .slide:nth-child(2) {
+        /* Placeholder image URL (replace with real image if available) */
         background-image: url('slide2.jpg'); 
     }
     .slide:nth-child(3) {
+        /* Placeholder image URL (replace with real image if available) */
         background-image: url('Rita Backyard .jpg'); 
     }
     /* End of image assignments */
@@ -253,7 +255,6 @@
       background-color: #ded0a4;
       text-align: center;
       padding: 8rem 2rem;
-      /* FIX: Ensure no internal overflow issue in the contact section */
       overflow-x: hidden; 
     }
     .contact h2 {
@@ -316,22 +317,22 @@
 
     /* === MOBILE RESPONSIVENESS ADJUSTMENTS (up to 768px) === */
     @media (max-width: 768px) {
-        /* Header: Stack logo and nav, and adjust overall spacing */
+        /* Header: Stack logo and nav, which overrides the space-between setting for mobile */
         header {
             flex-direction: column;
             align-items: center;
             padding: 1rem;
             height: auto; 
-            justify-content: center; /* Center items when stacked */
+            justify-content: center; 
+            gap: 0; 
         }
         
         .logo-container {
-            margin-bottom: 0.75rem; /* Space between logo and nav */
+            margin-bottom: 0.75rem; /* Space between logo and nav when stacked */
         }
 
         /* Adjust body padding top since header height is dynamic now */
         body {
-            /* This value might need minor adjustment depending on device, but 120px is a good starting point for a stacked header */
             padding-top: 120px; 
         }
         
@@ -343,7 +344,7 @@
             text-align: center;
         }
         nav a {
-            margin: 0.25rem 0; /* Reduced vertical margin */
+            margin: 0.25rem 0; 
             padding: 0.5rem;
         }
         
@@ -354,7 +355,7 @@
 
         /* Slider */
         .slider-container {
-            height: 60vh; /* Make slider slightly shorter on mobile for less scrolling */
+            height: 60vh; 
         }
         
         .slider-button {
@@ -423,7 +424,7 @@
       ">FF</div>
       <div class="logo-text">Fantasy Fields Landscaping</div>
     </div>
-    <!-- Navigation Links (Pushed to the right by header's justify-content: space-between) -->
+    <!-- Navigation Links: Pushed to the far right by 'justify-content: space-between' in the header CSS -->
     <nav>
       <a href="#home">Home</a>
       <a href="#services">Services</a>
@@ -486,7 +487,7 @@
       <div><strong>Hedge & Bush Trimming</strong><br>Keep the jungle under control.</div>
       
       <!-- CONFIRMED FIX: The punctuation has been removed. -->
-      <div><strong>Yard Clean Ups</strong><br>The removal of small bushes, shrubs, leaves, and other yard material that has to go!</div>
+      <div><strong>Yard Clean Ups</strong><br>The removal of small bushes, shrubs, leaves, and other yard material that has to go</div>
     </div>
   </section>
 
