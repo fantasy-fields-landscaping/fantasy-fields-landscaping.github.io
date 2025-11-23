@@ -40,19 +40,17 @@
       z-index: 999;
       background: var(--helmet-dark);
       box-shadow: 0 2px 5px var(--shadow-color);
-      /* ADJUSTED: Reverting padding to normal, relying on margin for nav positioning */
       padding: 0.75rem 1.5rem; 
       display: flex;
       align-items: center;
-      /* MODIFIED: Keep flex-start to allow the custom margin on nav to work */
-      justify-content: flex-start;
+      /* CORRECTED: Use space-between on desktop to push the navigation to the far right */
+      justify-content: space-between; 
     }
-    nav {
-        /* ADJUSTED: Increased margin-left to 20vw to ensure the navigation links move significantly farther to the right, away from the logo */
-        margin-left: 20vw;
-    }
+    
+    /* REMOVED: The problematic margin-left from nav and replaced with flex structure on header */
+    /* nav { margin-left: 20vw; } */
+    
     nav a {
-      /* MODIFIED: Reduced margin from 1rem to 0.75rem to bring links closer */
       margin: 0 0.75rem; 
       text-decoration: none;
       color: #fff;
@@ -76,6 +74,10 @@
       transform: scaleX(1);
       transform-origin: left;
     }
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
     .logo-text {
         color: white; 
         font-size: 1.35rem; 
@@ -83,7 +85,7 @@
         letter-spacing: 0.5px;
     }
     
-    /* --- NEW MISSION STATEMENT SECTION --- */
+    /* --- MISSION STATEMENT SECTION --- */
     .mission-statement {
         background-color: #e6f1dc; 
         padding: 4rem 2rem;
@@ -121,13 +123,11 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
-      /* FIX 1: Change to background-size: contain to ensure full image visibility */
       background-size: cover; 
       background-position: center;
       background-repeat: no-repeat;
       position: relative;
       background-color: var(--helmet-dark); 
-      /* FIX 1: Ensure background cover is optimal by adding a subtle padding */
       padding: 5px; 
     }
     /* Subtle dark overlay for contrast */
@@ -322,9 +322,10 @@
             align-items: center;
             padding: 1rem;
             height: auto; 
+            justify-content: center; /* Center items when stacked */
         }
         
-        header > div:first-child {
+        .logo-container {
             margin-bottom: 0.75rem; /* Space between logo and nav */
         }
 
@@ -340,8 +341,6 @@
             flex-direction: column;
             width: 100%;
             text-align: center;
-            /* Reset margin for mobile view */
-            margin-left: 0; 
         }
         nav a {
             margin: 0.25rem 0; /* Reduced vertical margin */
@@ -394,7 +393,8 @@
 </head>
 <body>
   <header>
-    <div style="display: flex; align-items: center;">
+    <!-- Logo Container -->
+    <div class="logo-container">
       <!-- Logo source corrected to use 'logo.png' -->
       <img 
         src="logo.png" 
@@ -423,6 +423,7 @@
       ">FF</div>
       <div class="logo-text">Fantasy Fields Landscaping</div>
     </div>
+    <!-- Navigation Links (Pushed to the right by header's justify-content: space-between) -->
     <nav>
       <a href="#home">Home</a>
       <a href="#services">Services</a>
@@ -484,7 +485,7 @@
       
       <div><strong>Hedge & Bush Trimming</strong><br>Keep the jungle under control.</div>
       
-      <!-- EDITED: Removed "Contact Us." from the end of the description -->
+      <!-- CONFIRMED FIX: The punctuation has been removed. -->
       <div><strong>Yard Clean Ups</strong><br>The removal of small bushes, shrubs, leaves, and other yard material that has to go!</div>
     </div>
   </section>
@@ -522,9 +523,6 @@
       slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     
-    // Note: The scroll wheel event listener has been removed.
-    // The slider now only moves when the arrow buttons is clicked.
-
   </script>
 </body>
 </html>
