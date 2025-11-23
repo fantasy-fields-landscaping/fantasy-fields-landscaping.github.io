@@ -9,6 +9,8 @@
   
   <!-- NEW: Favicon link to display the logo in the browser tab -->
   <link rel="icon" type="image/png" href="logo.png">
+  <!-- ADDED: This alternate link type helps search engines (like Google) find and recognize the favicon faster. -->
+  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   
   <style>
     :root {
@@ -36,8 +38,8 @@
       z-index: 999;
       background: var(--helmet-dark);
       box-shadow: 0 2px 5px var(--shadow-color);
-      /* Increased horizontal padding to push logo and nav content further in (3rem instead of 2rem) */
-      padding: 0.75rem 3rem; 
+      /* ADJUSTED: Increased horizontal padding again to 4rem to move the links further left. */
+      padding: 0.75rem 4rem; 
       display: flex;
       align-items: center;
       /* MODIFIED: Ensure elements are spread out */
