@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Load Inter (for main text) and Playfair Display (for titles) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fantasy Fields - Professional Landscaping</title>
@@ -39,8 +39,8 @@
       justify-content: flex-start;
     }
     nav {
-        /* MODIFIED: Increased spacing from 8rem to 12rem to push links farther right */
-        margin-left: 12rem;
+        /* MODIFIED: Pushes the navigation links to the far right side of the header */
+        margin-left: auto;
     }
     nav a {
       /* MODIFIED: Reduced margin from 1rem to 0.75rem to bring links closer */
@@ -74,45 +74,7 @@
         letter-spacing: 0.5px;
     }
     
-    /* --- NEW HEADER CTA BUTTON STYLES --- */
-    .header-cta {
-        margin-left: auto; /* Pushes this element to the far right */
-        display: flex;
-        gap: 0.75rem; 
-        align-items: center;
-    }
-    .cta-small {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.2s;
-        border: 2px solid transparent;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        text-decoration: none; /* In case anchor tags are used */
-        display: inline-block;
-        text-align: center;
-    }
-    .primary-button {
-        background-color: var(--helmet-accent); /* Terracotta */
-        color: white;
-        border-color: var(--helmet-accent);
-    }
-    .primary-button:hover {
-        background-color: #a64b3c;
-        transform: translateY(-1px);
-    }
-    .secondary-button {
-        background-color: transparent;
-        color: white;
-        border-color: white;
-    }
-    .secondary-button:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-color: var(--helmet-accent);
-    }
-    /* ---------------------------------- */
+    /* REMOVED: NEW HEADER CTA BUTTON STYLES (header-cta, cta-small, primary-button, secondary-button) */
 
     /* --- NEW MISSION STATEMENT SECTION --- */
     .mission-statement {
@@ -383,11 +345,6 @@
             font-size: 1.2rem;
         }
 
-        /* Hide CTA buttons on small screens */
-        .header-cta {
-            display: none;
-        }
-
         /* Slider */
         .slider-container {
             height: 60vh; /* Make slider slightly shorter on mobile for less scrolling */
@@ -465,11 +422,7 @@
       <a href="#contact">Contact</a>
     </nav>
     
-    <!-- NEW: Buttons for the far right side of the header -->
-    <div class="header-cta">
-        <button class="cta-small secondary-button">Client Login</button>
-        <button class="cta-small primary-button">Free Quote</button>
-    </div>
+    <!-- REMOVED: CTA Buttons are no longer here -->
     
   </header>
 
