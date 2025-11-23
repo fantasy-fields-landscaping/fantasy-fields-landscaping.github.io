@@ -35,7 +35,7 @@
       padding: 0.75rem 2rem; 
       display: flex;
       align-items: center;
-      /* MODIFIED: Group the logo and navigation links to the left */
+      /* MODIFIED: Ensure elements are spread out */
       justify-content: flex-start;
     }
     nav {
@@ -74,6 +74,46 @@
         letter-spacing: 0.5px;
     }
     
+    /* --- NEW HEADER CTA BUTTON STYLES --- */
+    .header-cta {
+        margin-left: auto; /* Pushes this element to the far right */
+        display: flex;
+        gap: 0.75rem; 
+        align-items: center;
+    }
+    .cta-small {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 2px solid transparent;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        text-decoration: none; /* In case anchor tags are used */
+        display: inline-block;
+        text-align: center;
+    }
+    .primary-button {
+        background-color: var(--helmet-accent); /* Terracotta */
+        color: white;
+        border-color: var(--helmet-accent);
+    }
+    .primary-button:hover {
+        background-color: #a64b3c;
+        transform: translateY(-1px);
+    }
+    .secondary-button {
+        background-color: transparent;
+        color: white;
+        border-color: white;
+    }
+    .secondary-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: var(--helmet-accent);
+    }
+    /* ---------------------------------- */
+
     /* --- NEW MISSION STATEMENT SECTION --- */
     .mission-statement {
         background-color: #e6f1dc; 
@@ -315,7 +355,7 @@
             height: auto; 
         }
         
-        header div {
+        header > div:first-child {
             margin-bottom: 0.75rem; /* Space between logo and nav */
         }
 
@@ -331,6 +371,7 @@
             flex-direction: column;
             width: 100%;
             text-align: center;
+            margin-left: 0; /* Remove auto-margin on mobile */
         }
         nav a {
             margin: 0.25rem 0; /* Reduced vertical margin */
@@ -340,6 +381,11 @@
         /* Logo text size adjustment */
         .logo-text {
             font-size: 1.2rem;
+        }
+
+        /* Hide CTA buttons on small screens */
+        .header-cta {
+            display: none;
         }
 
         /* Slider */
@@ -418,6 +464,13 @@
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
+    
+    <!-- NEW: Buttons for the far right side of the header -->
+    <div class="header-cta">
+        <button class="cta-small secondary-button">Client Login</button>
+        <button class="cta-small primary-button">Free Quote</button>
+    </div>
+    
   </header>
 
   <!-- SLIDER SECTION -->
