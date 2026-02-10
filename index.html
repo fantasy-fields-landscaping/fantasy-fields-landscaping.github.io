@@ -1,528 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Load Inter (for main text) and Playfair Display (for titles) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- TITLE: This controls the main blue link text in Google search results -->
-  <title>Fantasy Fields - Landscaper in Brantford Ontario - See the website for up to date services</title>
-  
-  <!-- NEW: META DESCRIPTION ADDED to control the snippet text in Google search results -->
-  <meta name="description" content="Landscaper in Brantford Ontario - See the website for up to date services">
-  
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-  
-  <style>
-    :root {
-      --helmet-dark: #1b2f1e; /* Deep Forest Green */
-      --helmet-accent: #8b3a2d; /* Terracotta Red/Brown */
-      --background-light: #f7f1e6; /* Clean Beige/Off-White */
-      --text-dark: #2c3e2f; /* Darker, almost black green */
-      --shadow-color: rgba(0, 0, 0, 0.1);
-    }
-
-    body {
-      padding-top: 80px;
-      margin: 0;
-      /* FIX: Increased padding right to ensure content doesn't touch the scrollbar */
-      padding-right: 10px; 
-      font-family: 'Inter', sans-serif; 
-      color: var(--text-dark);
-      background-color: var(--background-light);
-      line-height: 1.6;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      background: var(--helmet-dark);
-      box-shadow: 0 2px 5px var(--shadow-color);
-      padding: 0.75rem 1.5rem; 
-      display: flex;
-      align-items: center;
-      /* CORRECTED: Use space-between on desktop to push the navigation to the far right */
-      justify-content: space-between; 
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fantasy Fields - Landscaper in Brantford Ontario</title>
+    <meta name="description" content="Professional landscaping and lawn maintenance in Brantford, Ontario. Quality results guaranteed.">
     
-    /* REMOVED: The problematic margin-left from nav and replaced with flex structure on header */
-    /* nav { margin-left: 15vw; } */
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
-    nav a {
-      margin: 0 0.75rem; 
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      padding: 0.5rem 0;
-      position: relative;
-    }
-    nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background-color: var(--helmet-accent);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-    nav a:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    .logo-container {
-        display: flex;
-        align-items: center;
-    }
-    .logo-text {
-        color: white; 
-        font-size: 1.35rem; 
-        font-weight: 700;
-        letter-spacing: 0.5px;
-    }
-    
-    /* --- MISSION STATEMENT SECTION --- */
-    .mission-statement {
-        background-color: #e6f1dc; 
-        padding: 4rem 2rem;
-        text-align: center;
-        border-top: 4px solid var(--helmet-accent);
-        border-bottom: 4px solid var(--helmet-accent);
-    }
-    .mission-statement p {
-        font-size: clamp(1.1rem, 2vw, 1.4rem);
-        max-width: 900px;
-        margin: 0 auto;
-        font-style: italic;
-        font-weight: 400;
-        color: var(--text-dark);
-    }
-    /* ---------------------------------- */
-
-    .slider-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: 70vh; 
-    }
-    .slider {
-      display: flex;
-      flex-direction: row;
-      transition: transform 0.5s ease-in-out;
-      height: 100%;
-    }
-    .slide {
-      flex: 0 0 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      background-size: cover; 
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-      background-color: var(--helmet-dark); 
-      padding: 5px; 
-    }
-    /* Subtle dark overlay for contrast */
-    .slide::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.4); 
-        z-index: 1;
-    }
-
-    /* Assign ACTUAL background images to the slides */
-    .slide:nth-child(1) {
-        background-image: url('slide1.jpg'); 
-    }
-    .slide:nth-child(2) {
-        background-image: url('slide2.jpg'); 
-    }
-    .slide:nth-child(3) {
-        background-image: url('Rita Backyard .jpg'); 
-    }
-    /* End of image assignments */
-
-    .slide-content {
-        position: relative;
-        z-index: 2;
-        padding: 0 20px;
-        max-width: 900px;
-    }
-
-    .slider-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.2); 
-      backdrop-filter: blur(4px);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      padding: 10px 15px;
-      border-radius: 50%; 
-      font-size: 1.8rem;
-      cursor: pointer;
-      z-index: 1000;
-      transition: all 0.3s;
-    }
-    .slider-button:hover {
-        background: rgba(255, 255, 255, 0.4);
-        transform: translateY(-5px);
-    }
-
-    .slider-button.left { left: 20px; }
-    .slider-button.right { right: 20px; }
-
-    /* UPDATED FONT STYLE */
-    .slide-title {
-      font-family: 'Playfair Display', serif; 
-      font-weight: 700; 
-      font-size: clamp(2.2rem, 5.5vw, 3.2rem); 
-      color: white;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.9); 
-      margin-bottom: 30px;
-    }
-    
-    .cta-button {
-      background-color: var(--helmet-accent);
-      color: white;
-      padding: 1rem 3rem;
-      border: none;
-      border-radius: 4px; 
-      font-size: 1.25rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 2rem;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-    .cta-button:hover {
-        background-color: #a64b3c;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15);
-    }
-
-    #services {
-      background-color: var(--background-light);
-      padding: 8rem 2rem;
-      padding-top: 4rem; 
-    }
-    h2 {
-      font-size: 2.25rem;
-      margin-bottom: 2.5rem;
-      color: var(--helmet-dark); 
-      text-align: center;
-      font-weight: 700;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      text-align: center;
-      max-width: 1100px;
-      width: 100%;
-      margin: auto;
-    }
-    .services-grid div {
-      padding: 2rem;
-      background-color: #ffffff; 
-      border-radius: 8px;
-      box-shadow: 0 4px 12px var(--shadow-color); 
-      font-size: 1.1rem;
-      transition: transform 0.3s;
-      border-bottom: 3px solid var(--helmet-accent); 
-    }
-    .services-grid div:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 15px var(--shadow-color);
-    }
-
-    .contact {
-      background-color: #ded0a4;
-      text-align: center;
-      padding: 8rem 2rem;
-      /* FIX: Ensure no internal overflow issue in the contact section */
-      overflow-x: hidden; 
-    }
-    .contact h2 {
-      color: var(--helmet-accent);
-      font-size: 2.5rem;
-    }
-    .form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    .form input, .form textarea {
-      padding: 0.85rem 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      resize: vertical;
-      min-height: 50px;
-      transition: border-color 0.3s;
-    }
-    .form input:focus, .form textarea:focus {
-        border-color: var(--helmet-accent);
-        outline: none;
-    }
-    .form textarea {
-      grid-column: 1 / -1; 
-      min-height: 150px; 
-    }
-    .form button {
-      background-color: var(--helmet-dark); 
-      color: white;
-      border: none;
-      padding: 1.2rem;
-      border-radius: 4px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      grid-column: 1 / -1; 
-      transition: all 0.3s;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-    .form button:hover {
-      background-color: #2e4a30;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15);
-    }
-
-    footer {
-      background-color: var(--helmet-dark);
-      color: white;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-    footer div {
-        margin-bottom: 0.5rem;
-    }
-
-    /* === MOBILE RESPONSIVENESS ADJUSTMENTS (up to 768px) === */
-    @media (max-width: 768px) {
-        /* Header: Stack logo and nav, and adjust overall spacing */
-        header {
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            height: auto; 
-            justify-content: center; /* Center items when stacked */
+    <style>
+        /* =========================================
+           1. DESIGN TOKENS (Change these to update the look)
+           ========================================= */
+        :root {
+            --primary-dark: #1b2f1e;    /* Deep Forest Green */
+            --accent: #8b3a2d;          /* Terracotta Red/Brown */
+            --accent-hover: #a64b3c;
+            --bg-light: #f7f1e6;        /* Main Background */
+            --bg-alt: #e6f1dc;          /* Mission Section Background */
+            --bg-contact: #ded0a4;      /* Contact Section Background */
+            --text-main: #2c3e2f;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
+
+        /* =========================================
+           2. GLOBAL STYLES
+           ========================================= */
+        * { box-sizing: border-box; }
         
-        .logo-container {
-            margin-bottom: 0.75rem; /* Space between logo and nav */
-        }
-
-        /* Adjust body padding top since header height is dynamic now */
         body {
-            /* This value might need minor adjustment depending on device, but 120px is a good starting point for a stacked header */
-            padding-top: 120px; 
+            margin: 0;
+            padding-top: 80px; /* Space for fixed header */
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        /* Navigation: Make links full width and stacked */
-        nav {
-            display: flex;
-            flex-direction: column;
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, .slide-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* =========================================
+           3. HEADER & NAV
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
             width: 100%;
+            z-index: 1000;
+            background: var(--primary-dark);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            margin-right: 12px;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            border-color: var(--accent);
+        }
+
+        /* =========================================
+           4. HERO SLIDER
+           ========================================= */
+        .slider-container {
+            position: relative;
+            height: 70vh;
+            background: var(--primary-dark);
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
             text-align: center;
         }
-        nav a {
-            margin: 0.25rem 0; /* Reduced vertical margin */
-            padding: 0.5rem;
-        }
-        
-        /* Logo text size adjustment */
-        .logo-text {
-            font-size: 1.2rem;
+
+        /* Dark Overlay */
+        .slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
         }
 
-        /* Slider */
-        .slider-container {
-            height: 60vh; /* Make slider slightly shorter on mobile for less scrolling */
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            padding: 20px;
         }
-        
-        .slider-button {
-            padding: 8px 12px;
+
+        .slide-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .slider-nav button {
+            pointer-events: auto;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
             font-size: 1.5rem;
-        }
-        .slider-button.left { left: 10px; }
-        .slider-button.right { right: 10px; }
-        
-        /* Mission Statement */
-        .mission-statement {
-            padding: 3rem 1rem;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
         }
 
-        /* Services Grid: Force single column layout */
+        .slider-nav button:hover { background: var(--accent); }
+
+        /* =========================================
+           5. BUTTONS & SECTIONS
+           ========================================= */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        section { padding: 5rem 0; }
+
+        .mission {
+            background: var(--bg-alt);
+            text-align: center;
+            border-top: 4px solid var(--accent);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .mission p {
+            font-size: 1.25rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .services-grid {
-            grid-template-columns: 1fr;
-            padding: 0 1rem;
-        }
-        
-        .services-grid div {
-            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        /* Contact Form: Ensure text area width is correct */
-        .contact {
-            padding: 4rem 1rem;
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px var(--shadow);
+            border-bottom: 4px solid var(--accent);
+            transition: var(--transition);
         }
 
-        /* Footer */
+        .service-card:hover { transform: translateY(-5px); }
+
+        .contact-section { background: var(--bg-contact); }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea { grid-column: span 2; min-height: 150px; }
+        .contact-form .btn { grid-column: span 2; font-size: 1.1rem; }
+
         footer {
-            padding: 1.5rem 1rem;
+            background: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 0;
         }
-    }
-  </style>
+
+        /* =========================================
+           6. RESPONSIVENESS
+           ========================================= */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 1rem; }
+            nav { margin-top: 1rem; }
+            nav a { margin: 0 0.5rem; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form textarea, .contact-form .btn { grid-column: span 1; }
+            body { padding-top: 120px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <!-- Logo Container -->
-    <div class="logo-container">
-      <!-- Logo source corrected to use 'logo.png' -->
-      <img 
-        src="logo.png" 
-        alt="Fantasy Fields Logo" 
-        style="
-          width: 60px; 
-          height: 60px; 
-          border-radius: 50%; 
-          margin-right: 10px; 
-          border: 3px solid white; 
-          object-fit: cover;
-          background-color: var(--helmet-accent); /* Fallback color */
-        "
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.nextElementSibling.style.width='60px'; this.nextElementSibling.style.height='60px'; this.nextElementSibling.style.borderRadius='50%';">
-      <!-- Logo Text Fallback (will only show if the image fails to load) -->
-      <div style="
-        display: none; 
-        justify-content: center; 
-        align-items: center; 
-        margin-right: 10px; 
-        background-color: var(--helmet-accent); 
-        color: white; 
-        font-weight: 700; 
-        font-size: 1.5rem;
-        border: 3px solid white;
-      ">FF</div>
-      <div class="logo-text">Fantasy Fields Landscaping</div>
-    </div>
-    <!-- Navigation Links (Pushed to the right by header's justify-content: space-between) -->
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <!-- SLIDER SECTION -->
-  <section class="slider-container" id="home">
-    <!-- LEFT BUTTON: Moves to PREVIOUS slide (calls moveSlide(-1)) -->
-    <button class="slider-button left" onclick="moveSlide(-1)">&#8249;</button>
-    <div class="slider" id="slider">
-      
-      <!-- Slide 1: Lawn Maintenance (H3) -->
-      <div class="slide">
-        <div class="slide-content">
-            <h3 class="slide-title">Lawn Maintenance</h3>
-            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Schedule An Estimate</button>
+    <header>
+        <a href="#" class="logo-group">
+            <img src="logo.png" alt="Fantasy Fields" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=FF'">
+            <div class="logo-text">Fantasy Fields Landscaping</div>
+        </a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="home">
+        <section class="slider-container">
+            <div class="slider-nav">
+                <button onclick="moveSlide(-1)">&#8249;</button>
+                <button onclick="moveSlide(1)">&#8250;</button>
+            </div>
+            <div class="slider" id="mainSlider">
+                <div class="slide" style="background-image: url('slide1.jpg');">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Lawn Maintenance</h2>
+                        <a href="#contact" class="btn">Schedule An Estimate</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('slide2.jpg');">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Garden Bed Care</h2>
+                        <a href="#contact" class="btn">Schedule An Estimate</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('Rita Backyard .jpg');">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Landscape Design</h2>
+                        <a href="#contact" class="btn">Schedule An Estimate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="container">
+                <p>"For Brantford citizens who've carried the burden long enough — enjoy landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2 style="text-align: center;">Our Expert Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Garden Maintenance</h3>
+                        <p>Edging of new or existing garden beds and a layer of mulch to keep the weeds away.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Lawn Care</h3>
+                        <p>Be the sharpest lot on the block. Regular mowing, weed snipping, and edging.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Leaf Removal</h3>
+                        <p>Keep your lawn looking green into fall with our thorough cleanup services.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Hedge Trimming</h3>
+                        <p>Professional trimming for bushes and hedges to keep the jungle under control.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 style="text-align: center;">Get Your Free Estimate</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <textarea placeholder="Tell us about your project..."></textarea>
+                    <button type="submit" class="btn">Send Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Hours: Mon—Sat 7:30am — 4:30pm | Phone: 519-732-4649</p>
+            <p>&copy; 2026 Fantasy Fields Landscaping. All Rights Reserved.</p>
         </div>
-      </div>
+    </footer>
 
-      <!-- Slide 2: Garden Bed Maintenance (H3) -->
-      <div class="slide">
-        <div class="slide-content">
-            <h3 class="slide-title">Garden Bed Maintenance</h3>
-            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Schedule An Estimate</button>
-        </div>
-      </div>
+    <script>
+        let currentIdx = 0;
+        const slider = document.getElementById('mainSlider');
+        const slides = slider.children.length;
 
-      <!-- Slide 3: Landscape Design (H3) -->
-      <div class="slide">
-        <div class="slide-content">
-            <h3 class="slide-title">Landscape Design and Installation</h3>
-            <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Schedule An Estimate</button>
-        </div>
-      </div>
-      
-    </div>
-    <!-- RIGHT BUTTON: Moves to NEXT slide (calls moveSlide(1)) -->
-    <button class="slider-button right" onclick="moveSlide(1)">&#8250;</button>
-  </section>
+        function moveSlide(dir) {
+            currentIdx = (currentIdx + dir + slides) % slides;
+            slider.style.transform = `translateX(-${currentIdx * 100}%)`;
+        }
 
-  <!-- NEW MISSION STATEMENT SECTION - INCORPORATING SLOGAN -->
-  <section class="mission-statement">
-    <p>
-      For Brantford citizens who've carried the burden long enough — enjoy landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free.
-    </p>
-  </section>
-
-  <!-- SERVICES SECTION -->
-  <section id="services">
-    <h2>Updated Services</h2> 
-    <div class="services-grid">
-      <div><strong>Garden Bed Maintenance</strong><br>Edging of new or existing garden beds and a layer of mulch to keep the weeds away.</div>
-      <div><strong>Lawn Maintenance</strong><br>Be the sharpest lot on the block. Regular mowing, weed snipping, and edging.</div>
-      <div><strong>Small Plant Installation</strong><br><em>Coming 2026.</em></div>
-      
-      <div><strong>Leaf Removal</strong><br>Keep your lawn looking green into fall.</div>
-      
-      <div><strong>Hedge & Bush Trimming</strong><br>Keep the jungle under control.</div>
-      
-      <!-- CONFIRMED FIX: The punctuation has been removed. -->
-      <div><strong>Yard Clean Ups</strong><br>The removal of small bushes, shrubs, leaves, and other yard material that has to go!</div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <form class="form">
-      <input type="text" placeholder="First Name (required)" required>
-      <input type="text" placeholder="Last Name (required)" required>
-      <input type="email" placeholder="Email (required)" required>
-      <input type="tel" placeholder="Phone Number (required)" required>
-      <input type="text" placeholder="Address (required)" required>
-      <textarea placeholder="How can we help you today? Please ask about services, questions or concerns." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-  <div>Hours: Monday—Saturday 7:30am — 4:30pm | Sunday: Closed</div>
-  <div>Phone: 519-732-4649 | Email: fantasyfieldscontact@gmail.com</div>
-</footer>
-
-  <script>
-    let currentSlide = 0;
-    const slider = document.getElementById('slider');
-    const totalSlides = slider.children.length;
-
-    // Function to move the slider
-    function moveSlide(direction) {
-      // If direction is 1 (right arrow), currentSlide increases (moves forward)
-      // If direction is -1 (left arrow), currentSlide decreases (moves backward)
-      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-    
-  </script>
+        // Auto-slide every 6 seconds
+        setInterval(() => moveSlide(1), 6000);
+    </script>
 </body>
 </html>
