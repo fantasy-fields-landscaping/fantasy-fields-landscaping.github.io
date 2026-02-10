@@ -154,6 +154,23 @@
 
         .slider-nav button:hover { background: var(--accent); }
 
+        /* Swipe Hint for Mobile */
+        .swipe-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 30;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
         /* 4. MISSION - Seamless Transition */
         .mission {
             background: var(--bg-alt); 
@@ -237,15 +254,32 @@
             font-size: 0.9rem;
         }
 
-        /* 8. MOBILE RESPONSIVENESS */
+        /* 8. MOBILE RESPONSIVENESS (WITH FIXES) */
         @media (max-width: 768px) {
-            header { height: auto; padding: 15px; flex-direction: column; }
-            body { padding-top: 130px; }
+            header { 
+                height: auto; 
+                padding: 15px; 
+                flex-direction: column;
+                outline: 1px solid var(--primary-dark); /* Ensure no gap at bottom of header */
+            }
+            body { 
+                padding-top: 130px; 
+                background-color: var(--primary-dark); /* Removes white line ghosting */
+            }
+            main { background-color: var(--bg-light); }
             nav { margin-top: 15px; }
             nav a { margin: 0 10px; font-size: 0.9rem; }
-            .slider-container { height: 60vh; }
+            .slider-container { 
+                height: 60vh; 
+                margin-top: -1px; /* Overlaps header by 1px to kill white line */
+            }
+            .slider-nav { display: none; } /* Remove buttons on mobile */
             .contact-form { grid-template-columns: 1fr; }
             .contact-form textarea, .contact-form .btn { grid-column: span 1; }
+        }
+
+        @media (min-width: 769px) {
+            .swipe-hint { display: none; } /* Only show hint on mobile */
         }
     </style>
 </head>
@@ -265,6 +299,8 @@
 
     <main id="home">
         <section class="slider-container">
+            <div id="swipeHint" class="swipe-hint">Swipe to see more</div>
+            
             <div class="slider-nav">
                 <button onclick="moveSlide(-1)">&#10094;</button>
                 <button onclick="moveSlide(1)">&#10095;</button>
@@ -347,6 +383,24 @@
         const slider = document.getElementById('mainSlider');
         const slides = 3;
 
+        // SWIPE LOGIC
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        slider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) moveSlide(1);
+            if (touchEndX > touchStartX + 50) moveSlide(-1);
+        }
+
         function moveSlide(dir) {
             currentIdx = (currentIdx + dir + slides) % slides;
             slider.style.transform = `translateX(-${currentIdx * 100}%)`;
@@ -354,6 +408,12 @@
 
         // Auto-slide every 6 seconds
         setInterval(() => moveSlide(1), 6000);
+
+        // Hide hint after 4 seconds
+        setTimeout(() => {
+            const hint = document.getElementById('swipeHint');
+            if(hint) hint.style.opacity = '0';
+        }, 4000);
     </script>
 </body>
 </html>
