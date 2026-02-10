@@ -153,4 +153,150 @@
             justify-content: center;
         }
 
-        .slider
+        .slider-nav button:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* --- SECTION TRANSITION (Removed Green Border) --- */
+        .mission {
+            background: var(--bg-alt); 
+            text-align: center;
+            padding: 5rem 20px;
+            /* Border removed so it bleeds into the image above */
+        }
+
+        .mission p {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-main);
+        }
+
+        /* --- SERVICES & BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        #services { padding: 4rem 0; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .service-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px var(--shadow); border-bottom: 4px solid var(--accent); }
+
+        footer { background: var(--primary-dark); color: white; text-align: center; padding: 30px; font-size: 0.9rem; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            header { height: auto; padding: 15px; flex-direction: column; }
+            body { padding-top: 120px; }
+            nav { margin-top: 15px; }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+            .slider-container { height: 60vh; }
+            .slider-nav { padding: 0 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-group">
+            <img src="logo.png" alt="Fantasy Fields" class="logo-img" onerror="this.src='https://via.placeholder.com/50?text=FF'">
+            <div class="logo-text">Fantasy Fields Landscaping</div>
+        </a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main id="home">
+        <section class="slider-container">
+            <div class="slider-nav">
+                <button onclick="moveSlide(-1)">&#10094;</button>
+                <button onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            
+            <div class="slider" id="mainSlider">
+                <div class="slide" style="background-image: url('slide1.jpg');">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Lawn Maintenance</h2>
+                        <a href="#contact" class="btn">Schedule An Estimate</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('slide2.jpg');">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Garden Bed Care</h2>
+                        <a href="#contact" class="btn">Schedule An Estimate</a>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('Rita Backyard .jpg');">
+                    <div class="slide-content">
+                        <h2 class="slide-title">Landscape Design</h2>
+                        <a href="#contact" class="btn">Schedule An Estimate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission">
+            <div class="container">
+                <p>"For Brantford citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."</p>
+            </div>
+        </section>
+
+        <section id="services" class="container">
+            <h2 style="text-align: center; font-family: 'Playfair Display'; font-size: 2.5rem;">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Lawn Care</h3>
+                    <p>Sharp mowing, weed snipping, and edging for the best lot on the block.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Garden Maintenance</h3>
+                    <p>Expert edging and mulching to keep your beds weed-free and beautiful.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Spring Clean Up</h3>
+                    <p>Available April 1st—essential for clearing winter debris and prepping for growth.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Hedge Trimming</h3>
+                    <p>Precise trimming to keep your bushes and hedges healthy and shaped.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Hours: Mon—Sat 7:30am — 4:30pm | Phone: 519-732-4649</p>
+        <p>&copy; 2026 Fantasy Fields Landscaping. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentIdx = 0;
+        const slider = document.getElementById('mainSlider');
+        const slides = 3;
+
+        function moveSlide(dir) {
+            currentIdx = (currentIdx + dir + slides) % slides;
+            slider.style.transform = `translateX(-${currentIdx * 100}%)`;
+        }
+
+        // Automatic transition every 6 seconds
+        setInterval(() => moveSlide(1), 6000);
+    </script>
+</body>
+</html>
