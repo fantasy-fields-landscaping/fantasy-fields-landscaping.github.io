@@ -260,26 +260,26 @@
                 height: auto; 
                 padding: 15px; 
                 flex-direction: column;
-                outline: 1px solid var(--primary-dark); /* Ensure no gap at bottom of header */
+                outline: 1px solid var(--primary-dark); 
             }
             body { 
                 padding-top: 130px; 
-                background-color: var(--primary-dark); /* Removes white line ghosting */
+                background-color: var(--primary-dark); 
             }
             main { background-color: var(--bg-light); }
             nav { margin-top: 15px; }
             nav a { margin: 0 10px; font-size: 0.9rem; }
             .slider-container { 
                 height: 60vh; 
-                margin-top: -1px; /* Overlaps header by 1px to kill white line */
+                margin-top: -1px; 
             }
-            .slider-nav { display: none; } /* Remove buttons on mobile */
+            .slider-nav { display: none; } 
             .contact-form { grid-template-columns: 1fr; }
             .contact-form textarea, .contact-form .btn { grid-column: span 1; }
         }
 
         @media (min-width: 769px) {
-            .swipe-hint { display: none; } /* Only show hint on mobile */
+            .swipe-hint { display: none; } 
         }
     </style>
 </head>
@@ -359,12 +359,16 @@
         <section id="contact" class="contact-section">
             <div class="container">
                 <h2 style="text-align: center; font-family: 'Playfair Display'; font-size: 2.5rem;">Get Your Free Estimate</h2>
-                <form class="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
+                
+                <form class="contact-form" action="https://formspree.io/fantasyfieldscontact@gmail.com" method="POST">
                     <input type="text" name="first_name" placeholder="First Name" required>
                     <input type="text" name="last_name" placeholder="Last Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="email" name="_replyto" placeholder="Your Email Address" required>
                     <input type="tel" name="phone" placeholder="Phone Number" required>
                     <textarea name="message" placeholder="How can we help you today?"></textarea>
+                    
+                    <input type="hidden" name="_next" value="#">
+                    
                     <button type="submit" class="btn">Send Message</button>
                 </form>
             </div>
