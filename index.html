@@ -18,13 +18,15 @@
             --text-main: #2c3e2f;
             --white: #ffffff;
             --shadow: rgba(0, 0, 0, 0.1);
+            /* Updated header height variable for a slimmer look */
+            --header-h: 50px;
         }
 
         /* 1. GLOBAL RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            padding-top: 70px; 
+            padding-top: var(--header-h); 
             font-family: 'Inter', sans-serif;
             color: var(--text-main);
             background-color: var(--bg-light);
@@ -32,13 +34,13 @@
             overflow-x: hidden;
         }
 
-        /* 2. HEADER - Restored Size & Green Bar */
+        /* 2. HEADER - Slimmed down to prevent cutting off images */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
+            height: var(--header-h);
             z-index: 1000;
             background: var(--primary-dark);
             padding: 0 1.5rem;
@@ -56,8 +58,8 @@
         }
 
         .logo-img {
-            width: 45px;
-            height: 45px;
+            width: 35px; /* Scaled down for slim header */
+            height: 35px;
             border-radius: 50%;
             margin-right: 12px;
             object-fit: cover;
@@ -66,7 +68,7 @@
 
         .logo-text {
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Slightly smaller to fit slim bar */
         }
 
         nav a {
@@ -74,16 +76,16 @@
             text-decoration: none;
             font-weight: 600;
             margin-left: 1.5rem;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: 0.3s;
         }
 
         nav a:hover { color: var(--bg-contact); }
 
-        /* 3. CAROUSEL - Restored Arrows & No Separator */
+        /* 3. CAROUSEL - Adjusted to fill the screen minus the slim header */
         .slider-container {
             position: relative;
-            height: 80vh; 
+            height: calc(100vh - var(--header-h)); 
             background: var(--primary-dark);
             overflow: hidden;
         }
@@ -254,7 +256,7 @@
             font-size: 0.9rem;
         }
 
-        /* 8. MOBILE RESPONSIVENESS (WITH FIXES) */
+        /* 8. MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
             header { 
                 height: auto; 
@@ -263,7 +265,7 @@
                 outline: 1px solid var(--primary-dark); 
             }
             body { 
-                padding-top: 130px; 
+                padding-top: 110px; /* Adjusted for mobile header stack */
                 background-color: var(--primary-dark); 
             }
             main { background-color: var(--bg-light); }
