@@ -27,12 +27,43 @@
         }
         .logo-group { display: flex; align-items: center; text-decoration: none; color: white; }
         .logo-img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid white; margin-right: 8px; }
-        
+    
+        /* AWARD BUBBLE - UPDATED WITH HOVER EFFECTS */
         .award-bubble {
-            position: absolute; left: 50%; transform: translateX(-50%);
-            background: var(--gold); color: #1a1a1a; padding: 4px 12px;
-            border-radius: 50px; font-size: 0.65rem; font-weight: 800;
-            text-decoration: none; text-transform: uppercase; white-space: nowrap;
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%);
+            background: var(--gold); 
+            color: #1a1a1a; 
+            padding: 8px 20px;
+            border-radius: 50px; 
+            font-size: 0.75rem; 
+            font-weight: 800;
+            text-decoration: none; 
+            text-transform: uppercase; 
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    
+    /* This makes the animation smooth */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.award-bubble:hover {
+    /* Moves it up slightly, keeps it centered, and grows it by 10% */
+    transform: translateX(-50%) translateY(-3px) scale(1.1);
+    
+    /* Makes the gold pop more and adds a stronger shadow */
+    filter: brightness(1.1);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+    color: #000;
+}
+
+.award-bubble:active {
+    /* Shrinks slightly when clicked for a physical "button press" feel */
+    transform: translateX(-50%) translateY(0) scale(0.95);
+}
         }
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
 
