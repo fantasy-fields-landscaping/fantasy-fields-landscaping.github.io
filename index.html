@@ -29,16 +29,16 @@
         .logo-group { display: flex; align-items: center; text-decoration: none; color: white; }
         .logo-img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid white; margin-right: 8px; }
         
-        /* AWARD BUBBLE - MADE SLIGHTLY SMALLER */
+        /* AWARD BUBBLE - REFINED & SMALLER */
         .award-bubble {
             position: absolute; 
             left: 50%; 
             transform: translateX(-50%);
             background: var(--gold); 
             color: #1a1a1a; 
-            padding: 6px 16px; /* Reduced padding */
+            padding: 6px 14px;
             border-radius: 50px; 
-            font-size: 0.65rem; /* Smaller font */
+            font-size: 0.6rem;
             font-weight: 800;
             text-decoration: none; 
             text-transform: uppercase; 
@@ -48,11 +48,9 @@
             cursor: pointer;
             z-index: 1001;
         }
-
         .award-bubble:hover {
             transform: translateX(-50%) translateY(-2px) scale(1.05);
             filter: brightness(1.1);
-            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
         }
 
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
@@ -62,36 +60,32 @@
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
         .slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
+        
         .hero-content { position: relative; z-index: 10; text-align: center; color: white; padding: 20px; width: 90%; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(1.8rem, 6vw, 3.5rem); line-height: 1.2; margin-bottom: 25px; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(1.8rem, 6vw, 3.5rem); line-height: 1.2; margin-bottom: 30px; }
 
-        /* GET STARTED BUTTON - BIGGER & ANIMATED */
+        /* GET STARTED BUTTON - BIG & ANIMATED */
         .btn { 
             display: inline-block; 
-            padding: 18px 45px; /* Larger padding */
+            padding: 18px 45px; 
             background: var(--accent); 
             color: white; 
             border: none; 
             border-radius: 50px; 
             font-weight: 700; 
-            font-size: 1.1rem; /* Bigger text */
+            font-size: 1.1rem; 
             cursor: pointer; 
             text-decoration: none; 
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            margin-top: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-
         .btn:hover { 
-            transform: translateY(-5px) scale(1.1); /* Lifts and gets bigger */
+            transform: translateY(-5px) scale(1.08);
             background: var(--accent-hover);
             box-shadow: 0 10px 25px rgba(139, 58, 45, 0.4);
             filter: brightness(1.1);
         }
-
-        .btn:active {
-            transform: translateY(0) scale(0.98);
-        }
+        .btn:active { transform: scale(0.98); }
 
         /* SLOGAN STRIP */
         .guarantee-strip { background: var(--primary); color: white; padding: 40px 8%; text-align: center; }
@@ -112,13 +106,13 @@
         .gateway-content { padding: 20px; }
         .gateway-content h3 { font-family: 'Playfair Display'; font-size: 1.4rem; margin-bottom: 8px; }
 
-        /* TESTIMONIAL STRIP */
+        /* TESTIMONIALS */
         .testimonial-strip { background: var(--white); border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 40px 10%; text-align: center; }
         .t-slide { display: none; animation: fadeIn 0.8s; font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--primary); font-style: italic; }
         .t-slide.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CONTACT FORM */
+        /* CONTACT */
         #contact { background: #ded0a4; padding: 60px 5%; }
         .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 700px; margin: 0 auto; }
         .contact-form input, .contact-form textarea { padding: 12px; border-radius: 6px; border: none; width: 100%; font-family: inherit; font-size: 1rem; }
@@ -126,14 +120,12 @@
 
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 600px) {
-            header { padding: 0 3%; }
-            .logo-text { font-size: 0.8rem; }
+            .logo-text { display: none; } /* Hide text on mobile to save space */
             .award-bubble { display: none; }
-            nav a { margin-left: 10px; font-size: 0.75rem; }
-            .contact-form { grid-template-columns: 1fr; }
-            .contact-form textarea, .contact-form .btn { grid-column: span 1; }
             .hero { height: 60vh; }
             .btn { padding: 15px 35px; font-size: 1rem; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form textarea, .contact-form .btn { grid-column: span 1; }
         }
     </style>
 </head>
@@ -142,7 +134,7 @@
     <header>
         <a href="index.html" class="logo-group">
             <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/40'">
-            <div class="logo-text" style="font-weight:700; color:white;">Fantasy Fields Landscaping</div>
+            <div class="logo-text" style="font-weight:700; color:white;">Fantasy Fields</div>
         </a>
         <a href="award.html" class="award-bubble">🏆 2025 Brant County Award</a>
         <nav>
@@ -156,7 +148,7 @@
         <div class="slide" style="background-image: url('slide2.jpg');"></div>
         <div class="slide" style="background-image: url('Rita Backyard .jpg');"></div>
         <div class="hero-content">
-            <h1> Landscaping and Maintenance >
+            <h1>Landscaping and Maintenance</h1>
             <a href="#contact" class="btn">Get Started</a>
         </div>
     </section>
