@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fantasy Fields Landscaping | Award-Winning Lawn Care Brantford</title>
-    
-    <meta name="description" content="Winner of the Student Business Award. Fantasy Fields offers tiered lawn maintenance and professional landscaping projects like rotor tilling and spring cleanups in Brantford.">
-    <link rel="icon" type="image/png" href="logo.png">
+    <meta name="description" content="2025 Brant County Award Winner. Professional tiered lawn maintenance and hourly landscaping projects in Brantford, Ontario.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
@@ -23,125 +21,96 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; padding-top: 100px; }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER & AWARD LINK */
         header {
-            position: fixed;
-            top: 0; width: 100%; height: 70px;
-            background: rgba(27, 47, 30, 0.98);
-            z-index: 1000; display: flex;
-            justify-content: space-between; align-items: center;
-            padding: 0 5%;
+            position: fixed; top: 0; width: 100%; height: 100px;
+            background: var(--primary); z-index: 1000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            box-shadow: var(--shadow);
         }
-        .logo { color: white; text-decoration: none; font-weight: 700; display: flex; align-items: center; }
-        .logo img { width: 40px; border-radius: 50%; margin-right: 10px; border: 1px solid white; }
-        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--bg-alt); }
+        .award-banner {
+            background: #d4af37; width: 100%; text-align: center;
+            padding: 5px 0; font-size: 0.8rem; font-weight: 800;
+        }
+        .award-banner a { color: #1a1a1a; text-decoration: underline; }
+        
+        .nav-container {
+            width: 100%; display: flex; justify-content: space-between;
+            align-items: center; padding: 0 5%; flex-grow: 1;
+        }
+        .logo { color: white; text-decoration: none; font-weight: 700; font-size: 1.2rem; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.9rem; }
 
-        /* FADE CAROUSEL HERO */
+        /* HERO FADE */
         .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            background: var(--primary);
-            display: flex; align-items: center; justify-content: center;
+            position: relative; height: 80vh; overflow: hidden;
+            background: var(--primary); display: flex; align-items: center; justify-content: center;
         }
         .slide {
-            position: absolute; inset: 0;
-            opacity: 0; transition: opacity 2s ease-in-out;
+            position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out;
             background-size: cover; background-position: center;
         }
         .slide.active { opacity: 1; }
-        .slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+        .slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+        .hero-content { position: relative; z-index: 10; text-align: center; color: white; }
 
-        .hero-content { position: relative; z-index: 10; text-align: center; color: white; padding: 20px; max-width: 900px; }
-        .award-badge {
-            display: inline-block; background: #d4af37; color: #1a1a1a;
-            padding: 10px 25px; border-radius: 50px; font-weight: 800;
-            margin-bottom: 25px; text-transform: uppercase; font-size: 0.75rem;
-            letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+        /* SECTIONS */
+        .section-padding { padding: 80px 5%; }
+        .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
 
-        /* TIERED MAINTENANCE SECTION */
-        .section-padding { padding: 100px 5%; }
-        .center-text { text-align: center; max-width: 800px; margin: 0 auto 50px; }
-        .section-title { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 15px; }
+        /* PRICING TIERS */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .tier-card { background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow); position: relative; }
+        .tier-card.popular { border: 3px solid var(--accent); transform: scale(1.05); }
+        .feature-list { list-style: none; margin: 20px 0; }
+        .feature-list li::before { content: '✔ '; color: green; font-weight: bold; }
 
-        .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; align-items: stretch;
-        }
-        .tier-card {
-            background: white; padding: 50px 35px; border-radius: 20px;
-            box-shadow: var(--shadow); position: relative; border: 1px solid rgba(0,0,0,0.05);
-            display: flex; flex-direction: column;
-        }
-        .tier-card.popular { border: 3px solid var(--accent); transform: scale(1.03); }
-        .popular-tag {
-            position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: white; padding: 6px 20px;
-            border-radius: 20px; font-size: 0.8rem; font-weight: 700;
-        }
-        .tier-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 10px; }
-        .feature-list { list-style: none; margin: 30px 0; flex-grow: 1; }
-        .feature-list li { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 0.95rem; }
-        .feature-list li::before {
-            content: '✔'; position: absolute; left: 0; color: #4a7c44; font-weight: 900;
-        }
+        /* PROJECT LIBRARY */
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .library-card { background: white; border-radius: 10px; overflow: hidden; text-decoration: none; color: inherit; transition: 0.3s; box-shadow: var(--shadow); }
+        .library-card:hover { transform: translateY(-5px); }
+        .lib-img { height: 200px; background: #ddd; }
+        .lib-text { padding: 15px; text-align: center; font-weight: bold; }
 
-        /* PROJECTS LIBRARY SECTION */
-        .library-section { background: var(--bg-alt); }
-        .library-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+        /* CONTACT FORM */
+        .contact-section { background: var(--bg-contact, #ded0a4); padding: 80px 5%; }
+        .contact-form {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+            max-width: 800px; margin: 0 auto;
         }
-        .library-card {
-            background: white; border-radius: 15px; overflow: hidden;
-            text-decoration: none; color: inherit; box-shadow: var(--shadow);
-            transition: transform 0.3s;
+        .contact-form input, .contact-form textarea {
+            padding: 15px; border-radius: 8px; border: 1px solid #ccc; width: 100%; font-family: inherit;
         }
-        .library-card:hover { transform: translateY(-8px); }
-        .lib-img { width: 100%; height: 220px; background: #ddd; background-size: cover; background-position: center; }
-        .lib-content { padding: 20px; text-align: center; }
-        .lib-content h4 { font-family: 'Playfair Display'; font-size: 1.3rem; margin-bottom: 5px; }
-        .lib-tag { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-
-        /* BUTTONS */
+        .contact-form textarea { grid-column: span 2; min-height: 150px; }
         .btn {
-            display: inline-block; padding: 16px 35px; background: var(--accent);
-            color: white; text-decoration: none; border-radius: 50px;
-            font-weight: 700; transition: 0.3s; text-align: center; border: none; cursor: pointer;
+            display: inline-block; padding: 15px 30px; background: var(--accent);
+            color: white; border: none; border-radius: 50px; font-weight: 700;
+            cursor: pointer; text-decoration: none; text-align: center;
         }
-        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
-        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+        .contact-form .btn { grid-column: span 2; }
 
-        /* TESTIMONIALS & B/A PLACEHOLDER */
-        .testimonial-box { background: white; padding: 40px; border-radius: 15px; margin-bottom: 30px; font-style: italic; box-shadow: var(--shadow); }
-        .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-        .ba-box { background: #eee; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 10px; color: #999; }
-
-        footer { background: var(--primary); color: white; padding: 60px 5%; text-align: center; }
-        
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .ba-grid { grid-template-columns: 1fr; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form .btn, .contact-form textarea { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">
-            <img src="logo.png" alt="Fantasy Fields Logo" onerror="this.src='https://via.placeholder.com/50'">
-            Fantasy Fields
-        </a>
-        <nav>
-            <a href="#maintenance">Maintenance</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="award-banner">
+            🏆 2025 Brant County Award Winner - <a href="award.html">Read Our Story</a>
+        </div>
+        <div class="nav-container">
+            <a href="#" class="logo">Fantasy Fields</a>
+            <nav>
+                <a href="#maintenance">Packages</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
@@ -149,151 +118,76 @@
         <div class="slide" style="background-image: url('slide2.jpg');"></div>
         <div class="slide" style="background-image: url('Rita Backyard .jpg');"></div>
         <div class="slide" style="background-image: url('slide 3.png');"></div>
-
         <div class="hero-content">
-            <div class="award-badge">Winner: Student Business Excellence Award</div>
-            <h1>The Gold Standard of Brantford Landscaping</h1>
-            <p style="font-size: 1.25rem; margin-bottom: 40px; opacity: 0.9;">Professional Maintenance Packages & Expert Outdoor Projects.</p>
-            <a href="#maintenance" class="btn">View Service Tiers</a>
+            <h1 style="font-family:'Playfair Display'; font-size: 3.5rem;">Expert Landscaping</h1>
+            <a href="#contact" class="btn" style="margin-top: 20px;">Get a Free Estimate</a>
         </div>
     </section>
 
     <section id="maintenance" class="section-padding">
-        <div class="center-text">
-            <h2 class="section-title">Property Maintenance Tiers</h2>
-            <p>Predictable, high-quality care for your home. Choose the package that fits your lifestyle.</p>
-        </div>
-
+        <h2 class="section-title">Weekly Maintenance Tiers</h2>
         <div class="pricing-grid">
             <div class="tier-card">
-                <h3>The Essential</h3>
-                <p>Perfect for the busy homeowner who wants a clean look.</p>
+                <h3>Essential</h3>
                 <ul class="feature-list">
-                    <li>Weekly Professional Mowing</li>
-                    <li>String Trimming & Precision Edging</li>
-                    <li>Hard Surface Power Blowing</li>
-                    <li>Guaranteed Reliable Schedule</li>
+                    <li>Weekly Mowing</li>
+                    <li>String Trimming</li>
+                    <li>Power Blowing</li>
                 </ul>
-                <a href="#contact" class="btn btn-outline">Select Essential</a>
             </div>
-
             <div class="tier-card popular">
-                <div class="popular-tag">MOST PREFERRED</div>
-                <h3>The Estate Care</h3>
-                <p>Our comprehensive weekly service for a "Fantasy" property.</p>
+                <h3 style="color:var(--accent)">Estate Care</h3>
                 <ul class="feature-list">
-                    <li><strong>Everything in Essential</strong></li>
-                    <li>Weekly Garden Bed Weeding</li>
-                    <li>Bi-Weekly Light Bush Trimming</li>
-                    <li>Garden Bed Edge Definition</li>
-                    <li>Bi-Weekly Debris Clearing</li>
+                    <li>Everything in Essential</li>
+                    <li>Weekly Weeding</li>
+                    <li>Bi-Weekly Bush Trimming</li>
                 </ul>
-                <a href="#contact" class="btn">Select Estate Care</a>
             </div>
-
             <div class="tier-card">
-                <h3>The Premium</h3>
-                <p>The white-glove treatment for the ultimate landscape.</p>
+                <h3>Premium</h3>
                 <ul class="feature-list">
-                    <li><strong>Everything in Estate Care</strong></li>
-                    <li>Monthly Deep Bed Cultivation</li>
-                    <li>Fall/Spring Fertilization</li>
+                    <li>Everything in Estate Care</li>
                     <li>Priority Scheduling</li>
-                    <li>Annual Mulch Refresh Included</li>
+                    <li>Annual Mulch Refresh</li>
                 </ul>
-                <a href="#contact" class="btn btn-outline">Select Premium</a>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section-padding library-section">
-        <div class="center-text">
-            <h2 class="section-title">Custom Project Gallery</h2>
-            <p>One-time specialized services. Billed at a transparent hourly rate for total flexibility.</p>
-        </div>
-
+    <section id="projects" class="section-padding" style="background: var(--bg-alt);">
+        <h2 class="section-title">Project Library</h2>
         <div class="library-grid">
             <a href="spring-cleanup.html" class="library-card">
                 <div class="lib-img"></div>
-                <div class="lib-content">
-                    <span class="lib-tag">Project</span>
-                    <h4>Spring Clean Up</h4>
-                    <p>Bagging leaves, bush prep, and weeding.</p>
-                </div>
+                <div class="lib-text">Spring Clean Up</div>
             </a>
             <a href="rotor-tilling.html" class="library-card">
                 <div class="lib-img"></div>
-                <div class="lib-content">
-                    <span class="lib-tag">Project</span>
-                    <h4>Rotor Tilling</h4>
-                    <p>Deep soil prep for healthy new gardens.</p>
-                </div>
+                <div class="lib-text">Rotor Tilling</div>
             </a>
-            <a href="bush-removal.html" class="library-card">
-                <div class="lib-img"></div>
-                <div class="lib-content">
-                    <span class="lib-tag">Project</span>
-                    <h4>Bush Trimming & Removal</h4>
-                    <p>Major shaping and removal of overgrown shrubs.</p>
-                </div>
-            </a>
-            <a href="fall-leaves.html" class="library-card">
-                <div class="lib-img"></div>
-                <div class="lib-content">
-                    <span class="lib-tag">Project</span>
-                    <h4>Fall Leaf Raking</h4>
-                    <p>Complete yard clearing and bagging services.</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="center-text">
-            <h2 class="section-title">Proven Results</h2>
-        </div>
-        
-        <div class="pricing-grid">
-            <div class="testimonial-box">
-                <p>"Fantasy Fields transformed my backyard. The attention to detail on the edging is something I've never seen before. Truly award-winning service!"</p>
-                <br><strong>- Local Brantford Resident</strong>
             </div>
-            <div class="testimonial-box">
-                <p>"The Estate Care package is perfect. I don't have to think about weeding or mowing anymore. My property looks great every single Friday."</p>
-                <br><strong>- Satisfied Client</strong>
-            </div>
-        </div>
-
-        <h3 style="text-align:center; margin-top:50px; font-family:'Playfair Display';">Before & After Showcase</h3>
-        <div class="ba-grid">
-            <div class="ba-box">Before Photo Placeholder</div>
-            <div class="ba-box">After Photo Placeholder</div>
-        </div>
     </section>
 
-    <section id="contact" class="section-padding" style="background:var(--primary); color:white; text-align:center;">
-        <h2 class="section-title" style="color:white;">Ready for an Estimate?</h2>
-        <p style="margin-bottom:30px;">Contact the Student Business Award winner today.</p>
-        <a href="mailto:contact@fantasyfields.ca" class="btn">Email Us Now</a>
-        <p style="margin-top:20px;">Or Call: 519-732-4649</p>
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Request Your Free Estimate</h2>
+        <form class="contact-form" action="https://formspree.io/f/xreaewbk" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="address" placeholder="Property Address" required>
+            <textarea name="message" placeholder="What services are you looking for?"></textarea>
+            <button type="submit" class="btn">Send Request</button>
+        </form>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Fantasy Fields Landscaping. Registered in Ontario.</p>
-    </footer>
 
     <script>
-        // FADE CAROUSEL SCRIPT
         const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 5000); // Fades every 5 seconds
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
     </script>
 </body>
 </html>
