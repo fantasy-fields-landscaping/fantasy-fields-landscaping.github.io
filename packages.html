@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Packages | Fantasy Fields Landscaping</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg: #f7f1e6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; padding-top: 80px; }
+        header { position: fixed; top: 0; width: 100%; height: 80px; background: var(--primary); display: flex; align-items: center; justify-content: space-between; padding: 0 4%; z-index: 1000; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; }
+        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
+        .card.featured { border: 3px solid var(--accent); transform: scale(1.05); }
+        .tag { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        h1 { font-family: 'Playfair Display'; text-align: center; font-size: 2.8rem; margin-bottom: 40px; }
+        ul { list-style: none; padding: 0; margin: 25px 0; }
+        ul li { margin-bottom: 12px; padding-left: 30px; position: relative; }
+        ul li::before { content: '✔'; position: absolute; left: 0; color: #4a7c44; font-weight: bold; }
+        .btn { display: block; text-align: center; padding: 15px; background: var(--accent); color: white; text-decoration: none; border-radius: 50px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="color:white; text-decoration:none; font-weight:bold;">Fantasy Fields</a>
+        <nav><a href="index.html">Home</a><a href="projects.html">Projects</a></nav>
+    </header>
+    <div class="container">
+        <h1>Weekly Maintenance Packages</h1>
+        <div class="pricing-grid">
+            <div class="card">
+                <h3>The Essential</h3>
+                <ul>
+                    <li>Weekly Mowing</li>
+                    <li>String Trimming & Edging</li>
+                    <li>Hard Surface Blowing</li>
+                </ul>
+                <a href="index.html#contact" class="btn">Get Started</a>
+            </div>
+            <div class="card featured">
+                <div class="tag">MOST POPULAR</div>
+                <h3>The Estate Care</h3>
+                <ul>
+                    <li>Everything in Essential</li>
+                    <li><strong>Weekly Garden Bed Weeding</strong></li>
+                    <li><strong>Bi-Weekly Bush Trimming</strong></li>
+                    <li>Edge Maintenance</li>
+                </ul>
+                <a href="index.html#contact" class="btn">Get Started</a>
+            </div>
+            <div class="card">
+                <h3>The Premium</h3>
+                <ul>
+                    <li>Everything in Estate Care</li>
+                    <li>Annual Mulch Refresh</li>
+                    <li>Organic Fertilization</li>
+                    <li>Priority Scheduling</li>
+                </ul>
+                <a href="index.html#contact" class="btn">Get Started</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
