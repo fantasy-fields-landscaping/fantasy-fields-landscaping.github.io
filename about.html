@@ -6,22 +6,14 @@
     <title>About Us | Fantasy Fields</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; }
+        :root { --primary: #1b2f1e; --gold: #d4af37; --bg-light: #f7f1e6; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: #2c3e2f; padding-top: 60px; }
-        
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); padding-top: 60px; text-align: center; }
         header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
         header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
-
-        .about-hero { background: var(--primary); color: white; padding: 80px 5%; text-align: center; }
-        .content { padding: 60px 5%; max-width: 800px; margin: 0 auto; text-align: center; }
-        h2 { font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px; }
-        
-        .award-highlight { 
-            background: white; border-radius: 20px; padding: 40px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px solid var(--gold);
-            margin-bottom: 40px;
-        }
+        .hero-about { background: var(--primary); color: white; padding: 80px 5%; }
+        .about-content { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .award-box { background: white; padding: 40px; border-radius: 20px; border: 2px solid var(--gold); margin-bottom: 40px; }
     </style>
 </head>
 <body>
@@ -30,21 +22,18 @@
         <nav><a href="index.html">Home</a><a href="services.html" style="margin-left:15px;">Services</a></nav>
     </header>
 
-    <section class="about-hero">
+    <div class="hero-about">
         <h1 style="font-family:'Playfair Display'; font-size: 3rem;">About Us</h1>
-    </section>
-
-    <div class="content">
-        <div class="award-highlight">
-            <span style="font-size: 3rem;">🏆</span>
-            <h2>2025 Brant County Award Winner</h2>
-            <p>We are honored to be recognized for our commitment to quality, reliability, and community service in Brantford. This award represents our dedication to every lawn we touch.</p>
-        </div>
-
-        <h2>Our Story</h2>
-        <p>Fantasy Fields was founded on a simple belief: landscaping shouldn't be a burden for the homeowner. We handle the details so you can enjoy your weekend.</p>
-        
-        <p style="margin-top:20px;">[Add more of your story here as you flesh it out!]</p>
     </div>
+
+    <section class="about-content">
+        <div class="award-box">
+            <h2 style="font-family:'Playfair Display'; margin-bottom:15px;">🏆 2025 Brant County Award</h2>
+            <p>Fantasy Fields is proud to be recognized for our outstanding landscaping services in the Brantford community. Quality and detail aren't just goals—they are our standards.</p>
+        </div>
+        
+        <h2 style="font-family:'Playfair Display'; margin-bottom:20px;">Our Commitment</h2>
+        <p>For years, we’ve helped Brantford residents reclaim their weekends. We believe that a beautiful home starts at the curb, and we take the burden of maintenance off your shoulders with reliable, professional care.</p>
+    </section>
 </body>
 </html>
