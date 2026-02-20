@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fantasy Fields Landscaping | Brantford's Best</title>
+    <title>Fantasy Fields Landscaping | Brantford's Award-Winning Landscaping</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1b2f1e; --accent: #8b3a2d; --accent-hover: #a64b3c;
             --bg-light: #f7f1e6; --white: #ffffff; --gold: #d4af37; --text: #2c3e2f;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; }
 
+        /* HEADER */
         header {
             position: fixed; top: 0; width: 100%; height: 60px;
             background: var(--primary); z-index: 1000;
@@ -33,6 +35,7 @@
 
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
 
+        /* HERO */
         .hero { position: relative; height: 75vh; overflow: hidden; background: var(--primary); display: flex; align-items: center; justify-content: center; margin-top: 60px; }
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
@@ -46,12 +49,15 @@
             cursor: pointer; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .btn:hover { transform: translateY(-5px) scale(1.08); background: var(--accent-hover); box-shadow: 0 10px 25px rgba(139, 58, 45, 0.4); filter: brightness(1.1); }
+        .btn:hover { transform: translateY(-5px) scale(1.08); background: var(--accent-hover); box-shadow: 0 10px 25px rgba(139, 58, 45, 0.4); }
 
+        /* QUOTE SECTION */
+        .guarantee-strip { background: var(--primary); color: white; padding: 50px 8%; text-align: center; }
+        .guarantee-text { max-width: 800px; margin: 0 auto; font-size: clamp(0.95rem, 3vw, 1.2rem); font-style: italic; opacity: 0.9; }
+
+        /* SERVICES GRID */
         .section-padding { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 10px; color: var(--primary); }
-        .section-subtitle { text-align: center; color: #666; margin-bottom: 50px; }
-        
+        .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .service-card { 
             background: white; border-radius: 20px; overflow: hidden; 
@@ -61,11 +67,17 @@
         .service-card:hover { transform: translateY(-10px); }
         .service-img { height: 220px; background-size: cover; background-position: center; }
         .service-info { padding: 25px; }
-        .service-link { color: var(--accent); font-weight: 700; margin-top: 15px; display: block; }
 
+        /* REVIEWS SECTION */
+        .testimonial-strip { background: var(--white); border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 60px 10%; text-align: center; }
+        .t-slide { display: none; animation: fadeIn 0.8s; font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--primary); font-style: italic; }
+        .t-slide.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* CONTACT */
         #contact { background: #ded0a4; padding: 80px 5%; }
         .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 750px; margin: 0 auto; }
-        .contact-form input, .contact-form textarea { padding: 15px; border-radius: 8px; border: none; width: 100%; }
+        .contact-form input, .contact-form textarea { padding: 15px; border-radius: 8px; border: none; width: 100%; font-family: inherit; }
         .contact-form textarea { grid-column: span 2; min-height: 140px; }
 
         footer { background: var(--primary); color: white; padding: 40px 5%; text-align: center; font-size: 0.85rem; }
@@ -95,27 +107,47 @@
         </div>
     </section>
 
+    <section class="guarantee-strip">
+        <div class="guarantee-text">
+            "For Brantford citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
+        </div>
+    </section>
+
     <section class="section-padding">
-        <h2 class="section-title">How We Can Help</h2>
-        <p class="section-subtitle">Premium care for your outdoor space.</p>
+        <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
             <a href="services.html#subscriptions" class="service-card">
                 <div class="service-img" style="background-image: url('maintenance-cover.jpg');"></div>
                 <div class="service-info">
                     <h3>Subscription Care</h3>
-                    <p>Weekly lawn and garden maintenance tiers.</p>
-                    <span class="service-link">View Packages &rarr;</span>
+                    <p>Recurring weekly packages tailored to your property.</p>
+                    <span style="color: var(--accent); font-weight:700; display:block; margin-top:10px;">View Packages &rarr;</span>
                 </div>
             </a>
             <a href="services.html#projects" class="service-card">
                 <div class="service-img" style="background-image: url('projects-cover.jpg');"></div>
                 <div class="service-info">
                     <h3>Special Projects</h3>
-                    <p>Cleanups, garden installs, and restoration work.</p>
-                    <span class="service-link">See Project Rates &rarr;</span>
+                    <p>Hourly cleanups, rotor tilling, and specialized work.</p>
+                    <span style="color: var(--accent); font-weight:700; display:block; margin-top:10px;">See Project Rates &rarr;</span>
                 </div>
             </a>
         </div>
+    </section>
+
+    <section class="testimonial-strip">
+        <div id="testimonial-container">
+            <div class="t-slide active">
+                <p>"The Estate Care package is a game changer. I don't touch a weed all summer." — <strong>Sarah M.</strong></p>
+            </div>
+            <div class="t-slide">
+                <p>"Best edging in Brantford, hands down. They actually care about the details." — <strong>Robert L.</strong></p>
+            </div>
+            <div class="t-slide">
+                <p>"Reliable, professional, and the 2025 award is well-deserved." — <strong>Kevin D.</strong></p>
+            </div>
+        </div>
+        <div style="margin-top:20px; color: var(--gold);">⭐⭐⭐⭐⭐ 5-Star Rated Service</div>
     </section>
 
     <section id="contact">
@@ -140,6 +172,14 @@
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
         }, 5000);
+
+        const tSlides = document.querySelectorAll('.t-slide');
+        let tCurrent = 0;
+        setInterval(() => {
+            tSlides[tCurrent].classList.remove('active');
+            tCurrent = (tCurrent + 1) % tSlides.length;
+            tSlides[tCurrent].classList.add('active');
+        }, 4500);
     </script>
 </body>
 </html>
