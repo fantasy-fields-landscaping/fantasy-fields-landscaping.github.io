@@ -3,133 +3,37 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services | Fantasy Fields Landscaping</title>
+    <title>Services | Fantasy Fields</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1b2f1e; --accent: #8b3a2d; --accent-hover: #a64b3c;
-            --bg-light: #f7f1e6; --white: #ffffff; --gold: #d4af37; --text: #2c3e2f;
-        }
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; }
-
-        header {
-            position: fixed; top: 0; width: 100%; height: 60px;
-            background: var(--primary); z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5%;
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: #2c3e2f; padding-top: 60px; }
+        header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
         header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
-
-        /* SPLIT HERO */
-        .split-hero { display: flex; height: 60vh; margin-top: 60px; background: var(--primary); color: white; text-align: center; }
-        .split-side { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px; transition: 0.5s; position: relative; overflow: hidden; text-decoration: none; color: white; }
-        .split-side:hover { flex: 1.2; }
-        .split-side h1 { font-family: 'Playfair Display'; font-size: 2.5rem; z-index: 2; }
-        .bg-sub { background: linear-gradient(rgba(27, 47, 30, 0.8), rgba(27, 47, 30, 0.8)), url('maintenance-cover.jpg'); background-size: cover; border-right: 1px solid rgba(255,255,255,0.1); }
-        .bg-proj { background: linear-gradient(rgba(139, 58, 45, 0.6), rgba(27, 47, 30, 0.8)), url('projects-cover.jpg'); background-size: cover; }
-
-        /* CONTENT SECTIONS */
-        .section-wrap { padding: 80px 5%; max-width: 1200px; margin: 0 auto; scroll-margin-top: 60px; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-family: 'Playfair Display'; font-size: 2.8rem; color: var(--primary); }
-        .divider { width: 80px; height: 4px; background: var(--gold); margin: 20px auto; }
-
-        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .detail-card { background: white; border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 6px solid var(--primary); }
-        .detail-card.accent-border { border-top-color: var(--accent); }
-        .detail-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px; }
-        .detail-card ul { list-style: none; margin-bottom: 25px; }
-        .detail-card ul li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        .detail-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
-
-        /* PRESERVED CONTENT STRIPS */
-        .guarantee-strip { background: var(--primary); color: white; padding: 50px 8%; text-align: center; }
-        .testimonial-strip { background: var(--white); border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 60px 10%; text-align: center; }
-        .t-slide { display: none; font-size: 1.1rem; font-style: italic; color: var(--primary); }
-        .t-slide.active { display: block; }
-
-        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; }
-        .btn:hover { transform: translateY(-3px) scale(1.05); }
-
-        @media (max-width: 768px) { .split-hero { flex-direction: column; height: auto; } .split-side { padding: 80px 20px; } }
+        .hero-mini { background: var(--primary); color: white; padding: 60px 5%; text-align: center; }
+        .section { padding: 80px 5%; max-width: 1000px; margin: 0 auto; scroll-margin-top: 80px; }
+        h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--primary); }
     </style>
 </head>
 <body>
-
     <header>
         <a href="index.html" style="font-weight:700;">Fantasy Fields</a>
         <nav><a href="index.html">Home</a><a href="about.html" style="margin-left:15px;">About</a></nav>
     </header>
 
-    <section class="split-hero">
-        <a href="#subscriptions" class="split-side bg-sub"><h1>Subscriptions</h1><p>Weekly Maintenance</p></a>
-        <a href="#projects" class="split-side bg-proj"><h1>Projects</h1><p>Transformations</p></a>
+    <div class="hero-mini">
+        <h1 style="font-family:'Playfair Display';">Our Services</h1>
+    </div>
+
+    <section id="subscriptions" class="section">
+        <h2>Subscription Maintenance</h2>
+        <p>Details about your weekly lawn and garden care tiers go here...</p>
     </section>
 
-    <section id="subscriptions" class="section-wrap">
-        <div class="section-header">
-            <h2>Monthly Care Tiers</h2>
-            <div class="divider"></div>
-            <p>Brantford's premier "Set it and Forget it" maintenance.</p>
-        </div>
-        <div class="details-grid">
-            <div class="detail-card">
-                <h3>The Basics</h3>
-                <ul><li>Weekly Precision Mowing</li><li>String Trimming & Edging</li><li>Hard Surface Blowing</li></ul>
-                <a href="index.html#contact" class="btn">Inquire</a>
-            </div>
-            <div class="detail-card">
-                <h3>Estate Care</h3>
-                <ul><li>Everything in The Basics</li><li>Weekly Flower Bed Weeding</li><li>Shrub Pruning</li></ul>
-                <a href="index.html#contact" class="btn">Inquire</a>
-            </div>
-        </div>
+    <section id="projects" class="section">
+        <h2>Special Projects</h2>
+        <p>Details about your hourly project work and installations go here...</p>
     </section>
-
-    <section class="guarantee-strip">
-        <div style="max-width: 800px; margin: 0 auto; font-style: italic; opacity: 0.9;">
-            "For Brantford citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
-        </div>
-    </section>
-
-    <section id="projects" class="section-wrap">
-        <div class="section-header">
-            <h2>Special Projects</h2>
-            <div class="divider" style="background: var(--accent);"></div>
-            <p>One-time heavy lifting and garden transformations.</p>
-        </div>
-        <div class="details-grid">
-            <div class="detail-card accent-border">
-                <h3>Seasonal Cleanups</h3>
-                <p>Intensive restoration for Spring or Fall.</p>
-                <a href="index.html#contact" class="btn">Request Quote</a>
-            </div>
-            <div class="detail-card accent-border">
-                <h3>Garden Renovation</h3>
-                <p>Mulching, sodding, and new bed installations.</p>
-                <a href="index.html#contact" class="btn">Request Quote</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonial-strip">
-        <div class="t-slide active"><p>"The Estate Care package is a game changer. I don't touch a weed all summer." — <strong>Sarah M.</strong></p></div>
-        <div class="t-slide"><p>"Best edging in Brantford, hands down. They actually care about the details." — <strong>Robert L.</strong></p></div>
-        <div class="t-slide"><p>"Reliable, professional, and the 2025 award is well-deserved." — <strong>Kevin D.</strong></p></div>
-        <div style="margin-top:20px; color: var(--gold);">⭐⭐⭐⭐⭐ 5-Star Rated Service</div>
-    </section>
-
-    <footer style="background: var(--primary); color: white; padding: 40px; text-align: center;"><p>&copy; 2026 Fantasy Fields Landscaping | Brantford, ON</p></footer>
-
-    <script>
-        const tSlides = document.querySelectorAll('.t-slide');
-        let tCurrent = 0;
-        setInterval(() => {
-            tSlides[tCurrent].classList.remove('active');
-            tCurrent = (tCurrent + 1) % tSlides.length;
-            tSlides[tCurrent].classList.add('active');
-        }, 4500);
-    </script>
 </body>
 </html>
