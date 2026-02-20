@@ -14,7 +14,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; }
 
-        /* HEADER */
         header {
             position: fixed; top: 0; width: 100%; height: 60px;
             background: var(--primary); z-index: 1000;
@@ -35,7 +34,6 @@
 
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
 
-        /* HERO */
         .hero { position: relative; height: 75vh; overflow: hidden; background: var(--primary); display: flex; align-items: center; justify-content: center; margin-top: 60px; }
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
@@ -51,11 +49,9 @@
         }
         .btn:hover { transform: translateY(-5px) scale(1.08); background: var(--accent-hover); box-shadow: 0 10px 25px rgba(139, 58, 45, 0.4); }
 
-        /* QUOTE SECTION */
         .guarantee-strip { background: var(--primary); color: white; padding: 50px 8%; text-align: center; }
         .guarantee-text { max-width: 800px; margin: 0 auto; font-size: clamp(0.95rem, 3vw, 1.2rem); font-style: italic; opacity: 0.9; }
 
-        /* SERVICES GRID */
         .section-padding { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
         .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -68,13 +64,11 @@
         .service-img { height: 220px; background-size: cover; background-position: center; }
         .service-info { padding: 25px; }
 
-        /* REVIEWS SECTION */
         .testimonial-strip { background: var(--white); border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 60px 10%; text-align: center; }
         .t-slide { display: none; animation: fadeIn 0.8s; font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--primary); font-style: italic; }
         .t-slide.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CONTACT */
         #contact { background: #ded0a4; padding: 80px 5%; }
         .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 750px; margin: 0 auto; }
         .contact-form input, .contact-form textarea { padding: 15px; border-radius: 8px; border: none; width: 100%; font-family: inherit; }
