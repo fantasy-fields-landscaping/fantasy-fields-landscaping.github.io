@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Property Maintenance | Fantasy Fields</title>
+    <title>Lawn Maintenance North End Brantford | Cedarland Garden Care | Fantasy Fields</title>
+    <meta name="description" content="Weekly property maintenance for Cedarland and the North End. Student-run with 1,000+ hours experience. Mowing, weeding, and garden care.">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; }
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: #2c3e2f; padding-top: 60px; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 60px; }
         header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
         header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
         .hero-mini { background: var(--primary); color: white; padding: 80px 5%; text-align: center; }
-        .content { padding: 80px 5%; max-width: 900px; margin: 0 auto; }
-        h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; }
+        .content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+        h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; }
+        
+        details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+        details:hover { transform: translateY(-2px); }
+        summary { font-weight: 700; font-size: 1.2rem; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--gold); }
+        details[open] summary::after { content: '-'; }
+        .dropdown-content { padding-top: 20px; line-height: 1.8; color: #444; }
+        
+        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -22,13 +32,31 @@
         <a href="index.html" style="font-weight:700;">Fantasy Fields</a>
         <nav><a href="index.html">Home</a><a href="landscaping.html" style="margin-left:15px;">Landscaping</a></nav>
     </header>
+
     <div class="hero-mini">
-        <h1 style="font-family:'Playfair Display'; font-size: 3rem;">Property Maintenance</h1>
+        <h1>Property Maintenance</h1>
+        <p>Serving Cedarland & North End for 4 Successful Years</p>
     </div>
+
     <div class="content">
-        <h2>Weekly Subscription Tiers</h2>
-        <p>"Set it and forget it." Weekly lawn care, weeding, and garden maintenance tiers so you never have to lift a finger all summer.</p>
-        <a href="index.html#contact" class="btn">Get a Subscription Quote</a>
+        <h2>Subscription Maintenance Tiers</h2>
+        <p style="margin-bottom: 30px;">Set it and forget it. We provide reliable care specifically for the mature properties in our neighborhood.</p>
+
+        <details>
+            <summary>Weekly Lawn Care (The Standard)</summary>
+            <div class="dropdown-content">
+                <p>Includes precision mowing, string trimming (weed-eating) along all borders, and air-blasting debris off your driveway and walkways. We focus on the sharp edges that give Cedarland homes their curb appeal.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>The Estate Care Package</summary>
+            <div class="dropdown-content">
+                <p>Our comprehensive maintenance plan. Includes weekly mowing plus garden bed weeding, perennial deadheading, and shrub maintenance. We treat your property like it's our own backyard.</p>
+            </div>
+        </details>
+
+        <a href="index.html#contact" class="btn">Get a Maintenance Quote</a>
     </div>
 </body>
 </html>
