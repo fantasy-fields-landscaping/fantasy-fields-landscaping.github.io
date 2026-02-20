@@ -8,35 +8,56 @@
     <meta name="description" content="Award-winning, student-run landscaping in the North End and Cedarland areas of Brantford. 4 years of experience and 1,000+ hours of professional maintenance.">
     
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LandscapingService",
+  "name": "Fantasy Fields Landscaping",
+  "alternateName": "Fantasy Fields",
+  "description": "Award-winning, student-run landscaping and property maintenance serving the North End, Cedarland, and Brier Park neighborhoods of Brantford.",
+  "url": "https://yourdomain.com",
+  "logo": "https://yourdomain.com/logo.png",
+  "image": "https://yourdomain.com/projects-cover.jpg",
+  "telephone": "519-732-4649",
+  "email": "fantasyfieldscontact@gmail.com",
+  "priceRange": "$$",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Landscaping Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Property Maintenance" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lawn Edging" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Garden Restoration" } }
+    ]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5 Westchester Way",
+    "addressLocality": "Brantford",
+    "addressRegion": "ON",
+    "postalCode": "N3R 6N1",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.1794,
+    "longitude": -80.2464
+  },
+  "areaServed": [
+    { "@type": "Neighborhood", "name": "North End, Brantford" },
+    { "@type": "Neighborhood", "name": "Cedarland, Brantford" },
+    { "@type": "Neighborhood", "name": "Brier Park" },
+    { "@type": "City", "name": "Brantford" }
+  ],
+  "openingHoursSpecification": [
     {
-      "@context": "https://schema.org",
-      "@type": "LandscapingService",
-      "name": "Fantasy Fields Landscaping",
-      "description": "Professional student-run landscaping business serving the North End and Cedarland neighborhoods of Brantford.",
-      "image": "logo.png",
-      "telePhone": "519-732-4649",
-      "url": "https://yourdomain.com",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "5 Westchester Way",
-        "addressLocality": "Brantford",
-        "addressRegion": "ON",
-        "postalCode": "N3R 6N1",
-        "addressCountry": "CA"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.1794, 
-        "longitude": -80.2464
-      },
-      "areaServed": [
-        { "@type": "Neighborhood", "name": "North End, Brantford" },
-        { "@type": "Neighborhood", "name": "Cedarland, Brantford" },
-        { "@type": "Neighborhood", "name": "Brier Park" }
-      ]
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
     }
-    </script>
+  ]
+}
+</script>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
