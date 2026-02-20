@@ -63,6 +63,7 @@
             text-decoration: none; text-transform: uppercase; white-space: nowrap;
             transition: 0.3s; z-index: 1001;
         }
+
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
 
         .hero { position: relative; height: 75vh; overflow: hidden; background: var(--primary); display: flex; align-items: center; justify-content: center; margin-top: 60px; }
@@ -80,12 +81,26 @@
         }
         .btn:hover { transform: translateY(-5px); background: var(--accent-hover); }
 
+        .guarantee-strip { background: var(--primary); color: white; padding: 50px 8%; text-align: center; }
+        .guarantee-text { max-width: 800px; margin: 0 auto; font-size: clamp(0.95rem, 3vw, 1.2rem); font-style: italic; opacity: 0.9; }
+
         .section-padding { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
         .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary); }
         
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .service-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-img { height: 220px; background-size: cover; background-position: center; }
+        .service-info { padding: 25px; }
+
+        .testimonial-strip { background: var(--white); border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 60px 10%; text-align: center; }
+        .t-slide { display: none; animation: fadeIn 0.8s; font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--primary); font-style: italic; }
+        .t-slide.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         /* NEW MAP SECTION STYLES */
-        .map-section { padding: 60px 5% 0 5%; text-align: center; background: var(--white); }
-        .map-container { max-width: 900px; margin: 20px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid var(--white); }
+        .map-section { padding: 80px 5% 0 5%; text-align: center; background: var(--white); }
+        .map-container { max-width: 900px; margin: 30px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid var(--white); }
         
         #contact { background: #ded0a4; padding: 80px 5%; }
         .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 750px; margin: 0 auto; }
@@ -98,18 +113,13 @@
         .footer-col h4 { color: var(--gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
         .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.75rem; opacity: 0.6; }
-
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .service-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
-        .service-img { height: 220px; background-size: cover; background-position: center; }
-        .service-info { padding: 25px; }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html" class="logo-group">
-            <img src="logo.png" alt="Fantasy Fields Logo" class="logo-img">
-            <div style="font-weight:700;">Fantasy Fields</div>
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/40'">
+            <div style="font-weight:700; color:white;">Fantasy Fields</div>
         </a>
         <a href="about.html" class="award-bubble">🏆 2025 Brant County Award</a>
         <nav>
@@ -121,11 +131,53 @@
 
     <section class="hero">
         <div class="slide active" style="background-image: url('slide1.jpg');"></div>
+        <div class="slide" style="background-image: url('slide2.jpg');"></div>
         <div class="hero-content">
-            <h1>Fantasy Fields Landscaping</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 20px;">Proudly Serving North End Brantford & Cedarland</p>
-            <a href="#contact" class="btn">Get a Free Estimate</a>
+            <h1>Landscaping and Maintenance</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">Serving the North End & Cedarland Since 2022</p>
+            <a href="#contact" class="btn">Get Started</a>
         </div>
+    </section>
+
+    <section class="guarantee-strip">
+        <div class="guarantee-text">
+            "For North End citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <h2 class="section-title">How We Can Help</h2>
+        <div class="services-grid">
+            <a href="maintenance.html" class="service-card">
+                <div class="service-img" style="background-image: url('maintenance-cover.jpg');"></div>
+                <div class="service-info">
+                    <h3>Property Maintenance</h3>
+                    <p>"Set it and forget it." Weekly lawn care, weeding, and garden maintenance tiers so you never have to lift a finger all summer.</p>
+                    <span style="color: var(--accent); font-weight:700; display:block; margin-top:10px;">View Packages &rarr;</span>
+                </div>
+            </a>
+            <a href="landscaping.html" class="service-card">
+                <div class="service-img" style="background-image: url('projects-cover.jpg');"></div>
+                <div class="service-info">
+                    <h3>Landscaping Projects</h3>
+                    <p>One-off seasonal cleanups, rotor tilling, garden installations, and heavy-duty restoration work charged by the hour.</p>
+                    <span style="color: var(--accent); font-weight:700; display:block; margin-top:10px;">See Project Rates &rarr;</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonial-strip">
+        <div class="t-slide active">
+            <p>"The Estate Care package is a game changer for our Cedarland home." — <strong>Sarah M.</strong></p>
+        </div>
+        <div class="t-slide">
+            <p>"Best edging in the North End, hands down." — <strong>Robert L.</strong></p>
+        </div>
+        <div class="t-slide">
+            <p>"Reliable, professional, and the 2025 award is well-deserved." — <strong>Kevin D.</strong></p>
+        </div>
+        <div style="margin-top:20px; color: var(--gold);">⭐⭐⭐⭐⭐ 5-Star Rated Service</div>
     </section>
 
     <section class="map-section">
@@ -133,8 +185,8 @@
         <p>Specifically limited to North End and Cedarland area for maximum reliability.</p>
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11623.10214619355!2d-80.2642277!3d43.1722881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66133285777f%3A0x6b5e6727783b9c4b!2sNorth%20End%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" 
-                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11634.34151740925!2d-80.2588373!3d43.1785265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66060c18476d%3A0xc47e307f59846f90!2s5%20Westchester%20Way%2C%20Brantford%2C%20ON%20N3R%206N1!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" 
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
@@ -170,8 +222,26 @@
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Fantasy Fields Landscaping | Registered in Ontario | All Rights Reserved.
+            © 2026 Fantasy Fields Landscaping | Registered in Ontario | All Rights Reserved.
         </div>
     </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.hero .slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+
+        const tSlides = document.querySelectorAll('.t-slide');
+        let tCurrent = 0;
+        setInterval(() => {
+            tSlides[tCurrent].classList.remove('active');
+            tCurrent = (tCurrent + 1) % tSlides.length;
+            tSlides[tCurrent].classList.add('active');
+        }, 4500);
+    </script>
 </body>
 </html>
