@@ -27,9 +27,9 @@
             background: var(--gold); color: #1a1a1a; padding: 6px 14px;
             border-radius: 50px; font-size: 0.6rem; font-weight: 800;
             text-decoration: none; text-transform: uppercase; white-space: nowrap;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1001;
+            transition: 0.3s; z-index: 1001;
         }
-        .award-bubble:hover { transform: translateX(-50%) translateY(-2px) scale(1.05); filter: brightness(1.1); }
+        .award-bubble:hover { transform: translateX(-50%) translateY(-2px) scale(1.05); }
 
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
 
@@ -43,10 +43,10 @@
         .btn { 
             display: inline-block; padding: 18px 45px; background: var(--accent); color: white; 
             border: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; 
-            cursor: pointer; text-decoration: none; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; text-decoration: none; transition: 0.3s; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .btn:hover { transform: translateY(-5px) scale(1.08); background: var(--accent-hover); box-shadow: 0 10px 25px rgba(139, 58, 45, 0.4); }
+        .btn:hover { transform: translateY(-5px); background: var(--accent-hover); }
 
         .guarantee-strip { background: var(--primary); color: white; padding: 50px 8%; text-align: center; }
         .guarantee-text { max-width: 800px; margin: 0 auto; font-size: clamp(0.95rem, 3vw, 1.2rem); font-style: italic; opacity: 0.9; }
@@ -71,23 +71,22 @@
 
         #contact { background: #ded0a4; padding: 80px 5%; }
         .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 750px; margin: 0 auto; }
-        .contact-form input, .contact-form textarea { padding: 15px; border-radius: 8px; border: none; width: 100%; font-family: inherit; }
+        .contact-form input, .contact-form textarea { padding: 15px; border-radius: 8px; border: none; width: 100%; }
         .contact-form textarea { grid-column: span 2; min-height: 140px; }
 
         footer { background: var(--primary); color: white; padding: 40px 5%; text-align: center; font-size: 0.85rem; }
-
-        @media (max-width: 600px) { .logo-text, .award-bubble { display: none; } .contact-form { grid-template-columns: 1fr; } .contact-form textarea, .contact-form .btn { grid-column: span 1; } }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html" class="logo-group">
             <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/40'">
-            <div class="logo-text" style="font-weight:700; color:white;">Fantasy Fields</div>
+            <div style="font-weight:700; color:white;">Fantasy Fields</div>
         </a>
         <a href="about.html" class="award-bubble">🏆 2025 Brant County Award</a>
         <nav>
-            <a href="services.html">Services</a>
+            <a href="maintenance.html">Maintenance</a>
+            <a href="landscaping.html">Landscaping</a>
             <a href="about.html">About</a>
         </nav>
     </header>
@@ -110,18 +109,18 @@
     <section class="section-padding">
         <h2 class="section-title">How We Can Help</h2>
         <div class="services-grid">
-            <a href="services.html#subscriptions" class="service-card">
+            <a href="maintenance.html" class="service-card">
                 <div class="service-img" style="background-image: url('maintenance-cover.jpg');"></div>
                 <div class="service-info">
-                    <h3>Subscription Care</h3>
+                    <h3>Property Maintenance</h3>
                     <p>"Set it and forget it." Weekly lawn care, weeding, and garden maintenance tiers so you never have to lift a finger all summer.</p>
                     <span style="color: var(--accent); font-weight:700; display:block; margin-top:10px;">View Packages &rarr;</span>
                 </div>
             </a>
-            <a href="services.html#projects" class="service-card">
+            <a href="landscaping.html" class="service-card">
                 <div class="service-img" style="background-image: url('projects-cover.jpg');"></div>
                 <div class="service-info">
-                    <h3>Special Projects</h3>
+                    <h3>Landscaping Projects</h3>
                     <p>One-off seasonal cleanups, rotor tilling, garden installations, and heavy-duty restoration work charged by the hour.</p>
                     <span style="color: var(--accent); font-weight:700; display:block; margin-top:10px;">See Project Rates &rarr;</span>
                 </div>
@@ -130,16 +129,14 @@
     </section>
 
     <section class="testimonial-strip">
-        <div id="testimonial-container">
-            <div class="t-slide active">
-                <p>"The Estate Care package is a game changer. I don't touch a weed all summer." — <strong>Sarah M.</strong></p>
-            </div>
-            <div class="t-slide">
-                <p>"Best edging in Brantford, hands down. They actually care about the details." — <strong>Robert L.</strong></p>
-            </div>
-            <div class="t-slide">
-                <p>"Reliable, professional, and the 2025 award is well-deserved." — <strong>Kevin D.</strong></p>
-            </div>
+        <div class="t-slide active">
+            <p>"The Estate Care package is a game changer. I don't touch a weed all summer." — <strong>Sarah M.</strong></p>
+        </div>
+        <div class="t-slide">
+            <p>"Best edging in Brantford, hands down. They actually care about the details." — <strong>Robert L.</strong></p>
+        </div>
+        <div class="t-slide">
+            <p>"Reliable, professional, and the 2025 award is well-deserved." — <strong>Kevin D.</strong></p>
         </div>
         <div style="margin-top:20px; color: var(--gold);">⭐⭐⭐⭐⭐ 5-Star Rated Service</div>
     </section>
