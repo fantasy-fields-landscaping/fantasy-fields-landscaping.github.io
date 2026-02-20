@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landscaping Projects North End | Garden Install & Sod | Fantasy Fields</title>
+    <title>Landscaping Projects North End | Garden Install & Sod | Fantasy Fields Landscaping</title>
     <meta name="description" content="One-time landscaping projects in Brantford's North End. Garden installations, sodding, and heavy cleanups. 1,000+ hours of experience.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* (Styles match maintenance.html for consistency) */
         :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 60px; }
@@ -16,15 +17,15 @@
         .hero-mini { background: var(--primary); color: white; padding: 80px 5%; text-align: center; }
         .content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
         h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; }
-        
         details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
-        details:hover { transform: translateY(-2px); }
         summary { font-weight: 700; font-size: 1.2rem; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
         summary::after { content: '+'; font-size: 1.5rem; color: var(--gold); }
         details[open] summary::after { content: '-'; }
         .dropdown-content { padding-top: 20px; line-height: 1.8; color: #444; }
-        
-        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 40px; }
+        .footer-main { background: var(--primary); color: white; padding: 60px 5% 20px 5%; text-align: center; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto 40px auto; text-align: left; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -35,35 +36,46 @@
 
     <div class="hero-mini">
         <h1>Landscaping Projects</h1>
-        <p>Expert Restoration for North End Yards</p>
+        <p>Serving Cedarland & North End Transformers Since 2022</p>
     </div>
 
     <div class="content">
-        <h2>Special Transformations</h2>
-        <p style="margin-bottom: 30px;">From seasonal overhauls to brand new garden beds, we bring the muscle and the expertise.</p>
-
+        <h2>Specialized Transformations</h2>
+        
         <details>
             <summary>Garden Bed Installation</summary>
             <div class="dropdown-content">
-                <p>We build garden beds from the ground up. This includes sod removal, soil amendment, and professional planting designed for Brantford's soil. Perfect for North End properties looking for a fresh look.</p>
+                <p>Includes sod removal, soil amendment, and professional planting tailored for North End soil.</p>
             </div>
         </details>
 
         <details>
             <summary>Sodding & Turf Replacement</summary>
             <div class="dropdown-content">
-                <p>Is your lawn beyond saving? We strip the old turf, grade the soil for proper drainage, and lay premium local sod to give you a perfect lawn in a single day.</p>
+                <p>Complete restoration with premium local sod and professional grading.</p>
             </div>
         </details>
-
-        <details>
-            <summary>Seasonal Property Cleanups</summary>
-            <div class="dropdown-content">
-                <p>Spring and Fall are when we shine. Deep leaf removal, garden bed edging, gutter cleaning, and property prep. We clear the clutter so you can enjoy the season.</p>
-            </div>
-        </details>
-
-        <a href="index.html#contact" class="btn">Request a Project Quote</a>
     </div>
+
+    <footer class="footer-main">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Fantasy Fields Landscaping</h4>
+                <p>Student-run excellence with 4 years of local experience and 1,000+ hours of professional work.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <a href="tel:5197324649">📞 519-732-4649</a>
+                <a href="mailto:fantasyfieldscontact@gmail.com">✉️ fantasyfieldscontact@gmail.com</a>
+                <p>📍 5 Westchester Way, Brantford, ON</p>
+            </div>
+            <div class="footer-col">
+                <h4>Service Area</h4>
+                <p>• North End Brantford</p>
+                <p>• Cedarland</p>
+                <p>• Brier Park / Greenbrier</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
