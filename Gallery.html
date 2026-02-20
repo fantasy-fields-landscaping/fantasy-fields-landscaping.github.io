@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | Fantasy Fields Landscaping Brantford</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --white: #ffffff; --text: #2c3e2f;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); }
 
+        /* Reuse your Header Styles */
+        header {
+            position: fixed; top: 0; width: 100%; height: 60px;
+            background: var(--primary); z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%;
+        }
+        nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
+
+        .gallery-container { padding: 120px 5% 60px; max-width: 1200px; margin: 0 auto; }
+        .gallery-header { text-align: center; margin-bottom: 50px; }
+        .gallery-header h1 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--primary); }
+
+        /* The Grid */
+        .gallery-grid {
+            columns: 3 300px; /* Creates a responsive masonry layout */
+            column-gap: 20px;
+        }
+        .gallery-item {
+            background: white;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .gallery-item:hover { transform: translateY(-5px); }
+        .gallery-item img { width: 100%; display: block; }
+        
+        .gallery-caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid { columns: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" style="text-decoration:none; color:white; font-weight:700;">Fantasy Fields</a>
+        <nav>
+            <a href="maintenance.html">Maintenance</a>
+            <a href="landscaping.html">Landscaping</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h1>Recent Projects</h1>
+            <p>Real results for real neighbors in the North End & Cedarland.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="before-after-1.jpg" alt="Lawn Restoration North End">
+                <div class="gallery-caption">Full Lawn Restoration - North End</div>
+            </div>
+            <div class="gallery-item">
+                <img src="project-cedarland.jpg" alt="Garden Mulching Cedarland">
+                <div class="gallery-caption">Premium Mulch & Edging - Cedarland</div>
+            </div>
+            <div class="gallery-item">
+                <img src="trimming-brier.jpg" alt="Hedge Trimming Brier Park">
+                <div class="gallery-caption">Hedge Sculpting - Brier Park</div>
+            </div>
+            </div>
+    </div>
+</body>
+</html>
