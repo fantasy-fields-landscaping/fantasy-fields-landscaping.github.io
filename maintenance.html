@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lawn Maintenance North End Brantford | Cedarland Garden Care | Fantasy Fields</title>
+    <title>Lawn Maintenance North End Brantford | Cedarland Garden Care | Fantasy Fields Landscaping</title>
     <meta name="description" content="Weekly property maintenance for Cedarland and the North End. Student-run with 1,000+ hours experience. Mowing, weeding, and garden care.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -24,7 +24,10 @@
         details[open] summary::after { content: '-'; }
         .dropdown-content { padding-top: 20px; line-height: 1.8; color: #444; }
         
-        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 40px; }
+        .footer-main { background: var(--primary); color: white; padding: 60px 5% 20px 5%; text-align: center; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto 40px auto; text-align: left; }
+        .footer-col h4 { color: var(--gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -35,28 +38,47 @@
 
     <div class="hero-mini">
         <h1>Property Maintenance</h1>
-        <p>Serving Cedarland & North End for 4 Successful Years</p>
+        <p>Expert Care for North End & Cedarland Properties</p>
     </div>
 
     <div class="content">
         <h2>Subscription Maintenance Tiers</h2>
-        <p style="margin-bottom: 30px;">Set it and forget it. We provide reliable care specifically for the mature properties in our neighborhood.</p>
+        <p style="margin-bottom: 30px;">Reliable, professional care for the mature lawns of our neighborhood.</p>
 
         <details>
             <summary>Weekly Lawn Care (The Standard)</summary>
             <div class="dropdown-content">
-                <p>Includes precision mowing, string trimming (weed-eating) along all borders, and air-blasting debris off your driveway and walkways. We focus on the sharp edges that give Cedarland homes their curb appeal.</p>
+                <p>Includes precision mowing, string trimming, and debris blowing. We focus on the sharp edges that define Cedarland's curb appeal.</p>
             </div>
         </details>
 
         <details>
             <summary>The Estate Care Package</summary>
             <div class="dropdown-content">
-                <p>Our comprehensive maintenance plan. Includes weekly mowing plus garden bed weeding, perennial deadheading, and shrub maintenance. We treat your property like it's our own backyard.</p>
+                <p>Our most popular "set it and forget it" service. Includes weekly mowing plus garden weeding and shrub maintenance.</p>
             </div>
         </details>
-
-        <a href="index.html#contact" class="btn">Get a Maintenance Quote</a>
     </div>
+
+    <footer class="footer-main">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Fantasy Fields Landscaping</h4>
+                <p>Student-run excellence with 4 years of local experience and 1,000+ hours of professional work.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <a href="tel:5197324649">📞 519-732-4649</a>
+                <a href="mailto:fantasyfieldscontact@gmail.com">✉️ fantasyfieldscontact@gmail.com</a>
+                <p>📍 5 Westchester Way, Brantford, ON</p>
+            </div>
+            <div class="footer-col">
+                <h4>Service Area</h4>
+                <p>• North End Brantford</p>
+                <p>• Cedarland</p>
+                <p>• Brier Park / Greenbrier</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
