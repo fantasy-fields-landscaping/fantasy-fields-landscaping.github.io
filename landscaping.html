@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landscaping Projects | Fantasy Fields</title>
+    <title>Landscaping Projects North End | Garden Install & Sod | Fantasy Fields</title>
+    <meta name="description" content="One-time landscaping projects in Brantford's North End. Garden installations, sodding, and heavy cleanups. 1,000+ hours of experience.">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; }
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: #2c3e2f; padding-top: 60px; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 60px; }
         header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
         header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
         .hero-mini { background: var(--primary); color: white; padding: 80px 5%; text-align: center; }
-        .content { padding: 80px 5%; max-width: 900px; margin: 0 auto; }
-        h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; }
+        .content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+        h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; }
+        
+        details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+        details:hover { transform: translateY(-2px); }
+        summary { font-weight: 700; font-size: 1.2rem; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: '+'; font-size: 1.5rem; color: var(--gold); }
+        details[open] summary::after { content: '-'; }
+        .dropdown-content { padding-top: 20px; line-height: 1.8; color: #444; }
+        
+        .btn { display: inline-block; padding: 15px 35px; background: var(--accent); color: white; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 40px; }
     </style>
 </head>
 <body>
@@ -22,12 +32,37 @@
         <a href="index.html" style="font-weight:700;">Fantasy Fields</a>
         <nav><a href="index.html">Home</a><a href="maintenance.html" style="margin-left:15px;">Maintenance</a></nav>
     </header>
+
     <div class="hero-mini">
-        <h1 style="font-family:'Playfair Display'; font-size: 3rem;">Landscaping Projects</h1>
+        <h1>Landscaping Projects</h1>
+        <p>Expert Restoration for North End Yards</p>
     </div>
+
     <div class="content">
         <h2>Special Transformations</h2>
-        <p>One-off seasonal cleanups, rotor tilling, garden installations, and heavy-duty restoration work charged by the hour.</p>
+        <p style="margin-bottom: 30px;">From seasonal overhauls to brand new garden beds, we bring the muscle and the expertise.</p>
+
+        <details>
+            <summary>Garden Bed Installation</summary>
+            <div class="dropdown-content">
+                <p>We build garden beds from the ground up. This includes sod removal, soil amendment, and professional planting designed for Brantford's soil. Perfect for North End properties looking for a fresh look.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Sodding & Turf Replacement</summary>
+            <div class="dropdown-content">
+                <p>Is your lawn beyond saving? We strip the old turf, grade the soil for proper drainage, and lay premium local sod to give you a perfect lawn in a single day.</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>Seasonal Property Cleanups</summary>
+            <div class="dropdown-content">
+                <p>Spring and Fall are when we shine. Deep leaf removal, garden bed edging, gutter cleaning, and property prep. We clear the clutter so you can enjoy the season.</p>
+            </div>
+        </details>
+
         <a href="index.html#contact" class="btn">Request a Project Quote</a>
     </div>
 </body>
