@@ -129,16 +129,21 @@
         }
         .btn:hover { transform: translateY(-5px); background: var(--accent-hover); }
 
-        /* SECTIONS */
+        /* SECTIONS - ADJUSTED FOR MORE SPACE */
         .guarantee-strip { background: var(--primary); color: #fff; padding: 60px 8%; text-align: center; }
-        .section-padding { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 40px; color: var(--primary); }
         
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* Increased padding from 80px to 120px to give services more room */
+        .section-padding { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+        
+        .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 60px; color: var(--primary); }
+        
+        /* Grid gap increased for more breathing room */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
+        
         .service-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
         .service-card:hover { transform: translateY(-10px); }
-        .service-img { height: 220px; background: center/cover; }
-        .service-info { padding: 25px; }
+        .service-img { height: 280px; background: center/cover; } /* Increased image height */
+        .service-info { padding: 35px; } /* Increased info padding */
 
         .testimonial-strip { background: var(--white); border-block: 1px solid #eee; padding: 60px 10%; text-align: center; }
         .t-slide { display: none; animation: fadeIn 0.8s; font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--primary); font-style: italic; }
@@ -177,6 +182,7 @@
             nav { gap: 15px; }
             nav a, .dropbtn { font-size: 0.85rem; }
             .map-container { height: 300px; }
+            .services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
