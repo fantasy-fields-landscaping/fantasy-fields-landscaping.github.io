@@ -68,38 +68,54 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; }
 
+        /* HEADER RESTRUCTURE */
         header {
             position: fixed; top: 0; width: 100%; height: 60px;
             background: var(--primary); z-index: 1001;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex; justify-content: center; /* Centers the container */
+            padding: 0 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
+
+        .header-container {
+            width: 100%;
+            max-width: 1100px; /* Aligns content to a central line */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .logo-group { display: flex; align-items: center; text-decoration: none; color: white; }
         .logo-img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid white; margin-right: 8px; }
         
-        /* GHOST BUTTON AWARD (Desktop) */
+        /* GHOST BUTTON AWARD (Farthest Left) */
         .award-ghost-link {
             display: inline-flex;
             align-items: center;
-            padding: 5px 12px;
+            padding: 4px 10px;
             border: 1px solid var(--gold);
             border-radius: 4px;
             color: var(--gold);
             text-decoration: none;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: 0.3s;
-            margin-right: 15px;
             background: rgba(255,255,255,0.03);
+            white-space: nowrap;
         }
         .award-ghost-link:hover {
             background: var(--gold);
             color: var(--primary);
         }
 
-        /* MOBILE AWARD BAR (Muted Colors) */
+        /* MOBILE AWARD BAR */
         .mobile-award-notification {
             display: none;
         }
@@ -110,7 +126,7 @@
                 position: fixed;
                 top: 60px;
                 width: 100%;
-                background: #f1ebd9; /* Muted Champagne - less distracting */
+                background: #f1ebd9;
                 color: #444;
                 text-align: center;
                 padding: 5px 0;
@@ -122,13 +138,15 @@
                 transition: opacity 0.4s ease;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             }
-            .award-ghost-link { display: none; } /* Hide the nav button on mobile */
+            .award-ghost-link { display: none; } 
             nav a { margin-left: 10px; font-size: 0.75rem; }
+            .header-container { justify-content: space-between; }
         }
 
         nav { display: flex; align-items: center; }
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
 
+        /* HERO & CONTENT */
         .hero { position: relative; height: 75vh; overflow: hidden; background: var(--primary); display: flex; align-items: center; justify-content: center; margin-top: 60px; }
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
@@ -200,19 +218,23 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo-group">
-            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/40'">
-            <div style="font-weight:700; color:white;">Fantasy Fields</div>
-        </a>
-        
-        <nav>
-            <a href="about.html" class="award-ghost-link">🏆 2025 Award Winner</a>
+        <div class="header-container">
+            <div class="brand-group">
+                <a href="about.html" class="award-ghost-link">🏆 2025 Award</a>
+                
+                <a href="index.html" class="logo-group">
+                    <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/40'">
+                    <div style="font-weight:700; color:white;">Fantasy Fields</div>
+                </a>
+            </div>
             
-            <a href="maintenance.html">Maintenance</a>
-            <a href="landscaping.html">Landscaping</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="about.html">About</a>
-        </nav>
+            <nav>
+                <a href="maintenance.html">Maintenance</a>
+                <a href="landscaping.html">Landscaping</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
     </header>
 
     <div class="mobile-award-notification" id="mobileAward">
