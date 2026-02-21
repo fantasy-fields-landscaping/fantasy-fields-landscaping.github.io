@@ -70,19 +70,51 @@
 
         header {
             position: fixed; top: 0; width: 100%; height: 60px;
-            background: var(--primary); z-index: 1000;
+            background: var(--primary); z-index: 1001;
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 5%; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .logo-group { display: flex; align-items: center; text-decoration: none; color: white; }
         .logo-img { width: 32px; height: 32px; border-radius: 50%; border: 1px solid white; margin-right: 8px; }
         
-        .award-bubble {
-            position: absolute; left: 50%; transform: translateX(-50%);
-            background: var(--gold); color: #1a1a1a; padding: 6px 14px;
-            border-radius: 50px; font-size: 0.6rem; font-weight: 800;
-            text-decoration: none; text-transform: uppercase; white-space: nowrap;
-            transition: 0.3s; z-index: 1001;
+        /* NEW: Discrete Mobile Award Bar */
+        .mobile-award-notification {
+            display: none; /* Hidden on Desktop */
+        }
+
+        @media (max-width: 768px) {
+            .mobile-award-notification {
+                display: block;
+                position: fixed;
+                top: 60px; /* Directly under header */
+                width: 100%;
+                background: var(--gold);
+                color: #1a1a1a;
+                text-align: center;
+                padding: 6px 0;
+                font-size: 0.65rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                z-index: 1000;
+                transition: opacity 0.4s ease; /* Fade effect */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            /* Original bubble removed to avoid overlap */
+            .award-bubble { display: none !important; }
+            
+            nav a { margin-left: 10px; font-size: 0.75rem; }
+        }
+
+        /* Desktop Award Bubble Styling stays for PC users */
+        @media (min-width: 769px) {
+            .award-bubble {
+                position: absolute; left: 50%; transform: translateX(-50%);
+                background: var(--gold); color: #1a1a1a; padding: 6px 14px;
+                border-radius: 50px; font-size: 0.6rem; font-weight: 800;
+                text-decoration: none; text-transform: uppercase; white-space: nowrap;
+                transition: 0.3s; z-index: 1001;
+            }
         }
 
         nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 0.8rem; }
@@ -122,7 +154,6 @@
         .map-section { padding: 80px 5% 0 5%; text-align: center; background: var(--white); }
         .map-container { max-width: 900px; margin: 30px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid var(--white); }
         
-        /* UPDATED VERTICAL CONTACT SECTION */
         #contact { 
             background: #ded0a4; 
             padding: 100px 5%; 
@@ -163,7 +194,9 @@
             <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/40'">
             <div style="font-weight:700; color:white;">Fantasy Fields</div>
         </a>
+        
         <a href="about.html" class="award-bubble">🏆 2025 Brant County Award</a>
+        
         <nav>
             <a href="maintenance.html">Maintenance</a>
             <a href="landscaping.html">Landscaping</a>
@@ -171,6 +204,10 @@
             <a href="about.html">About</a>
         </nav>
     </header>
+
+    <div class="mobile-award-notification" id="mobileAward">
+        🏆 2025 Brant County Award Winner
+    </div>
 
     <section class="hero">
         <div class="slide active" style="background-image: url('slide1.jpg');"></div>
@@ -291,6 +328,20 @@
             tCurrent = (tCurrent + 1) % tSlides.length;
             tSlides[tCurrent].classList.add('active');
         }, 4500);
+
+        // Mobile Award Fade Logic
+        window.onscroll = function() {
+            const mobileBar = document.getElementById("mobileAward");
+            if (window.innerWidth <= 768) {
+                if (window.pageYOffset > 80) {
+                    mobileBar.style.opacity = "0";
+                    mobileBar.style.pointerEvents = "none";
+                } else {
+                    mobileBar.style.opacity = "1";
+                    mobileBar.style.pointerEvents = "auto";
+                }
+            }
+        };
     </script>
 </body>
 </html>
