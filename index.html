@@ -61,7 +61,7 @@
         .brand-sub { font-weight: 400; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2.5px; margin-top: 2px; }
 
         /* NAV */
-        nav { display: flex; align-items: center; gap: 30px; }
+        nav { display: flex; align-items: center; gap: 25px; }
         nav a, .dropbtn { 
             color: #fff; text-decoration: none; font-weight: 600; 
             font-size: 1.05rem;
@@ -97,7 +97,21 @@
         .award-bottom { font-size: 0.85rem; }
         .award-button:hover { background: var(--gold); color: var(--primary); }
 
-        /* HERO SECTION - REPAIRED TO FILL SPACE */
+        /* NEW CONTACT HEADER BUTTON */
+        .contact-header-btn {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.95rem !important;
+            transition: 0.3s;
+        }
+        .contact-header-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
         .hero { 
             position: relative; 
             height: 85vh; 
@@ -105,8 +119,8 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            margin-top: 0; /* White gap removed */
-            padding-top: 85px; /* Adjusted so content is below header */
+            margin-top: 0; 
+            padding-top: 85px; 
             overflow: hidden; 
         }
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s; background: center/cover; }
@@ -145,7 +159,7 @@
         @media (max-width: 900px) {
             header { height: 75px; padding: 0 20px; }
             .hero { padding-top: 75px; }
-            .brand-sub, .award-button { display: none; }
+            .brand-sub, .award-button, .contact-header-btn { display: none; }
             nav { gap: 15px; }
             nav a, .dropbtn { font-size: 0.85rem; }
         }
@@ -177,6 +191,7 @@
                     <span class="award-top">2025 Brant County</span>
                     <span class="award-bottom">🏆 Award Winner</span>
                 </a>
+                <a href="#contact" class="contact-header-btn">Contact</a>
             </nav>
         </div>
     </header>
