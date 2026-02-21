@@ -53,14 +53,12 @@
         }
         .header-container { width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; }
         
-        /* BRANDING */
         .logo-group { display: flex; align-items: center; text-decoration: none; color: #fff; }
         .logo-img { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
         .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
         .brand-main { font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; }
         .brand-sub { font-weight: 400; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2.5px; margin-top: 2px; }
 
-        /* NAV */
         nav { display: flex; align-items: center; gap: 25px; }
         nav a, .dropbtn { 
             color: #fff; text-decoration: none; font-weight: 600; 
@@ -69,7 +67,6 @@
         }
         nav a:hover, .dropdown:hover .dropbtn { color: var(--gold); }
 
-        /* DROPDOWN */
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none; position: absolute; background: var(--primary);
@@ -84,7 +81,6 @@
         .dropdown:hover .dropdown-content { display: block; }
         .arrow { font-size: 0.7rem; margin-left: 5px; opacity: 0.7; }
 
-        /* AWARD BUTTON */
         .award-button {
             padding: 6px 15px; border: 1px solid var(--gold); border-radius: 4px;
             color: var(--gold); text-decoration: none; font-weight: 700;
@@ -126,7 +122,6 @@
         .hero-content { position: relative; z-index: 10; text-align: center; color: #fff; padding: 20px; width: 90%; }
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(1.8rem, 6vw, 4rem); line-height: 1.2; margin-bottom: 20px; }
 
-        /* BUTTONS */
         .btn { 
             display: inline-block; padding: 18px 45px; background: var(--accent); color: #fff; 
             border-radius: 50px; font-weight: 700; font-size: 1.1rem; 
@@ -150,13 +145,25 @@
         .t-slide.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CONTACT FORM SECTION */
+        /* MAP SECTION */
+        .map-section { background: var(--bg-light); padding: 60px 5%; text-align: center; }
+        .map-container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border: 8px solid #fff;
+            height: 450px;
+        }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+
+        /* CONTACT FORM */
         #contact { background: #ded0a4; padding: 100px 5%; }
         .contact-form { display: flex; flex-direction: column; gap: 20px; max-width: 550px; margin: 0 auto; }
         .contact-form input, .contact-form textarea { padding: 18px; border-radius: 12px; border: none; width: 100%; font: inherit; }
         .contact-form textarea { min-height: 180px; }
 
-        /* FOOTER */
         footer { background: var(--primary); color: #fff; padding: 60px 5% 20px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto 40px; text-align: left; }
         .footer-col h4 { color: var(--gold); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; }
@@ -169,6 +176,7 @@
             .brand-sub, .award-button, .contact-header-btn { display: none; }
             nav { gap: 15px; }
             nav a, .dropbtn { font-size: 0.85rem; }
+            .map-container { height: 300px; }
         }
     </style>
 </head>
@@ -248,17 +256,27 @@
         <div style="margin-top:20px; color: var(--gold);">⭐⭐⭐⭐⭐ 5-Star Rated Service</div>
     </section>
 
+    <section class="map-section">
+        <h2 class="section-title">Serving the North End</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11644.204561706684!2d-80.25686005!3d43.18742845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66746960d1b3%3A0x66f68e3d09a259c4!2sNorth%20End%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1715632485642!5m2!1sen!2sca" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
     <section id="contact">
         <h2 style="text-align:center; font-family:'Playfair Display'; margin-bottom:30px; font-size: 2.2rem;">Free Estimate</h2>
         <form class="contact-form" action="https://formspree.io/f/xreaewbk" method="POST">
             <input type="hidden" name="_subject" value="New Estimate Request - Fantasy Fields">
-            
             <input type="text" name="name" placeholder="Name" required>
             <input type="tel" name="phone" placeholder="Phone" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="address" placeholder="Address" required>
             <textarea name="message" placeholder="How can we help?"></textarea>
-            
             <button type="submit" class="btn">Send Request</button>
         </form>
     </section>
