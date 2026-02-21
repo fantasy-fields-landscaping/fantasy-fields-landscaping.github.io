@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brantford Landscaping In the North End | Cedarland Lawn Care | Fantasy Fields Landscaping</title>
+    <title>Landscaping North End Brantford | Cedarland Lawn Care | Fantasy Fields Landscaping</title>
     
     <meta name="description" content="Award-winning, student-run landscaping in the North End and Cedarland areas of Brantford. 4 years of experience and 1,000+ hours of professional maintenance.">
     
@@ -145,18 +145,29 @@
         .t-slide.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* MAP SECTION */
-        .map-section { background: var(--bg-light); padding: 60px 5%; text-align: center; }
-        .map-container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            border: 8px solid #fff;
-            height: 450px;
+        /* CIRCULAR MAP SECTION */
+        .map-section { background: var(--bg-light); padding: 80px 5%; text-align: center; }
+        .map-wrapper { 
+            position: relative;
+            max-width: 500px; /* Smaller, circular focus */
+            margin: 0 auto;
         }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        .map-container { 
+            width: 100%;
+            padding-bottom: 100%; /* Makes it a square */
+            border-radius: 50%; /* Makes it a circle */
+            overflow: hidden; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
+            border: 10px solid #fff;
+            position: relative;
+        }
+        .map-container iframe { 
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%; 
+            border: 0; 
+        }
+        .map-caption { margin-top: 25px; font-weight: 600; color: var(--primary); }
 
         /* CONTACT FORM */
         #contact { background: #ded0a4; padding: 100px 5%; }
@@ -176,7 +187,7 @@
             .brand-sub, .award-button, .contact-header-btn { display: none; }
             nav { gap: 15px; }
             nav a, .dropbtn { font-size: 0.85rem; }
-            .map-container { height: 300px; }
+            .map-wrapper { max-width: 320px; }
         }
     </style>
 </head>
@@ -215,15 +226,15 @@
         <div class="slide active" style="background-image: url('slide1.jpg');"></div>
         <div class="slide" style="background-image: url('slide2.jpg');"></div>
         <div class="hero-content">
-            <h1>Landscaping & Maintenance</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 25px;">Serving North End Brantford Since 2022</p>
+            <h1>Brantford Landscaping & Maintenance</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 25px;">Serving the North End & Cedarland Since 2022</p>
             <a href="#contact" class="btn">Get Started</a>
         </div>
     </section>
 
     <section class="guarantee-strip">
         <div style="max-width: 800px; margin: 0 auto; font-style: italic; opacity: 0.9;">
-            "For Brantford citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
+            "For North End citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
         </div>
     </section>
 
@@ -258,13 +269,15 @@
 
     <section class="map-section">
         <h2 class="section-title">Serving the North End</h2>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11644.204561706684!2d-80.25686005!3d43.18742845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66746960d1b3%3A0x66f68e3d09a259c4!2sNorth%20End%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1715632485642!5m2!1sen!2sca" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <div class="map-wrapper">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11636.8524314275!2d-80.2647614!3d43.1840428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66708795c613%3A0xe21262d14744093c!2sNorth%20End%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1715873940291!5m2!1sen!2sca" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <p class="map-caption">Exclusively maintaining properties in the North End, Cedarland, and Brier Park.</p>
         </div>
     </section>
 
