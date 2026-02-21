@@ -145,29 +145,18 @@
         .t-slide.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CIRCULAR MAP SECTION */
-        .map-section { background: var(--bg-light); padding: 80px 5%; text-align: center; }
-        .map-wrapper { 
-            position: relative;
-            max-width: 500px; /* Smaller, circular focus */
-            margin: 0 auto;
-        }
+        /* MAP SECTION */
+        .map-section { background: var(--bg-light); padding: 60px 5%; text-align: center; }
         .map-container { 
-            width: 100%;
-            padding-bottom: 100%; /* Makes it a square */
-            border-radius: 50%; /* Makes it a circle */
+            max-width: 1000px; 
+            margin: 0 auto; 
+            border-radius: 20px; 
             overflow: hidden; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); 
-            border: 10px solid #fff;
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border: 8px solid #fff;
+            height: 450px;
         }
-        .map-container iframe { 
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%; 
-            border: 0; 
-        }
-        .map-caption { margin-top: 25px; font-weight: 600; color: var(--primary); }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
 
         /* CONTACT FORM */
         #contact { background: #ded0a4; padding: 100px 5%; }
@@ -187,7 +176,7 @@
             .brand-sub, .award-button, .contact-header-btn { display: none; }
             nav { gap: 15px; }
             nav a, .dropbtn { font-size: 0.85rem; }
-            .map-wrapper { max-width: 320px; }
+            .map-container { height: 300px; }
         }
     </style>
 </head>
@@ -269,15 +258,13 @@
 
     <section class="map-section">
         <h2 class="section-title">Serving the North End</h2>
-        <div class="map-wrapper">
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11636.8524314275!2d-80.2647614!3d43.1840428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66708795c613%3A0xe21262d14744093c!2sNorth%20End%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1715873940291!5m2!1sen!2sca" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-            <p class="map-caption">Exclusively maintaining properties in the North End, Cedarland, and Brier Park.</p>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps?q=North+End+Brantford+ON&output=embed" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </section>
 
