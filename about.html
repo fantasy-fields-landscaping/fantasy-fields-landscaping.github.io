@@ -12,13 +12,14 @@
         header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
         header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
         .about-hero { background: var(--primary); color: white; padding: 80px 5%; }
-        .award-box { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border: 2px solid var(--gold); border-radius: 20px; }
+        .award-box { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border: 2px solid var(--gold); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .award-img { width: 100%; max-width: 500px; border-radius: 10px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html" style="font-weight:700;">Fantasy Fields</a>
-        <nav><a href="index.html">Home</a><a href="services.html" style="margin-left:15px;">Services</a></nav>
+        <nav><a href="index.html">Home</a><a href="maintenance.html" style="margin-left:15px;">Services</a></nav>
     </header>
 
     <div class="about-hero">
@@ -26,10 +27,13 @@
     </div>
 
     <div class="award-box">
+        <img src="Award%20winning%20service.jpeg" alt="Award Winning Service" class="award-img">
         <h2>🏆 2025 Brant County Award Winner</h2>
         <p>Recognized for excellence in local landscaping and property maintenance.</p>
     </div>
 
-    <p style="margin-top: 40px;">[Your Story Goes Here]</p>
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8;">
+        <p>Fantasy Fields is a student-run venture dedicated to professional-grade results with a personal touch. With over 1,000 hours of maintenance experience in the North End, we bring reliability and passion to every lawn we touch.</p>
+    </div>
 </body>
 </html>
