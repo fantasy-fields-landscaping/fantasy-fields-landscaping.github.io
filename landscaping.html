@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landscaping Projects North End | Garden Install & Sod | Fantasy Fields Landscaping</title>
-    <meta name="description" content="One-time landscaping projects in Brantford's North End. Garden installations, sodding, and heavy cleanups. 1,000+ hours of experience.">
-    
+    <title>Landscaping Projects North End | Fantasy Fields Landscaping</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* (Styles match maintenance.html for consistency) */
         :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 60px; }
@@ -17,15 +14,13 @@
         .hero-mini { background: var(--primary); color: white; padding: 80px 5%; text-align: center; }
         .content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
         h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; }
-        details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+        details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         summary { font-weight: 700; font-size: 1.2rem; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
         summary::after { content: '+'; font-size: 1.5rem; color: var(--gold); }
         details[open] summary::after { content: '-'; }
-        .dropdown-content { padding-top: 20px; line-height: 1.8; color: #444; }
-        .footer-main { background: var(--primary); color: white; padding: 60px 5% 20px 5%; text-align: center; margin-top: 80px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto 40px auto; text-align: left; }
-        .footer-col h4 { color: var(--gold); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
-        .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; text-align: center; }
+        .img-grid img, .img-grid video { width: 100%; border-radius: 8px; height: 300px; object-fit: cover; }
+        .label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-top: 5px; }
     </style>
 </head>
 <body>
@@ -43,39 +38,44 @@
         <h2>Specialized Transformations</h2>
         
         <details>
-            <summary>Garden Bed Installation</summary>
+            <summary>Landscape Design (Before & After)</summary>
             <div class="dropdown-content">
-                <p>Includes sod removal, soil amendment, and professional planting tailored for North End soil.</p>
+                <p>Custom garden layouts and full-property transformations.</p>
+                <div class="img-grid">
+                    <div>
+                        <img src="Landscape%20Design%20Project1.jpeg" alt="Project 1">
+                        <div class="label">Initial Design</div>
+                    </div>
+                    <div>
+                        <img src="Landscape%20Design%20Project2.jpg" alt="Project 2">
+                        <div class="label">Completed Result</div>
+                    </div>
+                </div>
             </div>
         </details>
 
         <details>
-            <summary>Sodding & Turf Replacement</summary>
+            <summary>Roto-tilling Services</summary>
             <div class="dropdown-content">
-                <p>Complete restoration with premium local sod and professional grading.</p>
+                <p>Preparation for new gardens or lawn restoration.</p>
+                <img src="Roto%20tilling%20example.png" alt="Roto Tilling" style="width:100%; border-radius:8px; margin-top:10px;">
+            </div>
+        </details>
+
+        <details>
+            <summary>Seasonal Spring Cleanups</summary>
+            <div class="dropdown-content">
+                <p>Watch our team in action clearing winter debris to prep for the season.</p>
+                <video controls style="width:100%; border-radius:8px; margin-top:10px;">
+                    <source src="Spring%20clean%20up%20example.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </details>
     </div>
 
-    <footer class="footer-main">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Fantasy Fields Landscaping</h4>
-                <p>Student-run excellence with 4 years of local experience and 1,000+ hours of professional work.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <a href="tel:5197324649">📞 519-732-4649</a>
-                <a href="mailto:fantasyfieldscontact@gmail.com">✉️ fantasyfieldscontact@gmail.com</a>
-                <p>📍 5 Westchester Way, Brantford, ON</p>
-            </div>
-            <div class="footer-col">
-                <h4>Service Area</h4>
-                <p>• North End Brantford</p>
-                <p>• Cedarland</p>
-                <p>• Brier Park / Greenbrier</p>
-            </div>
-        </div>
+    <footer class="footer-main" style="background: var(--primary); color: white; padding: 40px; text-align: center;">
+        <p>© 2026 Fantasy Fields Landscaping</p>
     </footer>
 </body>
 </html>
