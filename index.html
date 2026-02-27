@@ -325,5 +325,32 @@
         // Hero cycle removed to keep image steady
         cycle(document.querySelectorAll('.testimonial-strip .t-slide'), 4500);
     </script>
+    <script>
+    const cycle = (els, time) => {
+        let cur = 0;
+        setInterval(() => {
+            if (els.length > 0) {
+                els[cur].classList.remove('active');
+                cur = (cur + 1) % els.length;
+                els[cur].classList.add('active');
+            }
+        }, time);
+    };
+    cycle(document.querySelectorAll('.testimonial-strip .t-slide'), 4500);
+
+    // --- NEW: AUTO-FILL LOGIC FOR MAINTENANCE PACKAGES ---
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pkg = urlParams.get('package');
+        const services = urlParams.get('services');
+        
+        if (pkg && services) {
+            const messageBox = document.querySelector('textarea[name="message"]');
+            if (messageBox) {
+                messageBox.value = `I am interested in the ${pkg} package.\nIncluded Services: ${services}.`;
+            }
+        }
+    };
+</script>
 </body>
 </html>
