@@ -266,10 +266,8 @@
         <h2 class="section-title">Serving the North End</h2>
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m12!1m3!1d11634.33166881775!2d-80.25414168024225!3d43.17940177579177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c6613317c2447%3A0xe549557434190c4c!2sCedarland%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1709000000000!5m2!1sen!2sca" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11631.956795893345!2d-80.2600!3d43.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c65e8a55e5555%3A0x5555555555555555!2sNorth%20End%2C%20Brantford%2C%20ON!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
     </section>
@@ -307,6 +305,7 @@
     </footer>
 
     <script>
+        // Testimonial cycling logic
         const cycle = (els, time) => {
             let cur = 0;
             setInterval(() => {
@@ -319,7 +318,7 @@
         };
         cycle(document.querySelectorAll('.testimonial-strip .t-slide'), 4500);
 
-        // --- NEW AUTO-FILL LOGIC: RUNS ONCE PAGE IS FULLY READY ---
+        // --- AUTO-FILL LOGIC: Fills form from Maintenance Page data ---
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             const pkg = urlParams.get('package');
