@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta name="msvalidate.01" content="840ECFA588F05BE68AF113E4E0067F5F" />
-    <!-- Clarity tracking code for https://fantasyfieldslandscaping.ca/ -->
-<script>
+    <script>
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
@@ -124,8 +123,7 @@
             padding-top: 85px; 
             overflow: hidden; 
         }
-        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s; background: center/cover; }
-        .slide.active { opacity: 1; }
+        .slide { position: absolute; inset: 0; opacity: 1; background: center/cover; }
         .slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); } 
 
         .hero-content { position: relative; z-index: 10; text-align: center; color: #fff; padding: 20px; width: 90%; }
@@ -227,7 +225,6 @@
 
     <section class="hero">
         <div class="slide active" style="background-image: url('Homepage%20Lawn%20Care%20Example.jpg');"></div>
-        <div class="slide" style="background-image: url('Rita%20backyard.jpg');"></div>
         <div class="hero-content">
             <h1>Landscaping and Maintenance</h1>
             <p style="font-size: 1.2rem; margin-bottom: 25px;">Serving the North End Since 2022</p>
@@ -325,7 +322,7 @@
                 }
             }, time);
         };
-        cycle(document.querySelectorAll('.hero .slide'), 5000);
+        // Hero cycle removed to keep image steady
         cycle(document.querySelectorAll('.testimonial-strip .t-slide'), 4500);
     </script>
 </body>
