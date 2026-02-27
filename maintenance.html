@@ -6,21 +6,13 @@
     <title>Property Concierge | Fantasy Fields</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #1b2f1e; 
-            --accent: #8b3a2d; 
-            --bg-light: #f4f1ec; 
-            --gold: #c5a059; 
-            --text: #2c3e2f; 
-            --white: #ffffff;
-        }
-
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f4f1ec; --gold: #c5a059; --text: #2c3e2f; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); }
 
         .main-wrapper { display: flex; min-height: 100vh; }
 
-        /* Sidebar: Visual Build */
+        /* Sidebar: The Dynamic Gallery */
         .sidebar { 
             width: 45%; 
             background: var(--primary); 
@@ -29,64 +21,68 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
             z-index: 10;
         }
 
-        .image-stack {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 50%; /* Top half is images */
+        .image-container {
+            display: flex;
+            width: 100%;
+            height: 50vh; /* Takes up top half */
+            overflow: hidden;
             background: #000;
         }
 
-        .stack-img {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+        .image-container img {
+            height: 100%;
+            width: 0; /* Hidden by default */
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s;
+            transition: width 0.7s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
             opacity: 0;
-            transform: translateY(100%);
         }
 
-        .stack-img.active { opacity: 0.6; transform: translateY(0); }
-        .stack-img.base { opacity: 0.6; transform: translateY(0); }
+        /* The Base Image is always wide */
+        .image-container img.base { width: 100%; opacity: 0.7; }
+        
+        /* When active, images share the width */
+        .image-container img.active { width: 100%; opacity: 0.8; }
 
         .sidebar-content { 
-            position: relative; 
-            margin-top: 55vh; /* Starts below the image stack */
-            padding: 0 60px;
-            z-index: 2; 
+            padding: 40px 60px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .tier-indicator { font-family: 'Playfair Display'; font-size: 1rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-        h1 { font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px; }
+        .tier-indicator { font-family: 'Playfair Display'; font-size: 0.9rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 20px; line-height: 1.1; }
 
         .package-details { list-style: none; }
         .package-details li { 
-            margin-bottom: 12px; 
-            font-size: 1rem; 
+            margin-bottom: 10px; 
+            font-size: 0.95rem; 
             display: flex; 
             align-items: center; 
-            gap: 15px; 
+            gap: 12px; 
             font-weight: 300;
             animation: slideIn 0.4s ease forwards;
         }
         .package-details li::before { content: '—'; color: var(--gold); }
 
         /* Right Content Area */
-        .content-area { width: 55%; margin-left: 45%; padding: 80px 10%; }
+        .content-area { width: 55%; margin-left: 45%; padding: 60px 8%; }
 
         .foundation-box {
             background: var(--white);
-            padding: 40px;
+            padding: 30px;
             border-left: 4px solid var(--gold);
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .addon-card {
             background: var(--white);
-            padding: 30px;
-            margin-bottom: 20px;
+            padding: 25px 35px;
+            margin-bottom: 15px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -102,26 +98,25 @@
             display: inline-block;
             background: var(--gold);
             color: white;
-            padding: 20px 40px;
+            padding: 20px;
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 40px;
-            transition: background 0.3s;
+            margin-top: 30px;
             width: 100%;
             text-align: center;
+            border: none;
+            cursor: pointer;
         }
-        .btn-finalize:hover { background: #b08d4a; }
 
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-15px); } to { opacity: 1; transform: translateX(0); } }
 
         @media (max-width: 1024px) {
             .main-wrapper { flex-direction: column; }
-            .sidebar { width: 100%; position: relative; height: auto; padding-bottom: 40px; }
-            .image-stack { position: relative; height: 300px; }
-            .sidebar-content { margin-top: 30px; padding: 0 20px; }
-            .content-area { width: 100%; margin-left: 0; padding: 40px 20px; }
+            .sidebar { width: 100%; position: relative; height: auto; }
+            .image-container { height: 300px; }
+            .content-area { width: 100%; margin-left: 0; }
         }
     </style>
 </head>
@@ -129,10 +124,10 @@
 
     <div class="main-wrapper">
         <div class="sidebar">
-            <div class="image-stack">
-                <img src="Lawn%20care%20example%201.jpg" class="stack-img base" alt="Lawn">
-                <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" class="stack-img" alt="Garden">
-                <img src="Bush%20trimming%202.jpg" id="img-bush" class="stack-img" alt="Bush">
+            <div class="image-container" id="img-gallery">
+                <img src="Lawn%20care%20example%201.jpg" class="base" alt="Lawn">
+                <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden">
+                <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Bush">
             </div>
             <div class="sidebar-content">
                 <div class="tier-indicator" id="tier-label">Tier 1</div>
@@ -146,33 +141,29 @@
 
         <div class="content-area">
             <div class="foundation-box">
-                <h2 style="font-family: 'Playfair Display'; margin-bottom: 10px;">Weekly Lawn Maintenance</h2>
-                <p>A reliable, high-standard base for every property. Our "Tier 1" is designed to be a complete solution for many of our long-term clients.</p>
+                <h2 style="font-family: 'Playfair Display'; margin-bottom: 5px;">Weekly Lawn Maintenance</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8;">A premium, high-standard base for every property.</p>
             </div>
 
             <h3 style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6;">Enhance Your Service</h3>
 
             <div class="addon-card" onclick="toggleOption(this, 'garden')">
                 <div>
-                    <h4 style="font-family: 'Playfair Display'; font-size: 1.4rem;">Garden Bed Care</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">Routine weeding and debris management.</p>
+                    <h4 style="font-family: 'Playfair Display'; font-size: 1.3rem;">Garden Bed Care</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">Routine weeding and debris management.</p>
                 </div>
-                <div style="font-weight: 700;">+ ADD</div>
+                <div style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
             </div>
 
             <div class="addon-card" onclick="toggleOption(this, 'bush')">
                 <div>
-                    <h4 style="font-family: 'Playfair Display'; font-size: 1.4rem;">Shrub Maintenance</h4>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">Monthly shaping and structural pruning.</p>
+                    <h4 style="font-family: 'Playfair Display'; font-size: 1.3rem;">Shrub Maintenance</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">Monthly shaping and structural pruning.</p>
                 </div>
-                <div style="font-weight: 700;">+ ADD</div>
+                <div style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
             </div>
 
-            <a href="#" class="btn-finalize" onclick="sendToContact()">Request Service Quote</a>
-            
-            <p style="text-align: center; margin-top: 20px; font-size: 0.8rem;">
-                Looking for a one-time project? <a href="projects.html" style="color: var(--accent);">View Project Rates</a>
-            </p>
+            <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
         </div>
     </div>
 
@@ -184,7 +175,10 @@
             element.classList.toggle('active');
             element.querySelector('div:last-child').innerText = selections[type] ? "ADDED" : "+ ADD";
             
-            document.getElementById(`img-${type}`).classList.toggle('active', selections[type]);
+            // Image Push Logic
+            const img = document.getElementById(`img-${type}`);
+            img.classList.toggle('active', selections[type]);
+            
             updateSidebar();
         }
 
@@ -196,14 +190,8 @@
             list.innerHTML = `<li>Weekly Mowing & Trimming</li><li>Hardscape Clearing</li>`;
             let count = 0;
 
-            if (selections.garden) {
-                list.innerHTML += `<li>Garden Bed Maintenance</li>`;
-                count++;
-            }
-            if (selections.bush) {
-                list.innerHTML += `<li>Professional Shrub Shaping</li>`;
-                count++;
-            }
+            if (selections.garden) { list.innerHTML += `<li>Garden Bed Maintenance</li>`; count++; }
+            if (selections.bush) { list.innerHTML += `<li>Professional Shrub Shaping</li>`; count++; }
 
             if (count === 0) { tierLabel.innerText = "Tier 1"; tierTitle.innerText = "The Foundation"; }
             else if (count === 1) { tierLabel.innerText = "Tier 2"; tierTitle.innerText = "Enhanced Care"; }
@@ -211,15 +199,13 @@
         }
 
         function sendToContact() {
-            // This builds the link to your contact page
             let services = "Lawn Mowing";
             if (selections.garden) services += ", Garden Care";
             if (selections.bush) services += ", Shrub Maintenance";
-            
             const tier = document.getElementById('tier-title').innerText;
             
-            // Redirects to your contact page with the data in the URL
-            window.location.href = `contact.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}`;
+            // Redirects back to index.html with the info in the URL
+            window.location.href = `index.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}`;
         }
     </script>
 </body>
