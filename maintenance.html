@@ -12,7 +12,7 @@
 
         .main-wrapper { display: flex; min-height: 100vh; }
 
-        /* Sidebar: Main Container */
+        /* Sidebar Container */
         .sidebar { 
             width: 45%; 
             background: var(--primary); 
@@ -24,10 +24,10 @@
             z-index: 10;
         }
 
-        /* The Vertical Slot Container */
+        /* Image Container: Vertical Stack */
         .image-slots {
             display: flex;
-            flex-direction: column; /* Stacked vertically */
+            flex-direction: column;
             width: 100%;
             height: 55vh;
             background: #000;
@@ -36,25 +36,22 @@
 
         .image-slots img {
             width: 100%;
-            height: 0; /* Starts with no height */
+            height: 0; /* Hidden by default */
             object-fit: cover;
-            transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
+            transition: height 0.6s ease-in-out, opacity 0.4s ease;
             opacity: 0;
-            flex-shrink: 1;
         }
 
-        /* The Base Image: Starts at 100% height and shrinks as others grow */
+        /* Base image starts at full height */
         .image-slots img.base {
             height: 100%;
             opacity: 0.8;
-            flex-grow: 1; 
         }
 
-        /* Active Addons: These grow from the bottom */
+        /* Active addons will have their height set by JS */
         .image-slots img.active {
-            height: 100%; /* Flexbox will force these to share height with the base */
             opacity: 1;
-            border-top: 1px solid rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
 
         .sidebar-content { padding: 30px 60px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
@@ -74,7 +71,7 @@
         @media (max-width: 1024px) {
             .main-wrapper { flex-direction: column; }
             .sidebar { width: 100%; position: relative; height: auto; }
-            .image-slots { height: 400px; }
+            .image-slots { height: 350px; }
             .content-area { width: 100%; margin-left: 0; }
         }
     </style>
@@ -84,7 +81,7 @@
     <div class="main-wrapper">
         <div class="sidebar">
             <div class="image-slots">
-                <img src="Lawn%20care%20example%202.jpg" class="base" alt="Lawn">
+                <img src="Lawn%20care%20example%202.jpg" class="base" id="main-img" alt="Lawn">
                 <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden">
                 <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Bush">
             </div>
@@ -134,12 +131,6 @@
             element.classList.toggle('active');
             element.querySelector('.status-text').innerText = selections[type] ? "ADDED" : "+ ADD";
             
-            const img = document.getElementById(`img-${type}`);
-            if(selections[type]) {
-                img.classList.add('active');
-            } else {
-                img.classList.remove('active');
-            }
             updateSidebar();
         }
 
@@ -147,15 +138,50 @@
             const list = document.getElementById('details-list');
             const tierLabel = document.getElementById('tier-label');
             const tierTitle = document.getElementById('tier-title');
-            list.innerHTML = `<li>Weekly Mowing & Trimming</li><li>Hardscape Clearing</li>`;
             
-            let count = 0;
-            if (selections.garden) { list.innerHTML += `<li>Garden Bed Maintenance</li>`; count++; }
-            if (selections.bush) { list.innerHTML += `<li>Professional Shrub Shaping</li>`; count++; }
+            // Image elements
+            const mainImg = document.getElementById('main-img');
+            const gardenImg = document.getElementById('img-garden');
+            const bushImg = document.getElementById('img-bush');
 
-            if (count === 0) { tierLabel.innerText = "Tier 1"; tierTitle.innerText = "The Foundation"; }
-            else if (count === 1) { tierLabel.innerText = "Tier 2"; tierTitle.innerText = "Enhanced Care"; }
-            else if (count === 2) { tierLabel.innerText = "Tier 3"; tierTitle.innerText = "The Full Estate"; }
+            // 1. Calculate how many are selected
+            let activeCount = 1; // Start with the lawn base
+            if (selections.garden) activeCount++;
+            if (selections.bush) activeCount++;
+
+            // 2. Set the heights based on the count
+            const heightPercentage = (100 / activeCount) + "%";
+
+            // Apply height to the main image
+            mainImg.style.height = heightPercentage;
+
+            // Apply to Garden
+            if (selections.garden) {
+                gardenImg.classList.add('active');
+                gardenImg.style.height = heightPercentage;
+            } else {
+                gardenImg.classList.remove('active');
+                gardenImg.style.height = "0";
+            }
+
+            // Apply to Bush
+            if (selections.bush) {
+                bushImg.classList.add('active');
+                bushImg.style.height = heightPercentage;
+            } else {
+                bushImg.classList.remove('active');
+                bushImg.style.height = "0";
+            }
+
+            // 3. Update Text Content
+            list.innerHTML = `<li>Weekly Mowing & Trimming</li><li>Hardscape Clearing</li>`;
+            let addedServices = 0;
+            if (selections.garden) { list.innerHTML += `<li>Garden Bed Maintenance</li>`; addedServices++; }
+            if (selections.bush) { list.innerHTML += `<li>Professional Shrub Shaping</li>`; addedServices++; }
+
+            if (addedServices === 0) { tierLabel.innerText = "Tier 1"; tierTitle.innerText = "The Foundation"; }
+            else if (addedServices === 1) { tierLabel.innerText = "Tier 2"; tierTitle.innerText = "Enhanced Care"; }
+            else if (addedServices === 2) { tierLabel.innerText = "Tier 3"; tierTitle.innerText = "The Full Estate"; }
         }
 
         function sendToContact() {
