@@ -1,96 +1,166 @@
-<style>
-    :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f4f1ec; --gold: #c5a059; --text: #2c3e2f; --white: #ffffff; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Concierge | Fantasy Fields</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f4f1ec; --gold: #c5a059; --text: #2c3e2f; --white: #ffffff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); overflow-x: hidden; }
 
-    .main-wrapper { display: flex; min-height: 100vh; }
+        .main-wrapper { display: flex; min-height: 100vh; width: 100%; }
 
-    /* Sidebar Fix: Fixed Width + Grid for Images */
-    .sidebar { 
-        width: 45%; 
-        background: var(--primary); 
-        color: white; 
-        position: fixed; 
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        z-index: 10;
-        overflow: hidden;
-    }
+        /* Sidebar: Fixed and locked so images cannot push past 45% */
+        .sidebar { 
+            width: 45%; 
+            background: var(--primary); 
+            color: white; 
+            position: fixed; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            overflow: hidden; /* This keeps everything inside the 45% box */
+        }
 
-    /* The Image Grid Layout */
-    .image-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 2fr 1fr;
-        height: 55vh;
-        width: 100%;
-        background: #000;
-        gap: 2px; /* Small gap between images */
-    }
+        /* Image Container: Flex layout to slot images side-by-side */
+        .image-container {
+            display: flex; 
+            flex-wrap: nowrap; 
+            width: 100%;
+            height: 55vh; 
+            background: #000;
+        }
 
-    .image-grid img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
+        .image-container img {
+            height: 100%;
+            width: 0; 
+            object-fit: cover;
+            transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
+            opacity: 0;
+            flex-shrink: 1; /* Allows them to shrink to fit the 45% width */
+        }
 
-    /* Lawn image takes the whole top row */
-    .image-grid img.base {
-        grid-column: span 2;
-        opacity: 0.8;
-    }
+        /* Base image always takes full width initially */
+        .image-container img.base { width: 100%; opacity: 0.8; }
+        
+        /* When active, they share the width of the sidebar exactly */
+        .image-container img.active { 
+            width: 100%; 
+            opacity: 0.8; 
+            border-left: 1px solid rgba(255,255,255,0.2);
+        }
 
-    /* Addon images appear in their bottom slots when active */
-    .image-grid img.active {
-        opacity: 0.8;
-    }
+        .sidebar-content { padding: 30px 60px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .tier-indicator { font-family: 'Playfair Display'; font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 15px; line-height: 1.1; }
+        .package-details { list-style: none; }
+        .package-details li { margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 12px; font-weight: 300; }
+        .package-details li::before { content: '—'; color: var(--gold); }
 
-    .sidebar-content { padding: 40px 60px; flex-grow: 1; }
-    .tier-indicator { font-family: 'Playfair Display'; font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-    h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 15px; line-height: 1.1; }
-    .package-details { list-style: none; }
-    .package-details li { margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 12px; font-weight: 300; }
-    .package-details li::before { content: '—'; color: var(--gold); }
+        /* Right Side: Guaranteed to stay at 55% width */
+        .content-area { width: 55%; margin-left: 45%; padding: 60px 8%; position: relative; z-index: 1; }
+        .foundation-box { background: var(--white); padding: 30px; border-left: 4px solid var(--gold); margin-bottom: 40px; }
+        .addon-card { background: var(--white); padding: 25px 35px; margin-bottom: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; border: 1px solid transparent; }
+        .addon-card:hover { border-color: var(--gold); }
+        .addon-card.active { background: var(--primary); color: white; }
+        .btn-finalize { display: block; background: var(--gold); color: white; padding: 20px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; width: 100%; text-align: center; border: none; cursor: pointer; }
 
-    .content-area { width: 55%; margin-left: 45%; padding: 60px 8%; }
-    .foundation-box { background: var(--white); padding: 30px; border-left: 4px solid var(--gold); margin-bottom: 40px; }
-    .addon-card { background: var(--white); padding: 25px 35px; margin-bottom: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; border: 1px solid transparent; border-radius: 4px; }
-    .addon-card:hover { border-color: var(--gold); }
-    .addon-card.active { background: var(--primary); color: white; }
-    .btn-finalize { display: block; background: var(--gold); color: white; padding: 20px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; width: 100%; text-align: center; border: none; cursor: pointer; border-radius: 4px; }
+        @media (max-width: 1024px) {
+            .main-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; height: auto; }
+            .image-container { height: 300px; }
+            .content-area { width: 100%; margin-left: 0; padding: 40px 5%; }
+        }
+    </style>
+</head>
+<body>
 
-    @media (max-width: 1024px) {
-        .main-wrapper { flex-direction: column; }
-        .sidebar { width: 100%; position: relative; height: auto; }
-        .image-grid { height: 350px; }
-        .content-area { width: 100%; margin-left: 0; }
-    }
-</style>
-
-<div class="main-wrapper">
-    <div class="sidebar">
-        <div class="image-grid">
-            <img src="Lawn%20care%20example%201.jpg" class="base" alt="Lawn">
-            <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden">
-            <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Bush">
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <div class="image-container">
+                <img src="Lawn%20care%20example%201.jpg" class="base" alt="Lawn">
+                <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden">
+                <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Bush">
+            </div>
+            <div class="sidebar-content">
+                <div class="tier-indicator" id="tier-label">Tier 1</div>
+                <h1 id="tier-title">The Foundation</h1>
+                <ul class="package-details" id="details-list">
+                    <li>Weekly Mowing & Trimming</li>
+                    <li>Hardscape Clearing</li>
+                </ul>
+            </div>
         </div>
-        <div class="sidebar-content">
-            <div class="tier-indicator" id="tier-label">Tier 1</div>
-            <h1 id="tier-title">The Foundation</h1>
-            <ul class="package-details" id="details-list">
-                <li>Weekly Mowing & Trimming</li>
-                <li>Hardscape Clearing</li>
-            </ul>
+
+        <div class="content-area">
+            <div class="foundation-box">
+                <h2 style="font-family: 'Playfair Display'; margin-bottom: 5px;">Weekly Lawn Maintenance</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8;">A professional, high-standard base for North End properties.</p>
+            </div>
+
+            <h3 style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6;">Enhance Your Service</h3>
+
+            <div class="addon-card" onclick="toggleOption(this, 'garden')">
+                <div>
+                    <h4 style="font-family: 'Playfair Display'; font-size: 1.3rem;">Garden Bed Care</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">Routine weeding and debris management.</p>
+                </div>
+                <div class="status-text" style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
+            </div>
+
+            <div class="addon-card" onclick="toggleOption(this, 'bush')">
+                <div>
+                    <h4 style="font-family: 'Playfair Display'; font-size: 1.3rem;">Shrub Maintenance</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.8;">Monthly shaping and structural pruning.</p>
+                </div>
+                <div class="status-text" style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
+            </div>
+
+            <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
         </div>
     </div>
-    ```
 
-### Why this works:
-1.  **The Grid:** Instead of the images overlapping, the Lawn image stays at the top.
-2.  **The Slots:** The Garden and Bush images are "slotted" into the bottom half of that left sidebar. When you click an addon, the image simply fades into its designated spot without moving the rest of the page.
-3.  **No Overflow:** This guarantees the images stay inside that 45% sidebar and never touch your text boxes.
+    <script>
+        let selections = { garden: false, bush: false };
 
-**Would you like me to adjust the size of those bottom image slots, or does having them side-by-side underneath the main lawn photo look right to you?**
+        function toggleOption(element, type) {
+            selections[type] = !selections[type];
+            element.classList.toggle('active');
+            element.querySelector('.status-text').innerText = selections[type] ? "ADDED" : "+ ADD";
+            
+            const img = document.getElementById(`img-${type}`);
+            if(selections[type]) {
+                img.classList.add('active');
+            } else {
+                img.classList.remove('active');
+            }
+            updateSidebar();
+        }
+
+        function updateSidebar() {
+            const list = document.getElementById('details-list');
+            const tierLabel = document.getElementById('tier-label');
+            const tierTitle = document.getElementById('tier-title');
+            list.innerHTML = `<li>Weekly Mowing & Trimming</li><li>Hardscape Clearing</li>`;
+            let count = 0;
+            if (selections.garden) { list.innerHTML += `<li>Garden Bed Maintenance</li>`; count++; }
+            if (selections.bush) { list.innerHTML += `<li>Professional Shrub Shaping</li>`; count++; }
+
+            if (count === 0) { tierLabel.innerText = "Tier 1"; tierTitle.innerText = "The Foundation"; }
+            else if (count === 1) { tierLabel.innerText = "Tier 2"; tierTitle.innerText = "Enhanced Care"; }
+            else if (count === 2) { tierLabel.innerText = "Tier 3"; tierTitle.innerText = "The Full Estate"; }
+        }
+
+        function sendToContact() {
+            let services = "Lawn Mowing";
+            if (selections.garden) services += ", Garden Care";
+            if (selections.bush) services += ", Shrub Maintenance";
+            const tier = document.getElementById('tier-title').innerText;
+            window.location.href = `index.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}#contact`;
+        }
+    </script>
+</body>
+</html>
