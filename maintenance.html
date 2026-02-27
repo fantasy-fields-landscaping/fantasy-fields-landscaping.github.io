@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maintenance Concierge | Fantasy Fields</title>
+    <title>Property Concierge | Fantasy Fields</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -13,101 +13,118 @@
             --gold: #c5a059; 
             --text: #2c3e2f; 
             --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.8);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); }
 
-        /* Desktop Split Layout */
         .main-wrapper { display: flex; min-height: 100vh; }
 
-        /* Sidebar Section */
+        /* Left Sidebar: The Live Summary */
         .sidebar { 
-            width: 40%; 
+            width: 45%; 
             background: var(--primary); 
             color: white; 
-            padding: 60px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
+            padding: 80px 60px; 
             position: fixed; 
             height: 100vh;
-            background-image: linear-gradient(rgba(27, 47, 30, 0.8), rgba(27, 47, 30, 0.8)), url('Lawn%20care%20example%202.jpg');
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            transition: all 0.8s ease;
+            overflow: hidden;
+        }
+
+        /* Dynamic Background Image Overlay */
+        .sidebar-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('Lawn%20care%20example%201.jpg');
             background-size: cover;
             background-position: center;
+            opacity: 0.3; /* Starts dim */
+            transition: opacity 0.8s ease, transform 1s ease;
+            z-index: 0;
         }
 
-        /* Content Section */
-        .content-area { 
-            width: 60%; 
-            margin-left: 40%; 
-            padding: 80px 10%; 
-            background: var(--bg-light); 
+        .sidebar-content { position: relative; z-index: 1; }
+
+        .tier-indicator { font-family: 'Playfair Display'; font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+        h1 { font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 30px; line-height: 1; }
+
+        /* The Live Description List */
+        .package-details { list-style: none; margin-top: 20px; }
+        .package-details li { 
+            margin-bottom: 15px; 
+            font-size: 1.1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            animation: fadeIn 0.5s forwards;
+            font-weight: 300;
         }
-
-        /* Typography */
-        h1 { font-family: 'Playfair Display'; font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
-        .tier-indicator { font-family: 'Playfair Display'; font-size: 5rem; color: var(--gold); opacity: 0.9; margin-bottom: 10px; }
-        .sidebar p { font-size: 1.1rem; opacity: 0.8; font-weight: 300; line-height: 1.6; }
-
-        /* Premium Cards */
-        .service-list { margin-top: 40px; }
+        .package-details li::before { content: '—'; color: var(--gold); }
         
-        .base-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            gap: 25px;
+        .hidden-detail { display: none; }
+
+        /* Right Side: The Service Menu */
+        .content-area { width: 55%; margin-left: 45%; padding: 100px 8%; }
+        
+        .section-label { 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--accent); 
+            margin-bottom: 40px; 
+            display: block;
         }
 
-        .selectable-card {
+        .foundation-header { margin-bottom: 60px; border-bottom: 1px solid #dcd6cc; padding-bottom: 30px; }
+        .foundation-header h2 { font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--primary); margin-bottom: 10px; }
+        .foundation-header p { color: #666; font-style: italic; }
+
+        /* Custom Cards */
+        .addon-card {
             background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 20px;
+            padding: 40px;
+            border-radius: 4px; /* Sharper corners for a "High-End Gallery" look */
+            margin-bottom: 30px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border: 2px solid transparent;
+            transition: all 0.3s ease;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
-        .selectable-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-        .selectable-card.active { border-color: var(--gold); background: #fffcf8; }
+        .addon-card:hover { border-color: var(--gold); }
+        .addon-card.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* Images */
-        .card-img { width: 120px; height: 120px; border-radius: 15px; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
-        .active .card-img, .base-card .card-img { filter: grayscale(0%); }
+        .addon-text h3 { font-family: 'Playfair Display'; font-size: 1.6rem; margin-bottom: 5px; }
+        .addon-card.active .addon-text h3 { color: var(--gold); }
 
-        .card-info h3 { font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 8px; color: var(--primary); }
-        .card-info p { font-size: 0.9rem; color: #666; max-width: 300px; }
+        /* Minimal Toggle */
+        .toggle-btn {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+        .active .toggle-btn { border-color: var(--gold); color: var(--gold); }
 
-        /* Custom UI Elements */
-        .status-dot { width: 12px; height: 12px; border-radius: 50%; background: #ddd; margin-right: 10px; display: inline-block; transition: 0.3s; }
-        .active .status-dot { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
-        
-        details summary { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-top: 10px; cursor: pointer; list-style: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* Project Link */
-        .project-footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #ddd; font-size: 0.9rem; }
-        .project-footer a { color: var(--primary); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--gold); }
-
-        /* Responsive Mobile */
+        /* Mobile */
         @media (max-width: 1024px) {
             .main-wrapper { flex-direction: column; }
             .sidebar { width: 100%; position: relative; height: auto; padding: 60px 5%; }
-            .content-area { width: 100%; margin-left: 0; padding: 40px 5%; }
-            .tier-indicator { font-size: 3rem; }
-            h1 { font-size: 2.5rem; }
+            .content-area { width: 100%; margin-left: 0; padding: 60px 5%; }
+            .sidebar-bg { opacity: 0.5; }
         }
     </style>
 </head>
@@ -115,56 +132,47 @@
 
     <div class="main-wrapper">
         <div class="sidebar">
-            <div class="tier-indicator" id="tier-number">Tier 1</div>
-            <h1>The Maintenance Concierge</h1>
-            <p>Select your additional care options. Our subscription plans are designed to keep North End estates in perpetual peak condition.</p>
+            <div class="sidebar-bg" id="bg-overlay"></div>
+            <div class="sidebar-content">
+                <div class="tier-indicator" id="tier-label">Tier 1</div>
+                <h1 id="tier-title">Estate Essential</h1>
+                
+                <ul class="package-details" id="details-list">
+                    <li>Weekly Precision Mowing</li>
+                    <li>Professional String Trimming</li>
+                    <li>Hardscape Debris Clearing</li>
+                    </ul>
+            </div>
         </div>
 
         <div class="content-area">
-            <div class="service-list">
-                
-                <div class="base-card">
-                    <img src="Lawn%20care%20example%201.jpg" class="card-img" alt="Lawn Care">
-                    <div class="card-info">
-                        <h3>Lawn Maintenance</h3>
-                        <p>The core of every package. Weekly mowing, trimming, and debris clearing.</p>
-                    </div>
-                </div>
+            <span class="section-label">Service Configuration</span>
 
-                <div class="selectable-card" onclick="toggleOption(this, 'garden')">
-                    <img src="Garden%20Bed%20Maintenace.jpg" class="card-img" alt="Garden Care">
-                    <div class="card-info">
-                        <div style="display: flex; align-items: center;">
-                            <span class="status-dot"></span>
-                            <h3>Garden Bed Care</h3>
-                        </div>
-                        <p>Professional weeding and edge definition to maintain clean garden lines.</p>
-                        <details>
-                            <summary>Inclusions</summary>
-                            <p style="font-size: 0.8rem; margin-top: 5px;">Bi-weekly hand-weeding, cultivation of soil, and debris removal from all ornamental beds.</p>
-                        </details>
-                    </div>
-                </div>
-
-                <div class="selectable-card" onclick="toggleOption(this, 'bush')">
-                    <img src="Bush%20trimming%202.jpg" class="card-img" alt="Bush Trimming">
-                    <div class="card-info">
-                        <div style="display: flex; align-items: center;">
-                            <span class="status-dot"></span>
-                            <h3>Detailed Trimming</h3>
-                        </div>
-                        <p>Artistic shaping of shrubs and hedges to preserve property structure.</p>
-                        <details>
-                            <summary>Inclusions</summary>
-                            <p style="font-size: 0.8rem; margin-top: 5px;">Seasonal shaping, hedge thinning, and health-focused pruning for all standard shrubs.</p>
-                        </details>
-                    </div>
-                </div>
-
+            <div class="foundation-header">
+                <h2>The Foundation</h2>
+                <p>All plans begin with our signature lawn maintenance program.</p>
             </div>
 
-            <div class="project-footer">
-                <p>Seeking a singular transformation? <a href="landscaping.html">Explore One-Time Project Rates</a></p>
+            <span class="section-label">Available Refinements</span>
+
+            <div class="addon-card" onclick="toggleOption(this, 'garden')">
+                <div class="addon-text">
+                    <h3>Garden Bed Maintenance</h3>
+                    <p>Hand-weeding and soil cultivation for ornamental beds.</p>
+                </div>
+                <div class="toggle-btn">Add Service</div>
+            </div>
+
+            <div class="addon-card" onclick="toggleOption(this, 'bush')">
+                <div class="addon-text">
+                    <h3>Detailed Shrub Shaping</h3>
+                    <p>Expert pruning and shaping of property hedges and shrubs.</p>
+                </div>
+                <div class="toggle-btn">Add Service</div>
+            </div>
+
+            <div style="margin-top: 100px; font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px;">
+                Looking for restorative work? <a href="projects.html" style="color: var(--accent); font-weight: 700;">View Project Rates</a>
             </div>
         </div>
     </div>
@@ -176,13 +184,53 @@
             selections[type] = !selections[type];
             element.classList.toggle('active');
             
-            const count = Object.values(selections).filter(Boolean).length;
-            const tierEl = document.getElementById('tier-number');
-            
-            // Tier Logic
-            if (count === 0) tierEl.innerText = "Tier 1";
-            else if (count === 1) tierEl.innerText = "Tier 2";
-            else if (count === 2) tierEl.innerText = "Tier 3";
+            // UI Visuals
+            const btn = element.querySelector('.toggle-btn');
+            btn.innerText = selections[type] ? "Remove" : "Add Service";
+
+            updateSidebar();
+        }
+
+        function updateSidebar() {
+            const list = document.getElementById('details-list');
+            const tierLabel = document.getElementById('tier-label');
+            const tierTitle = document.getElementById('tier-title');
+            const bg = document.getElementById('bg-overlay');
+
+            // Reset list to foundation
+            list.innerHTML = `
+                <li>Weekly Precision Mowing</li>
+                <li>Professional String Trimming</li>
+                <li>Hardscape Debris Clearing</li>
+            `;
+
+            let count = 0;
+            if (selections.garden) {
+                list.innerHTML += `<li>Bi-weekly Garden Bed Weeding</li>`;
+                count++;
+            }
+            if (selections.bush) {
+                list.innerHTML += `<li>Monthly Shrub & Hedge Shaping</li>`;
+                count++;
+            }
+
+            // Logic for Tiers & Background Brightness
+            if (count === 0) {
+                tierLabel.innerText = "Tier 1";
+                tierTitle.innerText = "Estate Essential";
+                bg.style.opacity = "0.3";
+                bg.style.transform = "scale(1)";
+            } else if (count === 1) {
+                tierLabel.innerText = "Tier 2";
+                tierTitle.innerText = "Enhanced Care";
+                bg.style.opacity = "0.5";
+                bg.style.transform = "scale(1.05)";
+            } else if (count === 2) {
+                tierLabel.innerText = "Tier 3";
+                tierTitle.innerText = "The Full Estate";
+                bg.style.opacity = "0.8"; // Brighter image for "Full" service
+                bg.style.transform = "scale(1.1)";
+            }
         }
     </script>
 </body>
