@@ -12,7 +12,7 @@
 
         .main-wrapper { display: flex; min-height: 100vh; }
 
-        /* Sidebar: The Dynamic Push Gallery */
+        /* Sidebar: The Side-by-Side Gallery */
         .sidebar { 
             width: 45%; 
             background: var(--primary); 
@@ -25,10 +25,9 @@
         }
 
         .image-container {
-            display: flex;
+            display: flex; /* This enables side-by-side */
             width: 100%;
             height: 55vh; 
-            overflow: hidden;
             background: #000;
         }
 
@@ -38,73 +37,31 @@
             object-fit: cover;
             transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
             opacity: 0;
+            flex-shrink: 0;
         }
 
         .image-container img.base { width: 100%; opacity: 0.7; }
-        .image-container img.active { width: 100%; opacity: 0.8; }
-
-        .sidebar-content { 
-            padding: 30px 60px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        
+        /* When active, they split the width equally */
+        .image-container img.active { 
+            width: 100%; 
+            opacity: 0.8; 
+            border-left: 1px solid rgba(255,255,255,0.2);
         }
 
+        .sidebar-content { padding: 30px 60px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
         .tier-indicator { font-family: 'Playfair Display'; font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
         h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 15px; line-height: 1.1; }
-
         .package-details { list-style: none; }
-        .package-details li { 
-            margin-bottom: 8px; 
-            font-size: 0.9rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            font-weight: 300;
-        }
+        .package-details li { margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 12px; font-weight: 300; }
         .package-details li::before { content: '—'; color: var(--gold); }
 
-        /* Right Content Area */
         .content-area { width: 55%; margin-left: 45%; padding: 60px 8%; }
-
-        .foundation-box {
-            background: var(--white);
-            padding: 30px;
-            border-left: 4px solid var(--gold);
-            margin-bottom: 40px;
-        }
-
-        .addon-card {
-            background: var(--white);
-            padding: 25px 35px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: 0.3s;
-            border: 1px solid transparent;
-        }
-
+        .foundation-box { background: var(--white); padding: 30px; border-left: 4px solid var(--gold); margin-bottom: 40px; }
+        .addon-card { background: var(--white); padding: 25px 35px; margin-bottom: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; border: 1px solid transparent; }
         .addon-card:hover { border-color: var(--gold); }
         .addon-card.active { background: var(--primary); color: white; }
-
-        .btn-finalize {
-            display: block;
-            background: var(--gold);
-            color: white;
-            padding: 20px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 30px;
-            width: 100%;
-            text-align: center;
-            border: none;
-            cursor: pointer;
-        }
+        .btn-finalize { display: block; background: var(--gold); color: white; padding: 20px; text-decoration: none; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 30px; width: 100%; text-align: center; border: none; cursor: pointer; }
 
         @media (max-width: 1024px) {
             .main-wrapper { flex-direction: column; }
@@ -118,7 +75,7 @@
 
     <div class="main-wrapper">
         <div class="sidebar">
-            <div class="image-container" id="img-gallery">
+            <div class="image-container">
                 <img src="Lawn%20care%20example%201.jpg" class="base" alt="Lawn">
                 <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden">
                 <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Bush">
@@ -146,7 +103,7 @@
                     <h4 style="font-family: 'Playfair Display'; font-size: 1.3rem;">Garden Bed Care</h4>
                     <p style="font-size: 0.85rem; opacity: 0.8;">Routine weeding and debris management.</p>
                 </div>
-                <div style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
+                <div class="status-text" style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
             </div>
 
             <div class="addon-card" onclick="toggleOption(this, 'bush')">
@@ -154,7 +111,7 @@
                     <h4 style="font-family: 'Playfair Display'; font-size: 1.3rem;">Shrub Maintenance</h4>
                     <p style="font-size: 0.85rem; opacity: 0.8;">Monthly shaping and structural pruning.</p>
                 </div>
-                <div style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
+                <div class="status-text" style="font-weight: 700; font-size: 0.8rem;">+ ADD</div>
             </div>
 
             <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
@@ -167,11 +124,14 @@
         function toggleOption(element, type) {
             selections[type] = !selections[type];
             element.classList.toggle('active');
-            element.querySelector('div:last-child').innerText = selections[type] ? "ADDED" : "+ ADD";
+            element.querySelector('.status-text').innerText = selections[type] ? "ADDED" : "+ ADD";
             
             const img = document.getElementById(`img-${type}`);
-            img.classList.toggle('active', selections[type]);
-            
+            if(selections[type]) {
+                img.classList.add('active');
+            } else {
+                img.classList.remove('active');
+            }
             updateSidebar();
         }
 
@@ -179,10 +139,8 @@
             const list = document.getElementById('details-list');
             const tierLabel = document.getElementById('tier-label');
             const tierTitle = document.getElementById('tier-title');
-            
             list.innerHTML = `<li>Weekly Mowing & Trimming</li><li>Hardscape Clearing</li>`;
             let count = 0;
-
             if (selections.garden) { list.innerHTML += `<li>Garden Bed Maintenance</li>`; count++; }
             if (selections.bush) { list.innerHTML += `<li>Professional Shrub Shaping</li>`; count++; }
 
@@ -196,7 +154,7 @@
             if (selections.garden) services += ", Garden Care";
             if (selections.bush) services += ", Shrub Maintenance";
             const tier = document.getElementById('tier-title').innerText;
-            
+            // Updated to ensure it hits the ID of the form
             window.location.href = `index.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}#contact`;
         }
     </script>
