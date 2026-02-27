@@ -12,7 +12,7 @@
 
         .main-wrapper { display: flex; min-height: 100vh; }
 
-        /* Sidebar: Fixed and Locked */
+        /* Sidebar: Main Container */
         .sidebar { 
             width: 45%; 
             background: var(--primary); 
@@ -22,41 +22,39 @@
             display: flex;
             flex-direction: column;
             z-index: 10;
-            overflow: hidden; 
         }
 
-        /* Image Container: Flex layout to allow shrinking/growing */
-        .image-container {
-            display: flex; 
-            flex-wrap: nowrap; 
+        /* The Vertical Slot Container */
+        .image-slots {
+            display: flex;
+            flex-direction: column; /* Stacked vertically */
             width: 100%;
-            height: 55vh; 
+            height: 55vh;
             background: #000;
+            overflow: hidden;
         }
 
-        .image-container img {
-            height: 100%;
-            width: 0; /* Hidden by default */
+        .image-slots img {
+            width: 100%;
+            height: 0; /* Starts with no height */
             object-fit: cover;
-            transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
+            transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
             opacity: 0;
-            flex-grow: 0;
             flex-shrink: 1;
         }
 
-        /* Base image starts at full width, but is allowed to shrink */
-        .image-container img.base { 
-            width: 100%; 
-            opacity: 0.8; 
+        /* The Base Image: Starts at 100% height and shrinks as others grow */
+        .image-slots img.base {
+            height: 100%;
+            opacity: 0.8;
             flex-grow: 1; 
         }
-        
-        /* When active, the addon images grow to fill equal share */
-        .image-container img.active { 
-            width: 100%; 
-            opacity: 0.8; 
-            flex-grow: 1;
-            border-left: 1px solid rgba(255,255,255,0.2);
+
+        /* Active Addons: These grow from the bottom */
+        .image-slots img.active {
+            height: 100%; /* Flexbox will force these to share height with the base */
+            opacity: 1;
+            border-top: 1px solid rgba(255,255,255,0.3);
         }
 
         .sidebar-content { padding: 30px 60px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
@@ -76,7 +74,7 @@
         @media (max-width: 1024px) {
             .main-wrapper { flex-direction: column; }
             .sidebar { width: 100%; position: relative; height: auto; }
-            .image-container { height: 300px; }
+            .image-slots { height: 400px; }
             .content-area { width: 100%; margin-left: 0; }
         }
     </style>
@@ -85,8 +83,8 @@
 
     <div class="main-wrapper">
         <div class="sidebar">
-            <div class="image-container" id="img-slot">
-                <img src="Lawn%20care%20example%201.jpg" class="base" id="img-base" alt="Lawn">
+            <div class="image-slots">
+                <img src="Lawn%20care%20example%202.jpg" class="base" alt="Lawn">
                 <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden">
                 <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Bush">
             </div>
@@ -137,21 +135,11 @@
             element.querySelector('.status-text').innerText = selections[type] ? "ADDED" : "+ ADD";
             
             const img = document.getElementById(`img-${type}`);
-            const baseImg = document.getElementById('img-base');
-
             if(selections[type]) {
                 img.classList.add('active');
             } else {
                 img.classList.remove('active');
             }
-
-            // Adjust base image width based on if addons are active
-            if (selections.garden || selections.bush) {
-                baseImg.style.flexGrow = "1";
-            } else {
-                baseImg.style.flexGrow = "1";
-            }
-
             updateSidebar();
         }
 
@@ -160,6 +148,7 @@
             const tierLabel = document.getElementById('tier-label');
             const tierTitle = document.getElementById('tier-title');
             list.innerHTML = `<li>Weekly Mowing & Trimming</li><li>Hardscape Clearing</li>`;
+            
             let count = 0;
             if (selections.garden) { list.innerHTML += `<li>Garden Bed Maintenance</li>`; count++; }
             if (selections.bush) { list.innerHTML += `<li>Professional Shrub Shaping</li>`; count++; }
