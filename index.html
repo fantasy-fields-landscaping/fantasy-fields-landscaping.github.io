@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta name="msvalidate.01" content="840ECFA588F05BE68AF113E4E0067F5F" />
-    <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
     <script>
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -147,7 +146,65 @@
         .service-img { height: 280px; background: center/cover; } 
         .service-info { padding: 35px; } 
 
-        .review-section { background: var(--white); border-block: 1px solid #eee; padding: 80px 5%; }
+        /* REVIEWS SECTION */
+        .reviews-section {
+            padding: 80px 5%;
+            background-color: var(--white);
+            text-align: center;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        .review-card {
+            background: #fdfbf7; 
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            border-top: 5px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .google-stars {
+            color: #fbbc04; 
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .review-quote {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .google-icon-small {
+            width: 18px;
+            height: 18px;
+        }
+        .reviewer-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        .verify-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: #70757a;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .verify-link:hover {
+            text-decoration: underline;
+        }
 
         /* MAP SECTION */
         .map-section { background: var(--bg-light); padding: 60px 5%; text-align: center; }
@@ -253,8 +310,48 @@
         </div>
     </section>
 
-    <section class="review-section">
-        <div class="commonninja_component pid-c81bd207-62a3-47cb-9b27-d362db2f0337"></div>
+    <section class="reviews-section">
+        <h2 class="section-title">Trusted by North End Neighbors</h2>
+        <p style="margin-top: -40px; color: var(--gold); font-weight: 600;">⭐⭐⭐⭐⭐ 5.0 Google Rating</p>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div>
+                    <div class="google-stars">★★★★★</div>
+                    <p class="review-quote">"Hard worker, completes job on time and open with communication."</p>
+                </div>
+                <div class="reviewer-info">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" class="google-icon-small" alt="Google">
+                    <span class="reviewer-name">Nathan Page</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div>
+                    <div class="google-stars">★★★★★</div>
+                    <p class="review-quote">"Adrian easily handled the steep back yard terrain and manages his own edge trimming equipment. Job done neatly and efficiently."</p>
+                </div>
+                <div class="reviewer-info">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" class="google-icon-small" alt="Google">
+                    <span class="reviewer-name">Tim Grant</span>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div>
+                    <div class="google-stars">★★★★★</div>
+                    <p class="review-quote">"Adrian does an excellent job at keeping our lawn in shape. Always professional and very reliable."</p>
+                </div>
+                <div class="reviewer-info">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" class="google-icon-small" alt="Google">
+                    <span class="reviewer-name">Oliver Grant</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://www.google.com/search?q=Fantasy+Fields+Landscaping+Brantford" target="_blank" class="verify-link">
+            View Business Profile on Google
+        </a>
     </section>
 
     <section class="map-section">
@@ -300,7 +397,6 @@
     </footer>
 
     <script>
-        // Note: The cycle function for the old testimonials is no longer needed but kept for script stability if referenced elsewhere.
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             const pkg = urlParams.get('package');
