@@ -3,27 +3,53 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us | Fantasy Fields</title>
+    <title>About Us | Fantasy Fields Landscaping</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1b2f1e; --gold: #d4af37; --bg-light: #f7f1e6; }
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #c5a059; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); padding-top: 60px; text-align: center; }
-        header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
-        header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
-        .about-hero { background: var(--primary); color: white; padding: 80px 5%; }
-        .award-box { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border: 2px solid var(--gold); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .award-img { width: 100%; max-width: 500px; border-radius: 10px; margin-bottom: 20px; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 70px; }
+        
+        /* STANDARD HEADER */
+        header { position: fixed; top: 0; width: 100%; height: 70px; background: rgba(27, 47, 30, 0.98); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0 5%; backdrop-filter: blur(5px); }
+        .header-container { width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-group { display: flex; align-items: center; text-decoration: none; color: #fff; }
+        .logo-img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
+        .brand-main { font-weight: 700; font-size: 1.2rem; }
+        .brand-sub { font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        nav { display: flex; gap: 20px; }
+        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        nav a:hover { color: var(--gold); }
+
+        .about-hero { background: var(--primary); color: white; padding: 60px 5%; text-align: center; }
+        h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 10px; }
+        
+        .award-box { max-width: 800px; margin: -30px auto 40px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; border-bottom: 4px solid var(--gold); }
+        .award-img { width: 100%; max-width: 450px; border-radius: 12px; margin-bottom: 25px; }
+        h2 { font-family: 'Playfair Display'; color: var(--primary); margin-bottom: 15px; }
+        .content { max-width: 800px; margin: 0 auto; padding: 20px 5% 80px; line-height: 1.8; font-size: 1.1rem; text-align: center; }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" style="font-weight:700;">Fantasy Fields</a>
-        <nav><a href="index.html">Home</a><a href="maintenance.html" style="margin-left:15px;">Services</a></nav>
+        <div class="header-container">
+            <a href="index.html" class="logo-group">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <div class="brand-text">
+                    <div class="brand-main">Fantasy Fields</div>
+                    <div class="brand-sub">Landscaping</div>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="maintenance.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+            </nav>
+        </div>
     </header>
 
     <div class="about-hero">
-        <h1 style="font-family:'Playfair Display';">About Fantasy Fields</h1>
+        <h1>Our Story</h1>
     </div>
 
     <div class="award-box">
@@ -32,8 +58,12 @@
         <p>Recognized for excellence in local landscaping and property maintenance.</p>
     </div>
 
-    <div style="max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.8;">
+    <div class="content">
         <p>Fantasy Fields is a student-run venture dedicated to professional-grade results with a personal touch. With over 1,000 hours of maintenance experience in the North End, we bring reliability and passion to every lawn we touch.</p>
     </div>
+
+    <footer style="background: var(--primary); color: white; padding: 40px; text-align: center;">
+        <p>© 2026 Fantasy Fields Landscaping</p>
+    </footer>
 </body>
 </html>
