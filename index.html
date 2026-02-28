@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +10,7 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "vn68i4oyua");
-</script>
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landscaping North End Brantford | Cedarland Lawn Care | Fantasy Fields Landscaping</title>
@@ -364,21 +366,21 @@
         <h2 class="section-title">Serving the North End</h2>
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY_HERE&q=Fantasy+Fields+Landscaping+Brantford+ON" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.1504953372223!2d-80.24891502346087!3d43.179391082578584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c66138618e47b%3A0xc6c738e4a8f906e5!2s5%20Westchester%20Way%2C%20Brantford%2C%20ON%20N3R%206N1!5e0!3m2!1sen!2sca!4v1709140000000!5m2!1sen!2sca" 
                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
-            </div>
+        </div>
     </section>
 
     <section id="contact">
         <h2 style="text-align:center; font-family:'Playfair Display'; margin-bottom:30px; font-size: 2.2rem;">Free Estimate</h2>
-        <form class="contact-form" action="https://formspree.io/f/xreaewbk" method="POST">
+        <form class="contact-form" id="quoteForm" action="https://formspree.io/f/xreaewbk" method="POST">
             <input type="hidden" name="_subject" value="New Estimate Request - Fantasy Fields">
             <input type="text" name="name" placeholder="Name" required>
             <input type="tel" name="phone" placeholder="Phone" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="address" placeholder="Address" required>
-            <textarea name="message" placeholder="How can we help?"></textarea>
+            <textarea name="message" id="messageBox" placeholder="How can we help?"></textarea>
             <button type="submit" class="btn">Send Request</button>
         </form>
     </section>
@@ -401,5 +403,22 @@
         </div>
         <div class="footer-bottom">© 2026 Fantasy Fields Landscaping | All Rights Reserved.</div>
     </footer>
+
+    <script>
+        // SCRIPT TO HANDLE AUTOFILL FROM THE PLAN BUILDER
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const packageType = params.get('package');
+            const services = params.get('services');
+            
+            if (packageType && services) {
+                const messageBox = document.getElementById('messageBox');
+                messageBox.value = `Hi! I used the Plan Builder and I am interested in the ${packageType}.\n\nServices I'd like included: ${services}.\n\nPlease let me know when you can stop by for a quote!`;
+                
+                // Optional: Scroll to the contact form so they see it's filled out
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
 </body>
 </html>
