@@ -3,78 +3,79 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landscaping Projects North End | Fantasy Fields Landscaping</title>
+    <title>Landscaping Projects | Fantasy Fields Landscaping</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #d4af37; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 60px; }
-        header { position: fixed; top: 0; width: 100%; height: 60px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; }
-        header a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; }
-        .hero-mini { background: var(--primary); color: white; padding: 80px 5%; text-align: center; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 70px; }
+        
+        header { position: fixed; top: 0; width: 100%; height: 70px; background: var(--primary); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0 5%; }
+        .header-container { width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-group { display: flex; align-items: center; text-decoration: none; color: #fff; }
+        .logo-img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
+        .brand-main { font-weight: 700; font-size: 1.2rem; }
+        .brand-sub { font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        nav { display: flex; gap: 20px; }
+        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+        .hero-mini { background: var(--primary); color: white; padding: 60px 5%; text-align: center; }
+        h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 10px; }
         .content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
-        h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; }
-        details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        summary { font-weight: 700; font-size: 1.2rem; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        h2 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 30px; text-align: center; }
+        details { background: white; padding: 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 4px solid var(--primary); }
+        summary { font-weight: 700; font-size: 1.1rem; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center; }
         summary::after { content: '+'; font-size: 1.5rem; color: var(--gold); }
         details[open] summary::after { content: '-'; }
-        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; text-align: center; }
-        .img-grid img, .img-grid video { width: 100%; border-radius: 8px; height: 300px; object-fit: cover; }
-        .label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-top: 5px; }
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .img-grid img { width: 100%; border-radius: 8px; height: 300px; object-fit: cover; }
+        .label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-top: 8px; text-align: center; letter-spacing: 1px; }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" style="font-weight:700;">Fantasy Fields</a>
-        <nav><a href="index.html">Home</a><a href="maintenance.html" style="margin-left:15px;">Maintenance</a></nav>
+        <div class="header-container">
+            <a href="index.html" class="logo-group">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <div class="brand-text">
+                    <div class="brand-main">Fantasy Fields</div>
+                    <div class="brand-sub">Landscaping</div>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="maintenance.html">Services</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
     </header>
 
     <div class="hero-mini">
-        <h1>Landscaping Projects</h1>
-        <p>Serving Cedarland & North End Transformers Since 2022</p>
+        <h1>Project Portfolio</h1>
+        <p>Serving Cedarland & North End Since 2022</p>
     </div>
 
     <div class="content">
         <h2>Specialized Transformations</h2>
-        
         <details>
             <summary>Landscape Design (Before & After)</summary>
-            <div class="dropdown-content">
-                <p>Custom garden layouts and full-property transformations.</p>
+            <div>
+                <p style="margin: 10px 0; opacity: 0.8;">Custom garden layouts and full-property transformations.</p>
                 <div class="img-grid">
                     <div>
-                        <img src="Landscape%20Design%20Project1.jpeg" alt="Project 1">
+                        <img src="Landscape%20Project1.jpeg" alt="Project 1">
                         <div class="label">Initial Design</div>
                     </div>
                     <div>
-                        <img src="Landscape%20Design%20Project2.jpg" alt="Project 2">
+                        <img src="Landscape%20Project2.jpg" alt="Project 2">
                         <div class="label">Completed Result</div>
                     </div>
                 </div>
             </div>
         </details>
+        </div>
 
-        <details>
-            <summary>Roto-tilling Services</summary>
-            <div class="dropdown-content">
-                <p>Preparation for new gardens or lawn restoration.</p>
-                <img src="Roto%20tilling%20example.png" alt="Roto Tilling" style="width:100%; border-radius:8px; margin-top:10px;">
-            </div>
-        </details>
-
-        <details>
-            <summary>Seasonal Spring Cleanups</summary>
-            <div class="dropdown-content">
-                <p>Watch our team in action clearing winter debris to prep for the season.</p>
-                <video controls style="width:100%; border-radius:8px; margin-top:10px;">
-                    <source src="Spring%20clean%20up%20example.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </details>
-    </div>
-
-    <footer class="footer-main" style="background: var(--primary); color: white; padding: 40px; text-align: center;">
+    <footer style="background: var(--primary); color: white; padding: 40px; text-align: center;">
         <p>© 2026 Fantasy Fields Landscaping</p>
     </footer>
 </body>
