@@ -3,32 +3,55 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Property Concierge | Fantasy Fields</title>
+    <title>Property Maintenance | Fantasy Fields</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f4f1ec; --gold: #c5a059; --text: #2c3e2f; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); overflow: hidden; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-light); 
+            color: var(--text); 
+            overflow: hidden; 
+            padding-top: 60px; /* Space for the fixed header */
+        }
 
-        .main-wrapper { display: flex; height: 100vh; width: 100vw; }
-
-        /* SIDEBAR: NOW 60% WIDTH FOR MAXIMUM IMAGE IMPACT */
-        .sidebar { 
-            width: 60%; 
+        /* --- HEADER STYLES --- */
+        header { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            height: 60px; 
             background: var(--primary); 
-            height: 100vh;
+            z-index: 1000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 5%; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        header .logo { color: white; text-decoration: none; font-weight: 700; font-size: 1rem; font-family: 'Playfair Display'; }
+        header nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.8rem; margin-left: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        header nav a:hover { color: var(--gold); }
+
+        .main-wrapper { display: flex; height: calc(100vh - 60px); width: 100vw; }
+
+        /* SIDEBAR (Visuals): INCREASED TO 65% FOR MORE ROOM */
+        .sidebar { 
+            width: 65%; 
+            background: var(--primary); 
+            height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
-            border-right: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* IMAGE CONTAINER: HORIZONTAL SLOTS */
         .image-container {
             display: flex;
             width: 100%;
-            height: 70vh; /* Images take up more vertical space now */
+            height: 75vh; 
             background: #000;
         }
 
@@ -41,92 +64,96 @@
             flex-shrink: 0;
         }
 
-        /* Base Image (Lawn Care 2) */
         .image-container img.base { width: 100%; opacity: 0.9; }
-        
-        /* Active Addons */
-        .image-container img.active { 
-            opacity: 1;
-            border-left: 2px solid rgba(255,255,255,0.2);
-        }
+        .image-container img.active { opacity: 1; border-left: 2px solid rgba(255,255,255,0.2); }
 
-        /* SIDEBAR TEXT AREA */
         .sidebar-content { 
             padding: 40px 60px; 
-            background: linear-gradient(to top, var(--primary) 80%, transparent);
+            background: linear-gradient(to top, var(--primary) 85%, transparent);
             position: absolute;
             bottom: 0;
             width: 100%;
             z-index: 5;
         }
 
-        .tier-indicator { font-family: 'Playfair Display'; font-size: 0.9rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
-        .sidebar-content h1 { font-family: 'Playfair Display'; font-size: 3rem; color: white; margin-bottom: 20px; line-height: 1; }
+        .tier-indicator { font-family: 'Playfair Display'; font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
+        .sidebar-content h1 { font-family: 'Playfair Display'; font-size: 2.8rem; color: white; margin-bottom: 15px; line-height: 1.1; }
         
         .package-details { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
-        .package-details li { font-size: 0.85rem; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px; }
+        .package-details li { font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; font-weight: 500; }
         .package-details li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
-        /* CONTENT AREA: 40% WIDTH */
+        /* CONTENT AREA: REDUCED TO 35% TO PUSH BUTTONS LEFT */
         .content-area { 
-            width: 40%; 
-            padding: 80px 5%; 
+            width: 35%; 
+            padding: 60px 4%; 
             overflow-y: auto; 
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background: var(--bg-light);
         }
 
-        .section-intro { margin-bottom: 40px; }
-        .section-intro h2 { font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 10px; }
-        .section-intro p { opacity: 0.7; font-size: 0.95rem; }
+        .section-intro { margin-bottom: 35px; }
+        .section-intro h2 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 12px; color: var(--primary); }
+        .section-intro p { opacity: 0.8; font-size: 0.9rem; line-height: 1.5; }
+        .core-note { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-weight: 700; margin-bottom: 5px; display: block; }
 
         .addon-card { 
             background: var(--white); 
-            padding: 25px; 
+            padding: 22px; 
             margin-bottom: 15px; 
             cursor: pointer; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            transition: 0.3s; 
-            border: 1px solid transparent; 
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease; 
+            border: 1px solid rgba(0,0,0,0.05); 
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
-        .addon-card:hover { border-color: var(--gold); transform: translateX(5px); }
-        .addon-card.active { background: var(--primary); color: white; }
+        .addon-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+        .addon-card.active { background: var(--primary); color: white; border-color: var(--primary); }
         
-        .status-badge { font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; padding: 5px 10px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; }
+        .status-badge { font-weight: 700; font-size: 0.7rem; letter-spacing: 1px; padding: 4px 10px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; }
         .active .status-badge { border-color: white; color: white; }
 
         .btn-finalize { 
             display: block; 
             background: var(--gold); 
             color: white; 
-            padding: 22px; 
+            padding: 20px; 
             font-weight: 700; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
-            margin-top: 30px; 
+            margin-top: 25px; 
             width: 100%; 
             border: none; 
             cursor: pointer; 
             border-radius: 8px;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
-        .btn-finalize:hover { background: #b08d4a; box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3); }
+        .btn-finalize:hover { background: #b08d4a; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(197, 160, 89, 0.3); }
 
-        @media (max-width: 1024px) {
-            .main-wrapper { flex-direction: column; overflow-y: auto; }
-            .sidebar { width: 100%; height: auto; }
-            .image-container { height: 40vh; }
-            .content-area { width: 100%; padding: 40px 8%; }
-            .sidebar-content { position: relative; padding: 30px 8%; background: var(--primary); }
+        @media (max-width: 1100px) {
+            .main-wrapper { flex-direction: column; overflow-y: auto; height: auto; }
+            .sidebar { width: 100%; }
+            .content-area { width: 100%; padding: 50px 8%; }
+            .image-container { height: 45vh; }
+            .sidebar-content { position: relative; background: var(--primary); }
         }
     </style>
 </head>
 <body>
+
+    <header>
+        <a href="index.html" class="logo">Fantasy Fields</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="maintenance.html">Services</a>
+        </nav>
+    </header>
 
     <div class="main-wrapper">
         <div class="sidebar">
@@ -136,33 +163,34 @@
                 <img src="Bush%20trimming%202.jpg" id="img-bush">
             </div>
             <div class="sidebar-content">
-                <div class="tier-indicator" id="tier-label">Tier 1</div>
-                <h1 id="tier-title">The Foundation</h1>
+                <div class="tier-indicator" id="tier-label">Essential Base</div>
+                <h1 id="tier-title">Lawn Care & Maintenance</h1>
                 <ul class="package-details" id="details-list">
-                    <li>Weekly Mowing</li>
-                    <li>Hardscape Clearing</li>
+                    <li>Professional Weekly Mowing</li>
+                    <li>Hardscape & Edge Clearing</li>
                 </ul>
             </div>
         </div>
 
         <div class="content-area">
             <div class="section-intro">
-                <h2>Custom Service Builder</h2>
-                <p>Select the services below to build your property maintenance package.</p>
+                <span class="core-note">Core Service Included</span>
+                <h2>Custom Add-Ons</h2>
+                <p>Our weekly lawn cutting is the foundation of every plan. Personalize your property care by adding specialized services below.</p>
             </div>
 
             <div class="addon-card" onclick="toggleOption(this, 'garden')">
                 <div>
-                    <h4 style="font-family: 'Playfair Display'; font-size: 1.2rem;">Garden Bed Care</h4>
-                    <p style="font-size: 0.85rem; opacity: 0.8;">Routine weeding and edging.</p>
+                    <h4 style="font-family: 'Playfair Display'; font-size: 1.1rem; margin-bottom: 4px;">Garden Bed Care</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Routine weeding and precision edging.</p>
                 </div>
                 <div class="status-badge" id="badge-garden">ADD</div>
             </div>
 
             <div class="addon-card" onclick="toggleOption(this, 'bush')">
                 <div>
-                    <h4 style="font-family: 'Playfair Display'; font-size: 1.2rem;">Shrub Maintenance</h4>
-                    <p style="font-size: 0.85rem; opacity: 0.8;">Professional trimming and shaping.</p>
+                    <h4 style="font-family: 'Playfair Display'; font-size: 1.1rem; margin-bottom: 4px;">Shrub Maintenance</h4>
+                    <p style="font-size: 0.8rem; opacity: 0.8;">Expert seasonal trimming and shaping.</p>
                 </div>
                 <div class="status-badge" id="badge-bush">ADD</div>
             </div>
@@ -178,7 +206,6 @@
             selections[type] = !selections[type];
             element.classList.toggle('active');
             document.getElementById(`badge-${type}`).innerText = selections[type] ? "ADDED" : "ADD";
-            
             updateLayout();
         }
 
@@ -187,14 +214,12 @@
             const gardenImg = document.getElementById('img-garden');
             const bushImg = document.getElementById('img-bush');
             
-            // Logic for sharing widths
             let activeCount = 1;
             if (selections.garden) activeCount++;
             if (selections.bush) activeCount++;
 
             const shareWidth = (100 / activeCount) + "%";
 
-            // Apply widths
             baseImg.style.width = shareWidth;
             
             if(selections.garden) {
@@ -213,18 +238,26 @@
                 bushImg.style.width = "0";
             }
 
-            // Update Text
             const list = document.getElementById('details-list');
             const tierLabel = document.getElementById('tier-label');
             const tierTitle = document.getElementById('tier-title');
-            list.innerHTML = `<li>Weekly Mowing</li><li>Hardscape Clearing</li>`;
             
-            if (selections.garden) list.innerHTML += `<li>Garden Care</li>`;
-            if (selections.bush) list.innerHTML += `<li>Shrub Shaping</li>`;
+            // Core services stay fixed
+            list.innerHTML = `<li>Professional Weekly Mowing</li><li>Hardscape & Edge Clearing</li>`;
+            
+            if (selections.garden) list.innerHTML += `<li>Garden Bed Care</li>`;
+            if (selections.bush) list.innerHTML += `<li>Shrub Maintenance</li>`;
 
-            if (activeCount === 1) { tierLabel.innerText = "Tier 1"; tierTitle.innerText = "The Foundation"; }
-            else if (activeCount === 2) { tierLabel.innerText = "Tier 2"; tierTitle.innerText = "Enhanced Care"; }
-            else if (activeCount === 3) { tierLabel.innerText = "Tier 3"; tierTitle.innerText = "The Full Estate"; }
+            if (activeCount === 1) { 
+                tierLabel.innerText = "Essential Base"; 
+                tierTitle.innerText = "Lawn Care & Maintenance"; 
+            } else if (activeCount === 2) { 
+                tierLabel.innerText = "Tier 2"; 
+                tierTitle.innerText = "Enhanced Property Care"; 
+            } else if (activeCount === 3) { 
+                tierLabel.innerText = "Tier 3"; 
+                tierTitle.innerText = "The Full Estate Plan"; 
+            }
         }
 
         function sendToContact() {
