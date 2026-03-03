@@ -80,33 +80,11 @@
         /* --- UPDATED CONTENT AREA --- */
         .content-area { 
             width: 35%; 
-            padding: 20px 4%; 
+            padding: 40px 4% 20px 4%; /* Increased top padding */
             display: flex; 
             flex-direction: column; 
-            justify-content: center; 
+            justify-content: flex-start; /* Aligns content to the top */
             background: var(--white);
-        }
-
-        .section-intro { margin-bottom: 15px; }
-        
-        /* Matched to brand title font */
-        .section-intro h2 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.2rem; 
-            line-height: 1.1;
-            margin-bottom: 8px; 
-            color: var(--primary); 
-        }
-
-        /* Sub-header styling */
-        .section-intro p { 
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            color: var(--primary); 
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            opacity: 0.6;
         }
 
         /* COMPACT ADD-ON CARDS */
@@ -138,6 +116,7 @@
             .image-container { height: 40vh; }
             .sidebar-content { position: relative; background: var(--primary); padding: 30px; }
             .sidebar-content h1 { font-size: 2.2rem; }
+            .content-area { padding: 30px 5%; }
         }
     </style>
 </head>
@@ -176,11 +155,6 @@
         </div>
 
         <div class="content-area">
-            <div class="section-intro">
-                <h2>Customize Your Maintenance</h2>
-                <p>Select your add-ons:</p>
-            </div>
-
             <div class="addon-card" onclick="toggleOption(this, 'garden')">
                 <div>
                     <h4>Garden Bed Care</h4>
