@@ -65,11 +65,17 @@
         .image-container img.base { width: 100%; opacity: 0.9; }
         .image-container img.active { opacity: 1; border-left: 2px solid rgba(255,255,255,0.2); }
 
+        /* SIDEBAR CONTENT FLEXBOX */
         .sidebar-content { 
             padding: 40px 60px; 
             background: linear-gradient(to top, var(--primary) 85%, transparent);
             position: absolute; bottom: 0; width: 100%; z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* Keeps text and button aligned at bottom */
         }
+        .title-block { flex: 1; }
+
         .tier-indicator { font-family: 'Playfair Display'; font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
         .sidebar-content h1 { font-family: 'Playfair Display'; font-size: 3.2rem; color: white; margin-bottom: 15px; }
         
@@ -77,14 +83,25 @@
         .package-details li { font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; }
         .package-details li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
-        /* --- UPDATED CONTENT AREA --- */
+        /* --- CONTENT AREA --- */
         .content-area { 
             width: 35%; 
-            padding: 40px 4% 20px 4%; /* Increased top padding */
+            padding: 40px 4% 20px 4%; 
             display: flex; 
             flex-direction: column; 
-            justify-content: flex-start; /* Aligns content to the top */
+            justify-content: flex-start; 
             background: var(--white);
+        }
+
+        .addon-sub-header {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.6;
+            margin-bottom: 15px;
         }
 
         /* COMPACT ADD-ON CARDS */
@@ -102,21 +119,43 @@
         .status-badge { font-weight: 700; font-size: 0.6rem; padding: 3px 8px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; }
         .active .status-badge { border-color: white; color: white; }
 
+        /* SIDEBAR BUTTON STYLE */
         .btn-finalize { 
-            background: var(--accent); color: white; padding: 18px; 
-            font-weight: 700; text-transform: uppercase; letter-spacing: 2px; 
-            margin-top: 10px; width: 100%; border: none; cursor: pointer; border-radius: 6px;
-            transition: 0.3s; font-size: 0.85rem;
+            background: var(--accent); 
+            color: white; 
+            padding: 15px 30px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 6px;
+            transition: 0.3s; 
+            font-size: 0.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Shadow added */
+            margin-bottom: 15px; /* Alignment spacing */
+            white-space: nowrap;
         }
-        .btn-finalize:hover { background: #a64b3c; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-finalize:hover { 
+            background: #a64b3c; 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
+        }
 
         @media (max-width: 1100px) {
             .main-wrapper { flex-direction: column; height: auto; }
             .sidebar, .content-area { width: 100%; }
             .image-container { height: 40vh; }
-            .sidebar-content { position: relative; background: var(--primary); padding: 30px; }
+            .sidebar-content { 
+                position: relative; 
+                background: var(--primary); 
+                padding: 30px; 
+                flex-direction: column; 
+                align-items: flex-start;
+            }
             .sidebar-content h1 { font-size: 2.2rem; }
             .content-area { padding: 30px 5%; }
+            .btn-finalize { width: 100%; margin-top: 20px; }
         }
     </style>
 </head>
@@ -146,15 +185,20 @@
                 <img src="Bush%20trimming%202.jpg" id="img-bush">
             </div>
             <div class="sidebar-content">
-                <div class="tier-indicator" id="tier-label">Base Plan</div>
-                <h1 id="tier-title">Lawn Maintenance</h1>
-                <ul class="package-details" id="details-list">
-                    <li>Scheduled mowing and edging</li>
-                </ul>
+                <div class="title-block">
+                    <div class="tier-indicator" id="tier-label">Base Plan</div>
+                    <h1 id="tier-title">Lawn Maintenance</h1>
+                    <ul class="package-details" id="details-list">
+                        <li>Scheduled mowing and edging</li>
+                    </ul>
+                </div>
+                <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
             </div>
         </div>
 
         <div class="content-area">
+            <p class="addon-sub-header">Select your add-ons:</p>
+
             <div class="addon-card" onclick="toggleOption(this, 'garden')">
                 <div>
                     <h4>Garden Bed Care</h4>
@@ -170,8 +214,6 @@
                 </div>
                 <div class="status-badge" id="badge-bush">ADD</div>
             </div>
-
-            <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
         </div>
     </div>
 
