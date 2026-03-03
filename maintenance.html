@@ -21,11 +21,11 @@
             font-family: 'Inter', sans-serif; 
             background: var(--bg-light); 
             color: var(--text); 
-            padding-top: 70px; /* Matched to new header height */
+            padding-top: 70px; 
             overflow-x: hidden;
         }
 
-        /* --- STANDARDIZED HEADER (Matching Index) --- */
+        /* --- STANDARDIZED HEADER --- */
         header { 
             position: fixed; top: 0; width: 100%; height: 70px; 
             background: var(--primary); z-index: 1001; 
@@ -51,7 +51,6 @@
         /* --- MAIN LAYOUT --- */
         .main-wrapper { display: flex; height: calc(100vh - 70px); width: 100vw; }
 
-        /* SIDEBAR / VISUALS */
         .sidebar { 
             width: 65%; background: var(--primary); height: 100%;
             position: relative; overflow: hidden;
@@ -164,8 +163,7 @@
                 <div class="tier-indicator" id="tier-label">Base Plan</div>
                 <h1 id="tier-title">Lawn Maintenance</h1>
                 <ul class="package-details" id="details-list">
-                    <li>Weekly Professional Mowing</li>
-                    <li>Hardscape Edge Clearing</li>
+                    <li>Scheduled mowing and edging</li>
                 </ul>
             </div>
         </div>
@@ -179,7 +177,7 @@
             <div class="core-inclusion-card">
                 <span class="core-label">Included by Default</span>
                 <h3>Premium Lawn Care</h3>
-                <p>Every maintenance plan includes our weekly professional mowing, string trimming, and hardscape blowing as the primary service.</p>
+                <p>Lawnmowing and weedsnipping maintained professionally on a weekly or biweekly schedule.</p>
             </div>
 
             <div class="addon-label">Enhance your property</div>
@@ -246,7 +244,7 @@
             const tierLabel = document.getElementById('tier-label');
             const tierTitle = document.getElementById('tier-title');
             
-            list.innerHTML = `<li>Weekly Professional Mowing</li><li>Hardscape Edge Clearing</li>`;
+            list.innerHTML = `<li>Scheduled mowing and edging</li>`;
             if (selections.garden) list.innerHTML += `<li>Garden Bed Care</li>`;
             if (selections.bush) list.innerHTML += `<li>Shrub Maintenance</li>`;
 
@@ -256,7 +254,7 @@
         }
 
         function sendToContact() {
-            let services = "Lawn Mowing";
+            let services = "Lawn Mowing and Edging";
             if (selections.garden) services += ", Garden Bed Care";
             if (selections.bush) services += ", Shrub Maintenance";
             const tier = document.getElementById('tier-title').innerText;
