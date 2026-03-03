@@ -77,50 +77,56 @@
         .package-details li { font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; }
         .package-details li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
-        /* CONTENT AREA */
+        /* --- COMPACT CONTENT AREA --- */
         .content-area { 
-            width: 35%; padding: 40px 3%; 
-            overflow-y: auto; display: flex; flex-direction: column; justify-content: flex-start;
+            width: 35%; 
+            padding: 20px 3%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; /* Centers content to minimize scrolling */
+            background: var(--white);
         }
 
-        .section-intro { margin-bottom: 25px; }
-        .section-intro h2 { font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 8px; color: var(--primary); }
+        .section-intro { margin-bottom: 15px; }
+        .section-intro h2 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 5px; color: var(--primary); }
+        .section-intro p { font-size: 0.9rem; opacity: 0.7; }
 
         .core-inclusion-card {
             background: rgba(27, 47, 30, 0.04);
-            border-left: 4px solid var(--primary);
-            padding: 25px;
-            border-radius: 0 12px 12px 0;
-            margin-bottom: 30px;
+            border-left: 3px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
         }
         .core-label { 
-            color: var(--primary); font-weight: 800; font-size: 0.7rem; 
-            text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-bottom: 10px;
+            color: var(--primary); font-weight: 800; font-size: 0.65rem; 
+            text-transform: uppercase; letter-spacing: 1.2px; display: block; margin-bottom: 5px;
         }
-        .core-inclusion-card h3 { font-family: 'Playfair Display'; font-size: 1.4rem; color: var(--primary); margin-bottom: 5px; }
-        .core-inclusion-card p { font-size: 0.9rem; line-height: 1.5; opacity: 0.8; }
+        .core-inclusion-card h3 { font-family: 'Playfair Display'; font-size: 1.2rem; color: var(--primary); margin-bottom: 3px; }
+        .core-inclusion-card p { font-size: 0.85rem; line-height: 1.4; opacity: 0.8; }
 
-        .addon-label { font-size: 0.75rem; font-weight: 700; opacity: 0.5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 15px; }
+        .addon-label { font-size: 0.7rem; font-weight: 700; opacity: 0.5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
 
-        /* ADD-ON CARDS */
+        /* COMPACT ADD-ON CARDS */
         .addon-card { 
-            background: var(--white); padding: 20px; margin-bottom: 12px; 
+            background: var(--white); padding: 15px; margin-bottom: 10px; 
             cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
-            transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: 0.2s; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        .addon-card:hover { border-color: var(--gold); transform: translateX(4px); }
-        .addon-card.active { background: var(--primary); color: white; }
+        .addon-card:hover { border-color: var(--gold); background: #fafafa; }
+        .addon-card.active { background: var(--primary); color: white; border-color: var(--primary); }
         
-        .addon-card h4 { font-family: 'Playfair Display'; font-size: 1.1rem; }
-        .status-badge { font-weight: 700; font-size: 0.7rem; padding: 4px 10px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; }
+        .addon-card h4 { font-family: 'Playfair Display'; font-size: 1rem; }
+        .addon-card p { font-size: 0.75rem !important; opacity: 0.8; }
+        .status-badge { font-weight: 700; font-size: 0.6rem; padding: 3px 8px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; }
         .active .status-badge { border-color: white; color: white; }
 
         .btn-finalize { 
-            background: var(--accent); color: white; padding: 20px; 
+            background: var(--accent); color: white; padding: 18px; 
             font-weight: 700; text-transform: uppercase; letter-spacing: 2px; 
-            margin-top: 20px; width: 100%; border: none; cursor: pointer; border-radius: 8px;
-            transition: 0.3s;
+            margin-top: 10px; width: 100%; border: none; cursor: pointer; border-radius: 6px;
+            transition: 0.3s; font-size: 0.85rem;
         }
         .btn-finalize:hover { background: #a64b3c; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
@@ -170,22 +176,22 @@
 
         <div class="content-area">
             <div class="section-intro">
-                <h2>Plan Builder</h2>
-                <p>Build your seasonal maintenance package around our signature lawn care.</p>
+                <h2>Custom Maintenance</h2>
+                <p>Select your seasonal additions below.</p>
             </div>
 
             <div class="core-inclusion-card">
-                <span class="core-label">Included by Default</span>
+                <span class="core-label">Included Service</span>
                 <h3>Premium Lawn Care</h3>
-                <p>Lawnmowing and weedsnipping maintained professionally on a weekly or biweekly schedule.</p>
+                <p>Weekly or bi-weekly mowing and precision edging.</p>
             </div>
 
-            <div class="addon-label">Enhance your property</div>
+            <div class="addon-label">Property Enhancements</div>
 
             <div class="addon-card" onclick="toggleOption(this, 'garden')">
                 <div>
                     <h4>Garden Bed Care</h4>
-                    <p style="font-size: 0.8rem; opacity: 0.8;">Routine weeding and fresh soil edging.</p>
+                    <p>Routine weeding and fresh soil edging.</p>
                 </div>
                 <div class="status-badge" id="badge-garden">ADD</div>
             </div>
@@ -193,7 +199,7 @@
             <div class="addon-card" onclick="toggleOption(this, 'bush')">
                 <div>
                     <h4>Shrub Maintenance</h4>
-                    <p style="font-size: 0.8rem; opacity: 0.8;">Hedge trimming and ornamental shaping.</p>
+                    <p>Hedge trimming and ornamental shaping.</p>
                 </div>
                 <div class="status-badge" id="badge-bush">ADD</div>
             </div>
