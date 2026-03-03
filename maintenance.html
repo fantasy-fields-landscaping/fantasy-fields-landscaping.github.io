@@ -77,22 +77,37 @@
         .package-details li { font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; }
         .package-details li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
-        /* --- COMPACT CONTENT AREA --- */
+        /* --- UPDATED CONTENT AREA --- */
         .content-area { 
             width: 35%; 
-            padding: 20px 3%; 
+            padding: 20px 4%; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             background: var(--white);
         }
 
-        .section-intro { margin-bottom: 25px; }
-        /* Font size reduced by 50% from 1.8rem to 0.9rem */
-        .section-intro h2 { font-family: 'Playfair Display'; font-size: 0.9rem; margin-bottom: 5px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        .section-intro p { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        .section-intro { margin-bottom: 15px; }
+        
+        /* Matched to brand title font */
+        .section-intro h2 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.2rem; 
+            line-height: 1.1;
+            margin-bottom: 8px; 
+            color: var(--primary); 
+        }
 
-        .addon-label { font-size: 0.7rem; font-weight: 700; opacity: 0.5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+        /* Sub-header styling */
+        .section-intro p { 
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            color: var(--primary); 
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            opacity: 0.6;
+        }
 
         /* COMPACT ADD-ON CARDS */
         .addon-card { 
@@ -140,7 +155,7 @@
             <nav>
                 <a href="index.html">Home</a>
                 <a href="landscaping.html">Projects</a>
-                </nav>
+            </nav>
         </div>
     </header>
 
@@ -163,10 +178,8 @@
         <div class="content-area">
             <div class="section-intro">
                 <h2>Customize Your Maintenance</h2>
-                <p>Select your add ons</p>
+                <p>Select your add-ons:</p>
             </div>
-
-            <div class="addon-label">Property Enhancements</div>
 
             <div class="addon-card" onclick="toggleOption(this, 'garden')">
                 <div>
