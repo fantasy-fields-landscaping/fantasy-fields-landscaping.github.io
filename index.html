@@ -12,9 +12,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landscaping North End Brantford | Cedarland Lawn Care | Fantasy Fields Landscaping</title>
-    
     <meta name="description" content="Award-winning, student-run landscaping in the North End and Cedarland areas of Brantford. 4 years of experience and 1,000+ hours of professional maintenance.">
-    
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,28 +50,28 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.6; }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER */
         header {
             position: fixed; top: 0; width: 100%; height: 85px;
-            background: rgba(27, 47, 30, 0.95); 
+            background: rgba(27, 47, 30, 0.95);
             z-index: 1001;
             display: flex; justify-content: center; padding: 0 40px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
         }
         .header-container { width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; }
-        
+
         .logo-group { display: flex; align-items: center; text-decoration: none; color: #fff; }
         .logo-img { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
         .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .brand-main { font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; display: inline; }
-        .brand-sub { font-weight: 400; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2.5px; margin-top: 2px; display: block; }
+        .brand-main { font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; }
+        .brand-sub { font-weight: 400; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2.5px; margin-top: 2px; }
 
+        /* DESKTOP NAV */
         nav { display: flex; align-items: center; gap: 25px; }
-        nav a, .dropbtn { 
-            color: #fff; text-decoration: none; font-weight: 600; 
-            font-size: 1.05rem;
-            cursor: pointer; background: none; border: none; font-family: inherit;
+        nav a, .dropbtn {
+            color: #fff; text-decoration: none; font-weight: 600;
+            font-size: 1.05rem; cursor: pointer; background: none; border: none; font-family: inherit;
         }
         nav a:hover, .dropdown:hover .dropbtn { color: var(--gold); }
 
@@ -82,10 +81,7 @@
             min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             z-index: 1; top: 100%; border-top: 3px solid var(--gold);
         }
-        .dropdown-content a {
-            color: #fff; padding: 14px 20px; text-decoration: none;
-            display: block; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        .dropdown-content a { color: #fff; padding: 14px 20px; text-decoration: none; display: block; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .dropdown-content a:hover { background: rgba(255,255,255,0.1); color: var(--gold); }
         .dropdown:hover .dropdown-content { display: block; }
         .arrow { font-size: 0.7rem; margin-left: 5px; opacity: 0.7; }
@@ -103,92 +99,82 @@
         .award-button:hover { background: var(--gold); color: var(--primary); }
 
         .contact-header-btn {
-            background: var(--accent);
-            color: #fff !important;
-            padding: 10px 22px;
-            border-radius: 4px;
-            font-size: 0.95rem !important;
-            transition: 0.3s;
+            background: var(--accent); color: #fff !important;
+            padding: 10px 22px; border-radius: 4px;
+            font-size: 0.95rem !important; transition: 0.3s;
         }
         .contact-header-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
-        /* ── HAMBURGER — always in the DOM, shown only on mobile ── */
+        /* HAMBURGER — hidden on desktop, shown on mobile */
         .hamburger {
-            display: none; /* hidden on desktop */
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1003; /* above everything */
-            flex-shrink: 0;
+            display: none;
+            background: none; border: none; cursor: pointer;
+            flex-direction: column; gap: 5px; padding: 4px;
         }
         .hamburger span {
-            display: block; width: 24px; height: 2px;
+            display: block; width: 22px; height: 2px;
             background: #fff; border-radius: 2px;
-            transition: transform 0.3s, opacity 0.3s;
-            pointer-events: none;
+            transition: transform .3s ease, opacity .3s ease;
         }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
         .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-        /* HERO SECTION */
-        .hero { 
-            position: relative; 
-            height: 80vh; 
-            background: var(--primary); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
+        /* NAV DRAWER — slides in from right on mobile, sits below header */
+        .nav-drawer {
+            position: fixed; top: 64px; right: 0;
+            width: 200px;
+            background: var(--primary);
+            border-left: 1px solid rgba(255,255,255,.1);
+            border-bottom: 1px solid rgba(255,255,255,.1);
+            border-radius: 0 0 0 16px;
+            display: flex; flex-direction: column;
+            padding: 8px 0 12px;
+            transform: translateX(110%);
+            transition: transform .3s cubic-bezier(.4,0,.2,1);
+            z-index: 1000;
         }
-        .slide { 
-            position: absolute; 
-            inset: 0; 
-            opacity: 1; 
-            background: center top no-repeat; 
-            background-size: 100% auto;
+        .nav-drawer.open { transform: translateX(0); }
+        .nav-drawer a {
+            color: rgba(255,255,255,.85); text-decoration: none;
+            font-weight: 600; font-size: 0.95rem;
+            padding: 12px 24px;
+            transition: background .15s;
         }
-        .hero::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(to bottom, transparent, rgba(27,47,30,0.6));
-            pointer-events: none; z-index: 5;
-        }
-        
-        @media (max-width: 900px) {
-            .hero { height: 60vh; }
-            .slide { background-size: cover; }
-        }
+        .nav-drawer a:hover { background: rgba(255,255,255,.08); color: #fff; }
 
-        .slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); } 
-
+        /* HERO */
+        .hero {
+            position: relative; height: 80vh; background: var(--primary);
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            margin-top: 85px; /* no white gap */
+        }
+        .slide {
+            position: absolute; inset: 0; opacity: 1;
+            background: center top no-repeat; background-size: 100% auto;
+        }
+        .slide::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
         .hero-content { position: relative; z-index: 10; text-align: center; color: #fff; padding: 20px; width: 90%; }
         .hero-content h1 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: clamp(1.6rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 12px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .hero-content p { margin-bottom: 28px; }
+        .hero-content p { margin-bottom: 28px; font-size: 1.2rem; }
 
-        .btn { 
-            display: inline-block; padding: 18px 45px; background: var(--accent); color: #fff; 
-            border-radius: 50px; font-weight: 700; font-size: 1.1rem; 
+        .btn {
+            display: inline-block; padding: 18px 45px; background: var(--accent); color: #fff;
+            border-radius: 50px; font-weight: 700; font-size: 1.1rem;
             text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: none; cursor: pointer;
         }
         .btn:hover { transform: translateY(-5px); background: var(--accent-hover); }
 
-        /* SECTIONS */
+        /* GUARANTEE */
         .guarantee-strip { background: var(--primary); color: #fff; padding: 50px 8%; text-align: center; }
-        .guarantee-strip p { max-width: 780px; margin: 0 auto; font-style: italic; opacity: 0.9; font-size: 1.05rem; line-height: 1.75; }
-        .guarantee-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+        .guarantee-strip div { max-width: 800px; margin: 0 auto; font-style: italic; opacity: 0.9; font-size: 1.05rem; line-height: 1.75; }
 
+        /* SERVICES SECTION */
         .section-padding { padding: 70px 5%; max-width: 1400px; margin: 0 auto; }
         .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 20px; color: var(--primary); }
 
         .guide-intro { text-align: center; font-size: 1rem; color: #6b7c6d; margin-bottom: 18px; }
-        .guide-pills {
-            display: flex; justify-content: center; gap: 12px;
-            flex-wrap: wrap; margin-bottom: 24px;
-        }
+        .guide-pills { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
         .guide-pill {
             background: #fff; border: 1.5px solid #ddd4be;
             border-radius: 40px; padding: 9px 18px;
@@ -197,108 +183,91 @@
         }
         .guide-pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
 
-        /* journey */
+        /* Journey steps */
         .journey {
             display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 0; margin-bottom: 48px;
             background: #faf7f2; border: 1px solid #ddd4be;
             border-radius: 14px; overflow: hidden;
         }
-        .jstep {
-            padding: 22px 18px; text-align: center;
-            border-right: 1px solid #ddd4be; position: relative;
-        }
+        .jstep { padding: 22px 18px; text-align: center; border-right: 1px solid #ddd4be; position: relative; }
         .jstep:last-child { border-right: none; }
-        .jnum {
-            width: 30px; height: 30px; border-radius: 50%;
-            background: var(--primary); color: #fff;
-            font-size: 0.75rem; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 10px;
-        }
+        .jnum { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
         .jstep h4 { font-size: 0.92rem; color: var(--primary); margin-bottom: 4px; font-weight: 700; }
-        .jstep p  { font-size: 0.77rem; color: #7a8c7c; line-height: 1.45; }
-        .jstep:not(:last-child)::after {
-            content: '→'; position: absolute; right: -9px; top: 50%;
-            transform: translateY(-50%); font-size: 0.78rem; color: var(--gold);
-            background: #faf7f2; z-index: 1; line-height: 1; padding: 0 1px;
-        }
+        .jstep p { font-size: 0.77rem; color: #7a8c7c; line-height: 1.45; }
+        .jstep:not(:last-child)::after { content: '→'; position: absolute; right: -9px; top: 50%; transform: translateY(-50%); font-size: 0.78rem; color: var(--gold); background: #faf7f2; z-index: 1; line-height: 1; padding: 0 1px; }
 
+        /* "Get Started" divider */
         .get-started-divider {
-            display: flex; align-items: center; gap: 16px;
-            margin-bottom: 28px;
+            display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
         }
-        .gsd-line {
-            flex: 1; height: 1.5px;
-            background: linear-gradient(to var(--dir, right), transparent, var(--gold));
-        }
+        .gsd-line { flex: 1; height: 1.5px; background: linear-gradient(to var(--dir, right), transparent, var(--gold)); }
         .gsd-line:last-child { --dir: left; }
-        .gsd-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem; font-weight: 700;
-            color: var(--primary); white-space: nowrap;
-            letter-spacing: 0.5px;
+        .gsd-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); white-space: nowrap; letter-spacing: 0.5px; }
+
+        /* SERVICE CARDS — always side by side */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+        .service-card {
+            background: #fff; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06);
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+            display: flex; flex-direction: column;
+            text-decoration: none; color: inherit;
+            border: 1px solid rgba(0,0,0,0.06);
+            cursor: pointer;
+        }
+        .service-card:hover {
+            transform: translateY(-14px) scale(1.02);
+            box-shadow: 0 28px 55px rgba(0,0,0,0.18), 0 6px 16px rgba(0,0,0,0.1);
         }
 
-        /* service cards */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
-        .service-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06); transition: 0.4s; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.06); }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 16px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08); }
-        .service-img { height: 240px; background: center/cover no-repeat; } 
-        .service-info { padding: 35px; }
-        .service-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 14px 0 20px; }
-        .service-includes li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.9rem; color: var(--text); }
+        .service-img { height: 240px; background: center/cover no-repeat; }
+
+        .service-info { padding: 22px 22px 26px; display: flex; flex-direction: column; }
+        .service-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
+        .service-info > p { font-size: 0.9rem; color: #666; margin-bottom: 14px; }
+
+        /* Bullet list — hidden on mobile */
+        .service-includes { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+        .service-includes li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.88rem; color: var(--text); }
         .service-includes li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-        /* REVIEWS SECTION */
-        .reviews-section {
-            padding: 44px 5% 36px;
-            background-color: var(--white);
-            text-align: center;
-            overflow: hidden;
+        /* CTA link with animated arrow bubble */
+        .card-cta-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--accent); font-weight: 700; font-size: 0.95rem;
+            margin-top: auto; transition: gap 0.2s ease;
         }
+        .card-cta-link .arrow-bubble {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: var(--accent); color: #fff;
+            font-size: 1rem; font-weight: 700; line-height: 1;
+            box-shadow: 0 3px 8px rgba(139,58,45,0.35);
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+        .service-card:hover .card-cta-link { gap: 12px; }
+        .service-card:hover .card-cta-link .arrow-bubble {
+            transform: translateX(4px);
+            background: var(--accent-hover);
+            box-shadow: 0 5px 14px rgba(139,58,45,0.45);
+        }
+
+        /* "Click to learn more" — centered below the two cards, mobile only */
+        .click-hint { display: none; }
+
+        /* REVIEWS */
+        .reviews-section { padding: 44px 5% 36px; background-color: var(--white); text-align: center; overflow: hidden; }
         .reviews-section .section-title { font-size: 1.8rem; margin-bottom: 6px; }
 
-        .rev-carousel-wrap {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: visible;
-        }
-        .rev-track {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            transform: none !important;
-            transition: none;
-        }
-        .rev-slide {
-            min-width: unset;
-            width: auto;
-            padding: 0;
-            flex-shrink: unset;
-        }
+        .rev-carousel-wrap { position: relative; max-width: 1200px; margin: 0 auto; overflow: visible; }
+        .rev-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .rev-dots { display: none; }
 
-        .review-card {
-            background: var(--bg-light);
-            padding: 22px 24px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #e8e0d0;
-            height: 100%;
-        }
-        .reviewer-header {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
-        }
-        .profile-pic {
-            width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: bold; font-size: 1rem; flex-shrink: 0;
-        }
+        .review-card { background: var(--bg-light); padding: 22px 24px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: left; display: flex; flex-direction: column; border: 1px solid #e8e0d0; height: 100%; }
+        .reviewer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .profile-pic { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1rem; flex-shrink: 0; }
         .reviewer-meta { display: flex; flex-direction: column; line-height: 1.2; }
         .reviewer-name { font-weight: 700; color: #1a73e8; font-size: 0.9rem; }
         .review-stats { font-size: 0.72rem; color: #70757a; }
@@ -306,112 +275,51 @@
         .review-time { color: #70757a; font-size: 0.78rem; margin-left: 5px; }
         .review-quote { font-size: 0.88rem; color: #3c4043; line-height: 1.5; font-style: italic; }
 
-        .verify-link {
-            margin-top: 16px;
-            display: inline-flex; align-items: center; gap: 8px;
-            color: #70757a; font-size: 0.82rem; text-decoration: none;
-        }
+        .verify-link { margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; color: #70757a; font-size: 0.82rem; text-decoration: none; }
         .verify-link:hover { text-decoration: underline; color: var(--accent); }
 
-        /* MAP SECTION */
+        /* MAP */
         .map-section { background: var(--bg-light); padding: 60px 5%; text-align: center; }
         .map-section .section-title { margin-bottom: 16px; }
         .area-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
-        .area-pill {
-            background: #fff; border: 1.5px solid #ddd4be;
-            border-radius: 40px; padding: 7px 16px;
-            font-size: 0.85rem; font-weight: 600; color: var(--primary);
-        }
-        .map-container { 
-            max-width: 1000px; margin: 0 auto;
-            border-radius: 20px; overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            border: 8px solid #fff; height: 450px;
-        }
+        .area-pill { background: #fff; border: 1.5px solid #ddd4be; border-radius: 40px; padding: 7px 16px; font-size: 0.85rem; font-weight: 600; color: var(--primary); }
+        .map-container { max-width: 1000px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 8px solid #fff; height: 450px; }
         .map-container iframe { width: 100%; height: 100%; border: 0; }
 
-        /* CONTACT FORM */
+        /* CONTACT */
         #contact { background: var(--bg-light); padding: 72px 5%; }
-        #contact h2 { text-align:center; font-family:'Playfair Display'; margin-bottom:10px; font-size: 2.2rem; color: var(--primary); }
-        .contact-sub { text-align:center; color:#7a8c7c; font-size:0.95rem; margin-bottom:36px; }
+        #contact h2 { text-align: center; font-family: 'Playfair Display'; margin-bottom: 10px; font-size: 2.2rem; color: var(--primary); }
+        .contact-sub { text-align: center; color: #7a8c7c; font-size: 0.95rem; margin-bottom: 36px; }
         .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 550px; margin: 0 auto; }
-        .contact-form input, .contact-form textarea, .contact-form select {
-            padding: 16px 18px; border-radius: 10px;
-            border: 1.5px solid #ddd4be; width: 100%; font: inherit;
-            font-size: 1rem; color: var(--text); background: #fff;
-            transition: border-color 0.2s;
-        }
-        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
-            outline: none; border-color: var(--primary);
-        }
+        .contact-form input, .contact-form textarea, .contact-form select { padding: 16px 18px; border-radius: 10px; border: 1.5px solid #ddd4be; width: 100%; font: inherit; font-size: 1rem; color: var(--text); background: #fff; transition: border-color 0.2s; }
+        .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--primary); }
         .contact-form textarea { min-height: 150px; resize: vertical; }
         .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .btn-submit {
-            display: block; width: 100%; padding: 17px;
-            background: var(--accent); color: #fff;
-            border-radius: 10px; border: none; cursor: pointer;
-            font-family: inherit; font-size: 1rem; font-weight: 700;
-            transition: 0.25s; letter-spacing: 0.3px;
-        }
+        .btn-submit { display: block; width: 100%; padding: 17px; background: var(--accent); color: #fff; border-radius: 10px; border: none; cursor: pointer; font-family: inherit; font-size: 1rem; font-weight: 700; transition: 0.25s; letter-spacing: 0.3px; }
         .btn-submit:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
+        /* FOOTER */
         footer { background: var(--primary); color: #fff; padding: 40px 5% 20px; text-align: center; }
         .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 700px; margin: 0 auto 30px; text-align: left; }
         .footer-col h4 { color: var(--gold); margin-bottom: 15px; text-transform: uppercase; font-size: 0.9rem; }
         .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.75rem; opacity: 0.6; }
 
-        /* ── MOBILE NAV DRAWER ── */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: var(--primary);
-            z-index: 1002; /* below hamburger (1003) but above everything else */
-            flex-direction: column;
-            padding: 100px 28px 40px; /* top padding accounts for header height */
-            gap: 4px;
-            overflow-y: auto;
-            /* Slide in from right */
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-        }
-        .mobile-nav.open {
-            display: flex;
-            transform: translateX(0);
-        }
-        .mobile-nav a {
-            display: block; color: #fff; text-decoration: none;
-            font-size: 1.1rem; font-weight: 600;
-            padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .mobile-nav .mob-cta {
-            margin-top: 16px; background: var(--accent); color: #fff;
-            text-align: center; padding: 16px; border-radius: 8px;
-            border: none; font-size: 1rem; font-weight: 700;
-            text-decoration: none; display: block;
-        }
-
-        /* Prevent body scroll when menu is open */
-        body.nav-open { overflow: hidden; }
-
-        /* ── RESPONSIVE ── */
+        /* ── MOBILE ── */
         @media (max-width: 900px) {
-            /* Header */
             header { height: 64px; padding: 0 16px; }
-            .brand-main { display: inline; }
-            .brand-sub  { display: none; }
-
-            /* Hide desktop nav items */
-            nav .dropdown,
-            nav > a:not(.hamburger-placeholder),
-            nav .award-button,
-            nav .contact-header-btn { display: none !important; }
-
-            /* Show hamburger */
+            .brand-sub { display: none; }
+            nav { display: none; }
             .hamburger { display: flex !important; }
 
-            /* Guarantee strip */
+            /* Hero — tighter spacing and smaller text/button on mobile only */
+            .hero { margin-top: 64px; height: 55vh; }
+            .slide { background-size: cover; }
+            .hero-content h1 { font-size: 1.35rem; margin-bottom: 4px; }
+            .hero-content p { font-size: 0.9rem; margin-bottom: 14px; }
+            .hero-content .btn { padding: 11px 26px; font-size: 0.88rem; }
+
+            /* Guarantee */
             .guarantee-strip { padding: 28px 6%; }
             .guarantee-strip div { font-size: 0.92rem; line-height: 1.6; }
 
@@ -424,37 +332,45 @@
             .jstep:nth-child(3)::after { display: block; }
 
             /* Service cards */
-            .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-            .service-img { height: 140px; }
-            .service-info { padding: 14px 14px 18px; }
-            .service-info h3 { font-size: 0.95rem; margin-bottom: 6px; }
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .service-card:hover { transform: none; box-shadow: 0 6px 20px rgba(0,0,0,0.1), 0 1px 4px rgba(0,0,0,0.06); }
+            .service-img { height: 120px; }
+            .service-info { padding: 12px 12px 16px; }
+            .service-info h3 { font-size: 0.88rem; margin-bottom: 4px; }
             .service-info > p { display: none; }
             .service-includes { display: none; }
-            .service-info span { font-size: 0.8rem; }
+            .card-cta-link { font-size: 0.78rem; gap: 6px; }
+            .card-cta-link .arrow-bubble { width: 22px; height: 22px; font-size: 0.8rem; }
+            .click-hint { display: block; text-align: center; margin-top: 14px; font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: 0.3px; }
 
-            /* Reviews carousel */
-            .rev-carousel-wrap { overflow: hidden; width: 100%; max-width: 100%; }
+            /* ── Infinite swipeable reviews with peek on both sides ── */
+            .reviews-section { padding: 36px 0 28px; overflow: hidden; }
+            .reviews-section .section-title,
+            .reviews-section > p { padding: 0 5%; }
+            .rev-carousel-wrap { overflow: hidden; width: 100%; }
             .rev-track {
                 display: flex !important;
                 grid-template-columns: unset;
-                gap: 0;
-                transform: translateX(0);
-                transition: transform 0.45s cubic-bezier(0.4,0,0.2,1) !important;
+                gap: 12px;
+                transition: transform 0.38s cubic-bezier(0.4,0,0.2,1) !important;
                 will-change: transform;
             }
-            .rev-slide { min-width: 100%; width: 100%; padding: 0; box-sizing: border-box; flex-shrink: 0; }
-            .rev-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
-            .rev-dot {
-                width: 7px; height: 7px; border-radius: 50%;
-                background: #ddd4be; cursor: pointer; border: none;
-                transition: background 0.2s, transform 0.2s;
+            .rev-slide {
+                min-width: 76vw;
+                max-width: 76vw;
+                flex-shrink: 0;
+                box-sizing: border-box;
             }
+            .review-card { height: 100%; }
+            .rev-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+            .rev-dot { width: 7px; height: 7px; border-radius: 50%; background: #ddd4be; cursor: pointer; border: none; transition: background 0.2s, transform 0.2s; }
             .rev-dot.active { background: var(--primary); transform: scale(1.2); }
+            .verify-link { margin-left: 5%; }
 
             /* Map */
             .map-container { height: 280px; }
 
-            /* Contact form */
+            /* Contact */
             #contact { padding: 60px 5%; }
             .form-2col { grid-template-columns: 1fr; }
 
@@ -467,376 +383,393 @@
             .section-padding { padding: 48px 4%; }
             .guide-pills { flex-direction: column; align-items: stretch; }
             .guide-pill { justify-content: center; text-align: center; }
-            .journey { grid-template-columns: 1fr 1fr; }
             .jstep { padding: 16px 10px; }
             .jstep h4 { font-size: 0.78rem; }
-            .jstep p  { font-size: 0.68rem; }
+            .jstep p { font-size: 0.68rem; }
             .jnum { width: 24px; height: 24px; font-size: 0.68rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo-group">
-                <img src="logo.png" alt="Logo" class="logo-img">
-                <div class="brand-text">
-                    <span class="brand-main">Fantasy Fields</span>
-                    <span class="brand-sub">Landscaping</span>
-                </div>
-            </a>
-            
-            <nav>
-                <div class="dropdown">
-                    <button class="dropbtn">Services <span class="arrow">▼</span></button>
-                    <div class="dropdown-content">
-                        <a href="maintenance.html">Property Maintenance</a>
-                        <a href="landscaping.html">Landscaping Projects</a>
-                    </div>
-                </div>
-                <a href="about.html">About</a>
-                <a href="about.html" class="award-button">
-                    <span class="award-top">2025 Brant County</span>
-                    <span class="award-bottom">🏆 Award Winner</span>
-                </a>
-                <a href="#contact" class="contact-header-btn">Contact</a>
-                <!-- Hamburger sits at end of nav, shown only on mobile -->
-                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Mobile nav drawer (full-screen overlay) -->
-    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
-        <a href="#contact" class="mob-cta">Get a Free Estimate</a>
-        <a href="maintenance.html">Maintenance</a>
-        <a href="landscaping.html">Projects</a>
-        <a href="about.html">About</a>
-        <a href="about.html" style="color: var(--gold); border-color: rgba(197,160,89,0.3);">🏆 2025 Brant County Award Winner</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <section class="hero" style="margin-top: 85px;">
-        <div class="slide active" style="background-image: url('Homepage%20Lawn%20Care%20Example.jpg');"></div>
-        <div class="hero-content">
-            <h1>Landscaping and Maintenance</h1>
-            <p style="font-size: 1.2rem; margin-bottom: 25px;">Serving the North End Since 2022</p>
-            <a href="#services" class="btn">Get Started</a>
-        </div>
-    </section>
-
-    <section class="guarantee-strip">
-        <div style="max-width: 800px; margin: 0 auto; font-style: italic; opacity: 0.9;">
-            "For North End citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
-        </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section class="section-padding" id="services">
-        <h2 class="section-title">Two Ways We Work</h2>
-        <p class="guide-intro">Not sure which one fits? It's simple:</p>
-        <div class="guide-pills">
-            <div class="guide-pill">Want recurring care? → Maintenance</div>
-            <div class="guide-pill">Have a specific job? → Projects</div>
-        </div>
-
-        <p style="text-align:center; font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Our Process</p>
-        <div class="journey">
-            <div class="jstep">
-                <div class="jnum">1</div>
-                <h4>Select a Service</h4>
-                <p>Choose a plan or a project below</p>
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-group">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-main">Fantasy Fields</span>
+                <span class="brand-sub">Landscaping</span>
             </div>
-            <div class="jstep">
-                <div class="jnum">2</div>
-                <h4>Request a Quote</h4>
-                <p>Fill out the form — takes a minute</p>
-            </div>
-            <div class="jstep">
-                <div class="jnum">3</div>
-                <h4>Free On-Site Estimate</h4>
-                <p>We visit your property, no obligation</p>
-            </div>
-            <div class="jstep">
-                <div class="jnum">4</div>
-                <h4>Schedule the Work</h4>
-                <p>We handle everything from there</p>
-            </div>
-        </div>
-
-        <div class="get-started-divider">
-            <span class="gsd-line"></span>
-            <span class="gsd-text">Get Started</span>
-            <span class="gsd-line"></span>
-        </div>
-        <div class="services-grid">
-            <a href="maintenance.html" class="service-card">
-                <div class="service-img" style="background-image: url('Updated%20Lawn%20Care%202.jpg');"></div>
-                <div class="service-info">
-                    <h3>Weekly Maintenance</h3>
-                    <p>"Set it and forget it." Regular maintenance of your property, weekly or bi-weekly.</p>
-                    <ul class="service-includes">
-                        <li>Pristine mowing and edging</li>
-                        <li>Add-on garden bed care</li>
-                        <li>Add-on shrub and hedge trimming</li>
-                        <li>Build your own plan — pay for what suits your needs</li>
-                    </ul>
-                    <span style="color: var(--accent); font-weight:700; display:block; margin-top:4px;">View Packages →</span>
-                </div>
-            </a>
-            <a href="landscaping.html" class="service-card">
-                <div class="service-img" style="background-image: url('Landscape%20Design%20Project1.jpeg');"></div>
-                <div class="service-info">
-                    <h3>Landscape Projects</h3>
-                    <p>Bigger one-off projects for your property.</p>
-                    <ul class="service-includes">
-                        <li>Spring and fall seasonal cleanups</li>
-                        <li>Garden bed design and installation</li>
-                        <li>Roto tilling</li>
-                        <li>Major bush trimming</li>
-                    </ul>
-                    <span style="color: var(--accent); font-weight:700; display:block; margin-top:4px;">See Projects →</span>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- REVIEWS SECTION -->
-    <section class="reviews-section">
-        <h2 class="section-title">Verified Reviews</h2>
-        <p style="color: var(--gold); font-weight: 600; margin-bottom: 28px;">⭐⭐⭐⭐⭐ 5.0 (3 reviews)</p>
-
-        <div class="rev-carousel-wrap" id="revWrap">
-            <div class="rev-track" id="revTrack">
-
-                <div class="rev-slide">
-                    <div class="review-card">
-                        <div class="reviewer-header">
-                            <div class="profile-pic" style="background-color: #4caf50;">N</div>
-                            <div class="reviewer-meta">
-                                <span class="reviewer-name">Nathan P.</span>
-                                <span class="review-stats">2 reviews • 0 photos</span>
-                            </div>
-                        </div>
-                        <div class="google-stars">★★★★★ <span class="review-time">7 months ago</span></div>
-                        <p class="review-quote">Hard worker, completes job on time and open with communication.</p>
-                    </div>
-                </div>
-
-                <div class="rev-slide">
-                    <div class="review-card">
-                        <div class="reviewer-header">
-                            <div class="profile-pic" style="background-color: #78909c;">T</div>
-                            <div class="reviewer-meta">
-                                <span class="reviewer-name">Tim G.</span>
-                                <span class="review-stats">1 review • 0 photos</span>
-                            </div>
-                        </div>
-                        <div class="google-stars">★★★★★ <span class="review-time">7 months ago</span></div>
-                        <p class="review-quote">Adrian easily handled the steep back yard terrain and manages his own edge trimming equipment. Job done neatly and efficiently.</p>
-                    </div>
-                </div>
-
-                <div class="rev-slide">
-                    <div class="review-card">
-                        <div class="reviewer-header">
-                            <div class="profile-pic" style="background-color: #5c6bc0;">O</div>
-                            <div class="reviewer-meta">
-                                <span class="reviewer-name">Oliver G.</span>
-                                <span class="review-stats">0 reviews • 0 photos</span>
-                            </div>
-                        </div>
-                        <div class="google-stars">★★★★★ <span class="review-time">7 months ago</span></div>
-                        <p class="review-quote" style="opacity: 0.6;">(Rating only left on Google)</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="rev-dots">
-            <button class="rev-dot active" onclick="goSlide(0)"></button>
-            <button class="rev-dot" onclick="goSlide(1)"></button>
-            <button class="rev-dot" onclick="goSlide(2)"></button>
-        </div>
-
-        <a href="https://www.google.com/search?q=Fantasy+Fields+Landscaping+Brantford#lrd=0x882c65f8f668383f:0xa27efdf68d03ae47,3" target="_blank" class="verify-link">
-            Leave a Review on Google
         </a>
-    </section>
-
-    <!-- MAP SECTION -->
-    <section class="map-section">
-        <h2 class="section-title">Serving the North End</h2>
-        <p style="text-align:center; color:#7a8c7c; font-size:0.9rem; margin-top:-10px; margin-bottom:20px;">We focus on the area we know best — faster response times, familiar faces.</p>
-        <div class="area-pills">
-            <div class="area-pill">📍 Cedarland</div>
-        </div>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11634.542284930263!2d-80.2464!3d43.1794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1715610000000!5m2!1sen!2sca" 
-                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <h2>Free Estimate</h2>
-        <p class="contact-sub">No obligation — just a straight answer on what it'll cost.</p>
-        <form class="contact-form" id="quoteForm" action="https://formspree.io/f/xreaewbk" method="POST">
-            <input type="hidden" name="_subject" value="New Estimate Request - Fantasy Fields">
-            <div class="form-2col">
-                <input type="text" name="name" placeholder="Name" required autocomplete="name">
-                <input type="tel" name="phone" placeholder="Phone" required autocomplete="tel">
+        <nav>
+            <div class="dropdown">
+                <button class="dropbtn">Services <span class="arrow">▼</span></button>
+                <div class="dropdown-content">
+                    <a href="maintenance.html">Property Maintenance</a>
+                    <a href="landscaping.html">Landscaping Projects</a>
+                </div>
             </div>
-            <input type="email" name="email" placeholder="Email" required autocomplete="email">
-            <input type="text" name="address" placeholder="Address" required autocomplete="street-address">
-            <select name="service">
-                <option value="">What are you looking for? (optional)</option>
-                <option>Lawn Maintenance</option>
-                <option>Lawn and Garden Maintenance</option>
-                <option>Lawn, Garden and Shrub Maintenance</option>
-                <option>Seasonal Cleanup</option>
-                <option>Garden Bed Design and Installation</option>
-                <option>Roto Tilling</option>
-            </select>
-            <textarea name="message" id="messageBox" placeholder="Anything else we should know?"></textarea>
-            <button type="submit" class="btn-submit">Get in Touch</button>
-        </form>
-    </section>
+            <a href="about.html">About</a>
+            <a href="about.html" class="award-button">
+                <span class="award-top">2025 Brant County</span>
+                <span class="award-bottom">🏆 Award Winner</span>
+            </a>
+            <a href="#contact" class="contact-header-btn">Contact</a>
+        </nav>
+        <button class="hamburger" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Area</h4>
-                <p>• North End Brantford<br>• Cedarland<br>• Brier Park</p>
+<nav class="nav-drawer" id="navDrawer">
+    <a href="maintenance.html">Services</a>
+    <a href="landscaping.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+</nav>
+
+<section class="hero">
+    <div class="slide active" style="background-image: url('Homepage%20Lawn%20Care%20Example.jpg');"></div>
+    <div class="hero-content">
+        <h1>Landscaping and Maintenance</h1>
+        <p>Serving the North End Since 2022</p>
+        <a href="#services" class="btn">Get Started</a>
+    </div>
+</section>
+
+<section class="guarantee-strip">
+    <div>
+        "For North End citizens who've carried the burden long enough — choose landscaping that covers all of the details, with a guarantee: if we don't deliver on the results that we promised, we'll make it right, or it's free."
+    </div>
+</section>
+
+<section class="section-padding" id="services">
+    <h2 class="section-title">Two Ways We Work</h2>
+    <p class="guide-intro">Not sure which one fits? It's simple:</p>
+    <div class="guide-pills">
+        <div class="guide-pill">Want recurring care? → Maintenance</div>
+        <div class="guide-pill">Have a specific job? → Projects</div>
+    </div>
+
+    <p style="text-align:center; font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Our Process</p>
+    <div class="journey">
+        <div class="jstep"><div class="jnum">1</div><h4>Select a Service</h4><p>Choose a plan or a project below</p></div>
+        <div class="jstep"><div class="jnum">2</div><h4>Request a Quote</h4><p>Fill out the form — takes a minute</p></div>
+        <div class="jstep"><div class="jnum">3</div><h4>Free On-Site Estimate</h4><p>We visit your property, no obligation</p></div>
+        <div class="jstep"><div class="jnum">4</div><h4>Schedule the Work</h4><p>We handle everything from there</p></div>
+    </div>
+
+    <div class="get-started-divider">
+        <span class="gsd-line"></span>
+        <span class="gsd-text">Get Started</span>
+        <span class="gsd-line"></span>
+    </div>
+
+    <div class="services-grid">
+        <a href="maintenance.html" class="service-card">
+            <div class="service-img" style="background-image: url('Updated%20Lawn%20Care%202.jpg');"></div>
+            <div class="service-info">
+                <h3>Weekly Maintenance</h3>
+                <p>"Set it and forget it." Regular maintenance of your property, weekly or bi-weekly.</p>
+                <ul class="service-includes">
+                    <li>Pristine mowing and edging</li>
+                    <li>Add-on garden bed care</li>
+                    <li>Add-on shrub and hedge trimming</li>
+                    <li>Build your own plan — pay for what suits your needs</li>
+                </ul>
+                <span class="card-cta-link">View Packages <span class="arrow-bubble">›</span></span>
             </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <a href="tel:5197324649">📞 519-732-4649</a>
-                <a href="mailto:fantasyfieldscontact@gmail.com">✉️ Email Us</a>
+        </a>
+        <a href="landscaping.html" class="service-card">
+            <div class="service-img" style="background-image: url('Landscape%20Design%20Project1.jpeg');"></div>
+            <div class="service-info">
+                <h3>Landscape Projects</h3>
+                <p>Bigger one-off projects for your property.</p>
+                <ul class="service-includes">
+                    <li>Spring and fall seasonal cleanups</li>
+                    <li>Garden bed design and installation</li>
+                    <li>Roto tilling</li>
+                    <li>Major bush trimming</li>
+                </ul>
+                <span class="card-cta-link">See Projects <span class="arrow-bubble">›</span></span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Mobile only: centred hint below both cards -->
+    <p class="click-hint">Click to learn more!</p>
+</section>
+
+<section class="reviews-section">
+    <h2 class="section-title">Verified Reviews</h2>
+    <p style="color: var(--gold); font-weight: 600; margin-bottom: 28px;">⭐⭐⭐⭐⭐ 5.0 (3 reviews)</p>
+
+    <div class="rev-carousel-wrap" id="revWrap">
+        <div class="rev-track" id="revTrack">
+            <div class="rev-slide">
+                <div class="review-card">
+                    <div class="reviewer-header">
+                        <div class="profile-pic" style="background-color: #4caf50;">N</div>
+                        <div class="reviewer-meta">
+                            <span class="reviewer-name">Nathan P.</span>
+                            <span class="review-stats">2 reviews • 0 photos</span>
+                        </div>
+                    </div>
+                    <div class="google-stars">★★★★★ <span class="review-time">7 months ago</span></div>
+                    <p class="review-quote">Hard worker, completes job on time and open with communication.</p>
+                </div>
+            </div>
+            <div class="rev-slide">
+                <div class="review-card">
+                    <div class="reviewer-header">
+                        <div class="profile-pic" style="background-color: #78909c;">T</div>
+                        <div class="reviewer-meta">
+                            <span class="reviewer-name">Tim G.</span>
+                            <span class="review-stats">1 review • 0 photos</span>
+                        </div>
+                    </div>
+                    <div class="google-stars">★★★★★ <span class="review-time">7 months ago</span></div>
+                    <p class="review-quote">Adrian easily handled the steep back yard terrain and manages his own edge trimming equipment. Job done neatly and efficiently.</p>
+                </div>
+            </div>
+            <div class="rev-slide">
+                <div class="review-card">
+                    <div class="reviewer-header">
+                        <div class="profile-pic" style="background-color: #5c6bc0;">O</div>
+                        <div class="reviewer-meta">
+                            <span class="reviewer-name">Oliver G.</span>
+                            <span class="review-stats">0 reviews • 0 photos</span>
+                        </div>
+                    </div>
+                    <div class="google-stars">★★★★★ <span class="review-time">7 months ago</span></div>
+                    <p class="review-quote" style="opacity: 0.6;">(Rating only left on Google)</p>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">Fantasy Fields is a registered business in Ontario.</div>
-    </footer>
+    </div>
 
-    <script>
-        /* ── Hamburger menu ── */
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
+    <div class="rev-dots">
+        <button class="rev-dot active" onclick="goSlide(0)"></button>
+        <button class="rev-dot" onclick="goSlide(1)"></button>
+        <button class="rev-dot" onclick="goSlide(2)"></button>
+    </div>
 
-        function openMenu() {
-            mobileNav.classList.add('open');
-            hamburger.classList.add('open');
-            hamburger.setAttribute('aria-expanded', 'true');
-            mobileNav.setAttribute('aria-hidden', 'false');
-            document.body.classList.add('nav-open');
+    <a href="https://www.google.com/search?q=Fantasy+Fields+Landscaping+Brantford#lrd=0x882c65f8f668383f:0xa27efdf68d03ae47,3" target="_blank" class="verify-link">
+        Leave a Review on Google
+    </a>
+</section>
+
+<section class="map-section">
+    <h2 class="section-title">Serving the North End</h2>
+    <p style="text-align:center; color:#7a8c7c; font-size:0.9rem; margin-top:-10px; margin-bottom:20px;">We focus on the area we know best — faster response times, familiar faces.</p>
+    <div class="area-pills">
+        <div class="area-pill">📍 Cedarland</div>
+    </div>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11634.542284930263!2d-80.2464!3d43.1794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1715610000000!5m2!1sen!2sca"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Free Estimate</h2>
+    <p class="contact-sub">No obligation — just a straight answer on what it'll cost.</p>
+    <form class="contact-form" id="quoteForm" action="https://formspree.io/f/xreaewbk" method="POST">
+        <input type="hidden" name="_subject" value="New Estimate Request - Fantasy Fields">
+        <div class="form-2col">
+            <input type="text" name="name" placeholder="Name" required autocomplete="name">
+            <input type="tel" name="phone" placeholder="Phone" required autocomplete="tel">
+        </div>
+        <input type="email" name="email" placeholder="Email" required autocomplete="email">
+        <input type="text" name="address" placeholder="Address" required autocomplete="street-address">
+        <select name="service">
+            <option value="">What are you looking for? (optional)</option>
+            <option>Lawn Maintenance</option>
+            <option>Lawn and Garden Maintenance</option>
+            <option>Lawn, Garden and Shrub Maintenance</option>
+            <option>Seasonal Cleanup</option>
+            <option>Garden Bed Design and Installation</option>
+            <option>Roto Tilling</option>
+        </select>
+        <textarea name="message" id="messageBox" placeholder="Anything else we should know?"></textarea>
+        <button type="submit" class="btn-submit">Get in Touch</button>
+    </form>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>Area</h4>
+            <p>• North End Brantford<br>• Cedarland<br>• Brier Park</p>
+        </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="tel:5197324649">📞 519-732-4649</a>
+            <a href="mailto:fantasyfieldscontact@gmail.com">✉️ Email Us</a>
+        </div>
+    </div>
+    <div class="footer-bottom">Fantasy Fields is a registered business in Ontario.</div>
+</footer>
+
+<script>
+    /* Hamburger — exact same as projects page */
+    function toggleMenu() {
+        document.getElementById('menuBtn').classList.toggle('open');
+        document.getElementById('navDrawer').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+        const btn = document.getElementById('menuBtn');
+        const drawer = document.getElementById('navDrawer');
+        if (!btn.contains(e.target) && !drawer.contains(e.target)) {
+            btn.classList.remove('open');
+            drawer.classList.remove('open');
         }
+    });
 
-        function closeMenu() {
-            mobileNav.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            mobileNav.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('nav-open');
-        }
-
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (mobileNav.classList.contains('open')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
-
-        // Close when a nav link is clicked
-        mobileNav.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', closeMenu);
-        });
-
-        // Close when clicking outside the menu
-        document.addEventListener('click', (e) => {
-            if (mobileNav.classList.contains('open') &&
-                !mobileNav.contains(e.target) &&
-                !hamburger.contains(e.target)) {
-                closeMenu();
-            }
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
-                closeMenu();
-            }
-        });
-
-        /* ── Review carousel ── */
-        let current = 0;
+    /* ── Infinite swipeable reviews — no jump ── */
+    (function() {
+        const wrap  = document.getElementById('revWrap');
         const track = document.getElementById('revTrack');
         const dots  = document.querySelectorAll('.rev-dot');
-        const total = 3;
+        const REAL  = 3;
+        const CLONES_EACH = 2; // clones on each side for seamless wrap
+        let pos = 0;       // current real index (0-based)
+        let domIdx = 0;    // position in the extended DOM list
         let autoTimer;
+        let built = false;
 
-        function goSlide(n) {
-            current = (n + total) % total;
-            track.style.transform = `translateX(-${current * 100}%)`;
-            dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        function isMobile() { return window.innerWidth <= 900; }
+
+        function slideW() {
+            const s = track.querySelector('.rev-slide');
+            return s ? s.getBoundingClientRect().width + 12 : 0;
         }
 
-        function initCarousel() {
-            if (window.innerWidth <= 900) {
-                goSlide(0);
-                clearInterval(autoTimer);
-                autoTimer = setInterval(() => goSlide(current + 1), 5000);
-            } else {
-                clearInterval(autoTimer);
-                track.style.transform = '';
+        function peekLeft() {
+            // how far to offset so prev card peeks on the left
+            return (wrap.offsetWidth - (track.querySelector('.rev-slide').getBoundingClientRect().width)) / 2;
+        }
+
+        function buildClones() {
+            // Remove old clones
+            track.querySelectorAll('.rev-clone').forEach(c => c.remove());
+            const originals = Array.from(track.querySelectorAll('.rev-slide'));
+            // Prepend clones of last N originals
+            for (let i = CLONES_EACH - 1; i >= 0; i--) {
+                const clone = originals[(REAL - CLONES_EACH + i) % REAL].cloneNode(true);
+                clone.classList.add('rev-clone');
+                track.insertBefore(clone, track.firstChild);
             }
+            // Append clones of first N originals
+            for (let i = 0; i < CLONES_EACH; i++) {
+                const clone = originals[i % REAL].cloneNode(true);
+                clone.classList.add('rev-clone');
+                track.appendChild(clone);
+            }
+            built = true;
         }
 
-        initCarousel();
-        window.addEventListener('resize', initCarousel);
+        // Total slides in DOM = REAL + CLONES_EACH * 2
+        // Real slides start at DOM index CLONES_EACH
+        function domFromReal(real) {
+            return real + CLONES_EACH;
+        }
 
-        // Touch swipe
+        function moveTo(dIdx, animate) {
+            const offset = dIdx * slideW() - peekLeft();
+            track.style.transition = animate ? 'transform 0.38s cubic-bezier(0.4,0,0.2,1)' : 'none';
+            track.style.transform  = `translateX(-${offset}px)`;
+        }
+
+        function goTo(realIdx, animate = true) {
+            pos    = ((realIdx % REAL) + REAL) % REAL;
+            domIdx = domFromReal(pos);
+            moveTo(domIdx, animate);
+            dots.forEach((d, i) => d.classList.toggle('active', i === pos));
+        }
+
+        // After animation: if we're on a clone, silently jump to the real equivalent
+        track.addEventListener('transitionend', () => {
+            if (!isMobile()) return;
+            const totalDom = REAL + CLONES_EACH * 2;
+            if (domIdx <= CLONES_EACH - 1) {
+                // We're in the leading clones — jump to equivalent real slide at end
+                domIdx = domIdx + REAL;
+                moveTo(domIdx, false);
+            } else if (domIdx >= CLONES_EACH + REAL) {
+                // We're in the trailing clones — jump to equivalent real slide at start
+                domIdx = domIdx - REAL;
+                moveTo(domIdx, false);
+            }
+        });
+
+        function init() {
+            if (!isMobile()) {
+                if (built) track.querySelectorAll('.rev-clone').forEach(c => c.remove());
+                built = false;
+                track.style.transform = '';
+                track.style.transition = '';
+                clearInterval(autoTimer);
+                return;
+            }
+            buildClones();
+            pos = 0;
+            domIdx = domFromReal(0);
+            moveTo(domIdx, false);
+            dots.forEach((d, i) => d.classList.toggle('active', i === 0));
+            clearInterval(autoTimer);
+            autoTimer = setInterval(() => {
+                domIdx++;
+                pos = ((domIdx - CLONES_EACH) % REAL + REAL) % REAL;
+                moveTo(domIdx, true);
+                dots.forEach((d, i) => d.classList.toggle('active', i === pos));
+            }, 5000);
+        }
+
+        init();
+        window.addEventListener('resize', () => { built = false; init(); });
+
+        // Touch
         let startX = 0;
         track.addEventListener('touchstart', e => {
+            if (!isMobile()) return;
             startX = e.touches[0].clientX;
             clearInterval(autoTimer);
         }, { passive: true });
+
         track.addEventListener('touchend', e => {
-            if (window.innerWidth > 900) return;
+            if (!isMobile()) return;
             const diff = startX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 40) goSlide(diff > 0 ? current + 1 : current - 1);
-            autoTimer = setInterval(() => goSlide(current + 1), 5000);
-        });
-
-        // Mouse drag
-        let isDragging = false, dragStartX = 0;
-        track.addEventListener('mousedown', e => { if (window.innerWidth > 900) return; isDragging = true; dragStartX = e.clientX; clearInterval(autoTimer); });
-        window.addEventListener('mouseup', e => {
-            if (!isDragging || window.innerWidth > 900) return; isDragging = false;
-            const diff = dragStartX - e.clientX;
-            if (Math.abs(diff) > 40) goSlide(diff > 0 ? current + 1 : current - 1);
-            autoTimer = setInterval(() => goSlide(current + 1), 5000);
-        });
-
-        /* ── URL param pre-fill ── */
-        window.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            const packageType = params.get('package');
-            const services = params.get('services');
-            if (packageType && services) {
-                const messageBox = document.getElementById('messageBox');
-                if (messageBox) {
-                    messageBox.value = `Hi! I used the Plan Builder and I am interested in the ${packageType}.\n\nServices I'd like included: ${services}.\n\nPlease let me know when you can stop by for an estimate!`;
-                }
+            if (Math.abs(diff) > 35) {
+                const dir = diff > 0 ? 1 : -1;
+                domIdx += dir;
+                pos = ((domIdx - CLONES_EACH) % REAL + REAL) % REAL;
+                moveTo(domIdx, true);
+                dots.forEach((d, i) => d.classList.toggle('active', i === pos));
             }
+            autoTimer = setInterval(() => {
+                domIdx++;
+                pos = ((domIdx - CLONES_EACH) % REAL + REAL) % REAL;
+                moveTo(domIdx, true);
+                dots.forEach((d, i) => d.classList.toggle('active', i === pos));
+            }, 5000);
         });
-    </script>
+
+        window.goSlide = n => goTo(n);
+    })();
+
+    /* URL param pre-fill */
+    window.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const packageType = params.get('package');
+        const services    = params.get('services');
+        if (packageType && services) {
+            const mb = document.getElementById('messageBox');
+            if (mb) mb.value = `Hi! I used the Plan Builder and I am interested in the ${packageType}.\n\nServices I'd like included: ${services}.\n\nPlease let me know when you can stop by for an estimate!`;
+        }
+    });
+</script>
 </body>
 </html>
