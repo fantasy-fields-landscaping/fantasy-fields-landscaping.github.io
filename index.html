@@ -112,6 +112,28 @@
         }
         .contact-header-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
+        /* ── HAMBURGER — always in the DOM, shown only on mobile ── */
+        .hamburger {
+            display: none; /* hidden on desktop */
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1003; /* above everything */
+            flex-shrink: 0;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2px;
+            background: #fff; border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+            pointer-events: none;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
         /* HERO SECTION */
         .hero { 
             position: relative; 
@@ -129,7 +151,6 @@
             background: center top no-repeat; 
             background-size: 100% auto;
         }
-        /* fade hero into guarantee strip */
         .hero::after {
             content: ''; position: absolute; bottom: 0; left: 0; right: 0;
             height: 120px;
@@ -163,7 +184,6 @@
         .section-padding { padding: 70px 5%; max-width: 1400px; margin: 0 auto; }
         .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-bottom: 20px; color: var(--primary); }
 
-        /* guide pills */
         .guide-intro { text-align: center; font-size: 1rem; color: #6b7c6d; margin-bottom: 18px; }
         .guide-pills {
             display: flex; justify-content: center; gap: 12px;
@@ -204,7 +224,6 @@
             background: #faf7f2; z-index: 1; line-height: 1; padding: 0 1px;
         }
 
-        /* get started divider */
         .get-started-divider {
             display: flex; align-items: center; gap: 16px;
             margin-bottom: 28px;
@@ -240,7 +259,6 @@
         }
         .reviews-section .section-title { font-size: 1.8rem; margin-bottom: 6px; }
 
-        /* ── Desktop: 3-column grid, no carousel ── */
         .rev-carousel-wrap {
             position: relative;
             max-width: 1200px;
@@ -251,7 +269,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            transform: none !important; /* disable carousel transform on desktop */
+            transform: none !important;
             transition: none;
         }
         .rev-slide {
@@ -260,7 +278,7 @@
             padding: 0;
             flex-shrink: unset;
         }
-        .rev-dots { display: none; } /* hide dots on desktop */
+        .rev-dots { display: none; }
 
         .review-card {
             background: var(--bg-light);
@@ -287,14 +305,6 @@
         .google-stars { color: #fbbc04; font-size: 0.85rem; margin: 5px 0; }
         .review-time { color: #70757a; font-size: 0.78rem; margin-left: 5px; }
         .review-quote { font-size: 0.88rem; color: #3c4043; line-height: 1.5; font-style: italic; }
-
-        .rev-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
-        .rev-dot {
-            width: 7px; height: 7px; border-radius: 50%;
-            background: #ddd4be; cursor: pointer; border: none;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .rev-dot.active { background: var(--primary); transform: scale(1.2); }
 
         .verify-link {
             margin-top: 16px;
@@ -351,28 +361,25 @@
         .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: block; margin-bottom: 8px; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.75rem; opacity: 0.6; }
 
-        /* ── HAMBURGER (mobile only) ── */
-        .hamburger {
-            display: none;
-            flex-direction: column; gap: 5px;
-            background: none; border: none; cursor: pointer; padding: 6px;
-        }
-        .hamburger span {
-            display: block; width: 22px; height: 2px;
-            background: #fff; border-radius: 2px; transition: 0.3s;
-        }
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
+        /* ── MOBILE NAV DRAWER ── */
         .mobile-nav {
-            display: none; position: fixed;
-            top: 85px; left: 0; right: 0; bottom: 0;
-            background: var(--primary); z-index: 1000;
-            flex-direction: column; padding: 24px 28px 40px; gap: 4px;
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--primary);
+            z-index: 1002; /* below hamburger (1003) but above everything else */
+            flex-direction: column;
+            padding: 100px 28px 40px; /* top padding accounts for header height */
+            gap: 4px;
             overflow-y: auto;
+            /* Slide in from right */
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
         }
-        .mobile-nav.open { display: flex; }
+        .mobile-nav.open {
+            display: flex;
+            transform: translateX(0);
+        }
         .mobile-nav a {
             display: block; color: #fff; text-decoration: none;
             font-size: 1.1rem; font-weight: 600;
@@ -385,24 +392,30 @@
             text-decoration: none; display: block;
         }
 
+        /* Prevent body scroll when menu is open */
+        body.nav-open { overflow: hidden; }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
-            /* ── Header ── */
+            /* Header */
             header { height: 64px; padding: 0 16px; }
             .brand-main { display: inline; }
             .brand-sub  { display: none; }
-            .mobile-nav { top: 64px; }
-            /* hide all desktop nav items, show hamburger */
-            nav .dropdown,
-            nav > a,
-            nav .award-button,
-            nav .contact-header-btn { display: none; }
-            .hamburger { display: flex; }
 
-            /* ── Guarantee strip ── */
+            /* Hide desktop nav items */
+            nav .dropdown,
+            nav > a:not(.hamburger-placeholder),
+            nav .award-button,
+            nav .contact-header-btn { display: none !important; }
+
+            /* Show hamburger */
+            .hamburger { display: flex !important; }
+
+            /* Guarantee strip */
             .guarantee-strip { padding: 28px 6%; }
             .guarantee-strip div { font-size: 0.92rem; line-height: 1.6; }
 
-            /* ── Journey ── */
+            /* Journey */
             .journey { grid-template-columns: 1fr 1fr; }
             .jstep:nth-child(2)::after { display: none; }
             .jstep:nth-child(2) { border-right: none; }
@@ -410,23 +423,16 @@
             .jstep:nth-child(4) { border-top: 1px solid #ddd4be; border-right: none; }
             .jstep:nth-child(3)::after { display: block; }
 
-            /* ── Service cards: side by side, compact ── */
-            .services-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 14px;
-            }
+            /* Service cards */
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
             .service-img { height: 140px; }
             .service-info { padding: 14px 14px 18px; }
             .service-info h3 { font-size: 0.95rem; margin-bottom: 6px; }
             .service-info > p { display: none; }
-            .service-includes { gap: 5px; margin: 0 0 10px; }
-            .service-includes li { font-size: 0.75rem; }
+            .service-includes { display: none; }
             .service-info span { font-size: 0.8rem; }
 
-            /* ── Hide checklist on mobile so images show properly ── */
-            .service-includes { display: none; }
-
-            /* ── Reviews: carousel on mobile ── */
+            /* Reviews carousel */
             .rev-carousel-wrap { overflow: hidden; width: 100%; max-width: 100%; }
             .rev-track {
                 display: flex !important;
@@ -437,21 +443,23 @@
                 will-change: transform;
             }
             .rev-slide { min-width: 100%; width: 100%; padding: 0; box-sizing: border-box; flex-shrink: 0; }
-            .rev-dots { display: flex; }
+            .rev-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+            .rev-dot {
+                width: 7px; height: 7px; border-radius: 50%;
+                background: #ddd4be; cursor: pointer; border: none;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .rev-dot.active { background: var(--primary); transform: scale(1.2); }
 
-            /* ── Map ── */
+            /* Map */
             .map-container { height: 280px; }
 
-            /* ── Contact form ── */
+            /* Contact form */
             #contact { padding: 60px 5%; }
             .form-2col { grid-template-columns: 1fr; }
 
-            /* ── Footer ── */
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                text-align: center;
-            }
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px; text-align: center; }
             .footer-col p, .footer-col a { text-align: center; }
         }
 
@@ -493,6 +501,7 @@
                     <span class="award-bottom">🏆 Award Winner</span>
                 </a>
                 <a href="#contact" class="contact-header-btn">Contact</a>
+                <!-- Hamburger sits at end of nav, shown only on mobile -->
                 <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
                     <span></span><span></span><span></span>
                 </button>
@@ -500,17 +509,17 @@
         </div>
     </header>
 
-    <!-- Mobile nav drawer -->
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="#contact">Contact</a>
+    <!-- Mobile nav drawer (full-screen overlay) -->
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <a href="#contact" class="mob-cta">Get a Free Estimate</a>
         <a href="maintenance.html">Maintenance</a>
         <a href="landscaping.html">Projects</a>
         <a href="about.html">About</a>
         <a href="about.html" style="color: var(--gold); border-color: rgba(197,160,89,0.3);">🏆 2025 Brant County Award Winner</a>
-        <a href="#contact" class="mob-cta">Get a Free Estimate</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <section class="hero">
+    <section class="hero" style="margin-top: 85px;">
         <div class="slide active" style="background-image: url('Homepage%20Lawn%20Care%20Example.jpg');"></div>
         <div class="hero-content">
             <h1>Landscaping and Maintenance</h1>
@@ -534,7 +543,6 @@
             <div class="guide-pill">Have a specific job? → Projects</div>
         </div>
 
-        <!-- client journey -->
         <p style="text-align:center; font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Our Process</p>
         <div class="journey">
             <div class="jstep">
@@ -716,7 +724,57 @@
         <div class="footer-bottom">Fantasy Fields is a registered business in Ontario.</div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        /* ── Hamburger menu ── */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+
+        function openMenu() {
+            mobileNav.classList.add('open');
+            hamburger.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+            mobileNav.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('nav-open');
+        }
+
+        function closeMenu() {
+            mobileNav.classList.remove('open');
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobileNav.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('nav-open');
+        }
+
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileNav.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close when a nav link is clicked
+        mobileNav.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', closeMenu);
+        });
+
+        // Close when clicking outside the menu
+        document.addEventListener('click', (e) => {
+            if (mobileNav.classList.contains('open') &&
+                !mobileNav.contains(e.target) &&
+                !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+
         /* ── Review carousel ── */
         let current = 0;
         const track = document.getElementById('revTrack');
@@ -767,20 +825,6 @@
             autoTimer = setInterval(() => goSlide(current + 1), 5000);
         });
 
-        /* ── Hamburger menu ── */
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
-        hamburger.addEventListener('click', () => {
-            const open = mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('open', open);
-            hamburger.setAttribute('aria-expanded', open);
-        });
-        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            mobileNav.classList.remove('open');
-            hamburger.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', false);
-        }));
-
         /* ── URL param pre-fill ── */
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
@@ -788,4 +832,11 @@
             const services = params.get('services');
             if (packageType && services) {
                 const messageBox = document.getElementById('messageBox');
-                messageBox.value = `Hi! I used the Plan Builder and I am interested in the ${packageType}.\n\nServices I'd like included: ${services}.\n\nPlease let me know when you can stop by f
+                if (messageBox) {
+                    messageBox.value = `Hi! I used the Plan Builder and I am interested in the ${packageType}.\n\nServices I'd like included: ${services}.\n\nPlease let me know when you can stop by for an estimate!`;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
