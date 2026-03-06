@@ -4,58 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects | Fantasy Fields Landscaping</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --green: #1b2f1e;
+            --primary: #1b2f1e;
+            --accent: #8b3a2d;
+            --accent-hover: #a64b3c;
             --bg: #f5ede0;
             --card-bg: #fdf8f0;
-            --gold: #c9a84c;
+            --gold: #c5a059;
             --muted: #7a6e60;
             --border: #e8dccb;
             --radius: 22px;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Nunito', sans-serif; background: var(--bg); color: #2c2c1e; padding-top: 85px; }
 
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--bg);
-            color: #2c2c1e;
-            padding-top: 70px;
-        }
-
-        /* ── HEADER (untouched) ── */
         header {
-            position: fixed; top: 0; width: 100%; height: 70px;
-            background: var(--green); z-index: 1000;
-            display: flex; align-items: center; justify-content: center; padding: 0 5%;
+            position: fixed; top: 0; width: 100%; height: 85px;
+            background: rgba(27, 47, 30, 0.95);
+            z-index: 1001;
+            display: flex; justify-content: center; padding: 0 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
         }
-        .header-container {
-            width: 100%; max-width: 1400px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
+        .header-container { width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; }
         .logo-group { display: flex; align-items: center; text-decoration: none; color: #fff; }
-        .logo-img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
-        .brand-main { font-weight: 700; font-size: 1.2rem; }
-        .brand-sub { font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
-        .hamburger {
-            background: none; border: none; cursor: pointer;
-            display: flex; flex-direction: column; gap: 5px; padding: 4px;
-        }
-        .hamburger span {
-            display: block; width: 22px; height: 2px;
-            background: #fff; border-radius: 2px;
-            transition: transform .3s ease, opacity .3s ease;
-        }
+        .logo-img { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
+        .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .brand-main { font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; font-family: 'Inter', sans-serif; }
+        .brand-sub { font-weight: 400; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2.5px; margin-top: 2px; font-family: 'Inter', sans-serif; }
+
+        nav { display: flex; align-items: center; gap: 25px; }
+        nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 1.05rem; font-family: 'Inter', sans-serif; transition: color 0.2s; }
+        nav a:hover { color: var(--gold); }
+
+        .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s ease, opacity .3s ease; }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
         .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         .nav-drawer {
-            position: fixed; top: 70px; right: 0;
-            width: 200px;
-            background: var(--green);
+            position: fixed; top: 64px; right: 0; width: 200px;
+            background: var(--primary);
             border-left: 1px solid rgba(255,255,255,.1);
             border-bottom: 1px solid rgba(255,255,255,.1);
             border-radius: 0 0 0 16px;
@@ -63,161 +55,59 @@
             padding: 8px 0 12px;
             transform: translateX(110%);
             transition: transform .3s cubic-bezier(.4,0,.2,1);
-            z-index: 999;
+            z-index: 1000;
         }
         .nav-drawer.open { transform: translateX(0); }
-        .nav-drawer a {
-            color: rgba(255,255,255,.85); text-decoration: none;
-            font-weight: 600; font-size: 0.95rem;
-            padding: 12px 24px;
-            transition: background .15s;
-        }
+        .nav-drawer a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 12px 24px; transition: background .15s; }
         .nav-drawer a:hover { background: rgba(255,255,255,.08); color: #fff; }
 
-        /* ── PAGE TITLE ── */
-        .page-title {
-            padding: 22px 16px 4px;
-            max-width: 540px;
-            margin: 0 auto;
-        }
-        .page-title h1 {
-            font-family: 'Nunito', sans-serif;
-            font-size: .8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--muted);
-        }
+        /* PAGE CONTENT */
+        .page-title { padding: 22px 16px 4px; max-width: 540px; margin: 0 auto; }
+        .page-title h1 { font-family: 'Nunito', sans-serif; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
 
-        /* ── CARDS ── */
-        .cards {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 540px;
-            margin: 14px auto 60px;
-            padding: 0 16px;
-        }
+        .cards { display: flex; flex-direction: column; gap: 16px; max-width: 540px; margin: 14px auto 60px; padding: 0 16px; }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 4px 18px rgba(27,47,30,.08);
-            border: 1.5px solid var(--border);
-            transition: box-shadow .25s;
-        }
+        .card { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 18px rgba(27,47,30,.08); border: 1.5px solid var(--border); transition: box-shadow .25s; }
         .card:hover { box-shadow: 0 8px 28px rgba(27,47,30,.13); }
 
-        /* before/after side-by-side thumbnails */
-        .card-thumb-ba {
-            position: relative;
-            width: 100%;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-        .card-thumb-ba img {
-            width: 100%; aspect-ratio: 4/3;
-            object-fit: cover; display: block;
-        }
+        .card-thumb-ba { position: relative; width: 100%; cursor: pointer; -webkit-tap-highlight-color: transparent; display: grid; grid-template-columns: 1fr 1fr; }
+        .card-thumb-ba img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
         .ba-half { position: relative; overflow: hidden; }
-        .ba-half::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(27,47,30,.68) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .ba-tag {
-            position: absolute; bottom: 8px; left: 8px; z-index: 1;
-            background: rgba(27,47,30,.82);
-            color: #e8d5a3;
-            font-size: .6rem; font-weight: 700;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            padding: 3px 9px; border-radius: 20px;
-        }
+        .ba-half::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(27,47,30,.68) 0%, transparent 50%); pointer-events: none; }
+        .ba-tag { position: absolute; bottom: 8px; left: 8px; z-index: 1; background: rgba(27,47,30,.82); color: #e8d5a3; font-size: .6rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; }
 
-        /* single thumbnail */
-        .card-thumb-single {
-            position: relative; width: 100%;
-            cursor: pointer; -webkit-tap-highlight-color: transparent;
-        }
-        .card-thumb-single img {
-            width: 100%; aspect-ratio: 16/9;
-            object-fit: cover; display: block;
-        }
-        .card-thumb-single::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(27,47,30,.65) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .play-icon {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); z-index: 1;
-            width: 44px; height: 44px; border-radius: 50%;
-            background: rgba(255,255,255,.25);
-            border: 2px solid rgba(255,255,255,.6);
-            display: flex; align-items: center; justify-content: center;
-            pointer-events: none;
-        }
+        .card-thumb-single { position: relative; width: 100%; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+        .card-thumb-single img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+        .card-thumb-single::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(27,47,30,.65) 0%, transparent 50%); pointer-events: none; }
+        .play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.25); border: 2px solid rgba(255,255,255,.6); display: flex; align-items: center; justify-content: center; pointer-events: none; }
         .play-icon svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
 
-        /* title bar */
-        .card-title-bar {
-            display: flex; align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px 14px 18px;
-            cursor: pointer; -webkit-tap-highlight-color: transparent;
-        }
-        .card-title-bar h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem; font-weight: 700;
-            color: var(--green); line-height: 1.2;
-        }
+        .card-title-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 14px 18px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+        .card-title-bar h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--primary); line-height: 1.2; }
         .card-title-bar p { font-size: .7rem; color: var(--muted); margin-top: 2px; }
-        .card-chevron {
-            width: 30px; height: 30px; flex-shrink: 0;
-            border-radius: 50%; background: var(--bg);
-            border: 1.5px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            transition: transform .35s ease;
-        }
-        .card-chevron svg { width: 13px; height: 13px; stroke: var(--green); stroke-width: 2.5; fill: none; }
+        .card-chevron { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; transition: transform .35s ease; }
+        .card-chevron svg { width: 13px; height: 13px; stroke: var(--primary); stroke-width: 2.5; fill: none; }
         .card.open .card-chevron { transform: rotate(180deg); }
 
-        /* expand */
-        .card-body {
-            max-height: 0; overflow: hidden;
-            transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease;
-            opacity: 0;
-            border-top: 1.5px solid transparent;
-        }
+        .card-body { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1), opacity .3s ease; opacity: 0; border-top: 1.5px solid transparent; }
         .card.open .card-body { max-height: 500px; opacity: 1; border-top-color: var(--border); }
 
-        .card-inner {
-            padding: 16px 18px 20px;
-            display: flex; flex-direction: column; gap: 14px;
-        }
+        .card-inner { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 14px; }
         .card-desc { font-size: .88rem; line-height: 1.65; color: var(--muted); }
         .card-video { width: 100%; border-radius: 12px; aspect-ratio: 16/9; object-fit: cover; display: block; }
 
-        .select-btn {
-            display: block; width: 100%; padding: 13px;
-            background: var(--green); color: #fff;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700; font-size: .88rem; letter-spacing: .5px;
-            border: none; border-radius: 14px; cursor: pointer;
-            text-align: center; text-decoration: none;
-            transition: background .2s, transform .15s;
-        }
+        .select-btn { display: block; width: 100%; padding: 13px; background: var(--primary); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .88rem; letter-spacing: .5px; border: none; border-radius: 14px; cursor: pointer; text-align: center; text-decoration: none; transition: background .2s, transform .15s; }
         .select-btn:hover { background: #2a4a2e; transform: scale(1.01); }
         .select-btn:active { transform: scale(.98); }
 
-        footer {
-            background: var(--green); color: rgba(255,255,255,.45);
-            text-align: center; padding: 24px; font-size: .78rem;
+        footer { background: var(--primary); color: rgba(255,255,255,.45); text-align: center; padding: 24px; font-size: .78rem; }
+
+        @media (max-width: 900px) {
+            header { height: 64px; padding: 0 16px; }
+            .brand-sub { display: none; }
+            nav { display: none; }
+            .hamburger { display: flex !important; }
+            body { padding-top: 64px; }
         }
     </style>
 </head>
@@ -228,10 +118,15 @@
         <a href="index.html" class="logo-group">
             <img src="logo.png" alt="Logo" class="logo-img">
             <div class="brand-text">
-                <div class="brand-main">Fantasy Fields</div>
-                <div class="brand-sub">Landscaping</div>
+                <span class="brand-main">Fantasy Fields</span>
+                <span class="brand-sub">Landscaping</span>
             </div>
         </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="maintenance.html">Maintenance</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
         <button class="hamburger" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
@@ -240,8 +135,8 @@
 
 <nav class="nav-drawer" id="navDrawer">
     <a href="index.html">Home</a>
-    <a href="maintenance.html">Services</a>
-    <a href="about.html">About</a>
+    <a href="maintenance.html">Maintenance</a>
+    <a href="index.html#contact">Contact</a>
 </nav>
 
 <div class="page-title">
@@ -250,62 +145,7 @@
 
 <div class="cards">
 
-    <div class="card">
-        <div class="card-thumb-ba" onclick="toggle(this.closest('.card'))">
-            <div class="ba-half">
-                <img src="Landscape%20Design%20Project1.jpeg" alt="Before">
-                <span class="ba-tag">Before</span>
-            </div>
-            <div class="ba-half">
-                <img src="Landscape%20Design%20Project2.jpg" alt="After">
-                <span class="ba-tag">After</span>
-            </div>
-        </div>
-        <div class="card-title-bar" onclick="toggle(this.closest('.card'))">
-            <div>
-                <h2>Garden Bed Installation</h2>
-                <p>Tap for details</p>
-            </div>
-            <div class="card-chevron">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="card-inner">
-                <p class="card-desc">We design and build custom garden beds from the ground up — clearing the area, laying clean edging, prepping the soil, and planting exactly what fits your space. You get a polished, low-maintenance bed that looks great from day one.</p>
-                <a class="select-btn" href="index.html?service=Garden+Bed+Installation">Select this service →</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-thumb-single" onclick="toggle(this.closest('.card'))">
-            <video src="Spring%20clean%20up%20example.mp4" muted playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;pointer-events:none;"></video>
-            <div class="play-icon">
-                <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-        </div>
-        <div class="card-title-bar" onclick="toggle(this.closest('.card'))">
-            <div>
-                <h2>Spring Clean Up</h2>
-                <p>Tap for details &amp; video</p>
-            </div>
-            <div class="card-chevron">
-                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="card-inner">
-                <p class="card-desc">After a long winter your property needs a fresh start. We clear out dead leaves and debris, re-edge your beds, cut back overgrowth, and get everything looking sharp and ready to grow through the season.</p>
-                <video class="card-video" controls playsinline preload="metadata">
-                    <source src="Spring%20clean%20up%20example.mp4" type="video/mp4">
-                    Your browser doesn't support video.
-                </video>
-                <a class="select-btn" href="index.html?service=Spring+Clean+Up">Select this service →</a>
-            </div>
-        </div>
-    </div>
-
+    <!-- 1. ROTO TILLING -->
     <div class="card">
         <div class="card-thumb-ba" onclick="toggle(this.closest('.card'))">
             <div class="ba-half">
@@ -328,8 +168,62 @@
         </div>
         <div class="card-body">
             <div class="card-inner">
-                <p class="card-desc">Healthy growth starts below the surface. We break up compacted soil and work in amendments so your lawn, garden, or new install has the best possible foundation to take root and thrive.</p>
-                <a class="select-btn" href="index.html?service=Roto+Tilling">Select this service →</a>
+                <p class="card-desc">Roto till a medium to small area on a residential property. Garden beds can be done too!</p>
+                <a class="select-btn" href="index.html?service=Roto+Tilling#contact">Select this service →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SPRING CLEAN UP -->
+    <div class="card">
+        <div class="card-thumb-single" onclick="toggle(this.closest('.card'))">
+            <video id="springThumb" src="Spring%20clean%20up%20example.mp4" autoplay muted loop playsinline preload="auto" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;pointer-events:none;"></video>
+            <div class="play-icon">
+                <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+        </div>
+        <div class="card-title-bar" onclick="toggle(this.closest('.card'))">
+            <div>
+                <h2>Spring Clean Up</h2>
+                <p>Tap for details &amp; video</p>
+            </div>
+            <div class="card-chevron">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-inner">
+                <p class="card-desc">Spring clean up is necessary for those home owners that want a fresh start for the next growing season. This includes cutting down overgrown brush, raking leaves, removing sticks, and re-edging garden beds!</p>
+                <a class="select-btn" href="index.html?service=Seasonal+Cleanup#contact">Select this service →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. GARDEN BED WORK -->
+    <div class="card">
+        <div class="card-thumb-ba" onclick="toggle(this.closest('.card'))">
+            <div class="ba-half">
+                <img src="Landscape%20Design%20Project2.jpg" alt="Before">
+                <span class="ba-tag">Before</span>
+            </div>
+            <div class="ba-half">
+                <img src="Landscape%20Design%20Project1.jpeg" alt="After">
+                <span class="ba-tag">After</span>
+            </div>
+        </div>
+        <div class="card-title-bar" onclick="toggle(this.closest('.card'))">
+            <div>
+                <h2>Garden Bed Design</h2>
+                <p>Tap for details</p>
+            </div>
+            <div class="card-chevron">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-inner">
+                <p class="card-desc">Garden bed design and installation is available on a case-by-case basis depending on project scope. Reach out with your idea and we'll let you know if it's a good fit.</p>
+                <a class="select-btn" href="index.html?service=Garden+Bed+Design+and+Installation#contact">Select this service →</a>
             </div>
         </div>
     </div>
@@ -339,14 +233,11 @@
 <footer>© 2026 Fantasy Fields Landscaping</footer>
 
 <script>
-    function toggle(card) {
-        card.classList.toggle('open');
-    }
+    function toggle(card) { card.classList.toggle('open'); }
     function toggleMenu() {
         document.getElementById('menuBtn').classList.toggle('open');
         document.getElementById('navDrawer').classList.toggle('open');
     }
-    // close drawer when clicking outside
     document.addEventListener('click', function(e) {
         const btn = document.getElementById('menuBtn');
         const drawer = document.getElementById('navDrawer');
