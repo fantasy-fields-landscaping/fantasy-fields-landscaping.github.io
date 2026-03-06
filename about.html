@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,64 +6,138 @@
     <title>About Us | Fantasy Fields Landscaping</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1b2f1e; --accent: #8b3a2d; --bg-light: #f7f1e6; --gold: #c5a059; --text: #2c3e2f; }
+        :root { --primary: #1b2f1e; --accent: #8b3a2d; --accent-hover: #a64b3c; --bg-light: #f7f1e6; --white: #fff; --gold: #c5a059; --text: #2c3e2f; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 70px; }
-        
-        /* STANDARD HEADER */
-        header { position: fixed; top: 0; width: 100%; height: 70px; background: rgba(27, 47, 30, 0.98); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0 5%; backdrop-filter: blur(5px); }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-light); color: var(--text); padding-top: 85px; }
+
+        header {
+            position: fixed; top: 0; width: 100%; height: 85px;
+            background: rgba(27, 47, 30, 0.95);
+            z-index: 1001;
+            display: flex; justify-content: center; padding: 0 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
         .header-container { width: 100%; max-width: 1400px; display: flex; align-items: center; justify-content: space-between; }
         .logo-group { display: flex; align-items: center; text-decoration: none; color: #fff; }
-        .logo-img { width: 35px; height: 35px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
-        .brand-main { font-weight: 700; font-size: 1.2rem; }
-        .brand-sub { font-weight: 400; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
-        nav { display: flex; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .logo-img { width: 42px; height: 42px; border-radius: 50%; border: 1px solid #fff; margin-right: 12px; }
+        .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .brand-main { font-weight: 700; font-size: 1.4rem; letter-spacing: 0.5px; }
+        .brand-sub { font-weight: 400; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2.5px; margin-top: 2px; }
+
+        nav { display: flex; align-items: center; gap: 25px; }
+        nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: color 0.2s; }
         nav a:hover { color: var(--gold); }
 
-        .about-hero { background: var(--primary); color: white; padding: 60px 5%; text-align: center; }
-        h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 10px; }
-        
-        .award-box { max-width: 800px; margin: -30px auto 40px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; border-bottom: 4px solid var(--gold); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s ease, opacity .3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .nav-drawer {
+            position: fixed; top: 64px; right: 0; width: 200px;
+            background: var(--primary);
+            border-left: 1px solid rgba(255,255,255,.1);
+            border-bottom: 1px solid rgba(255,255,255,.1);
+            border-radius: 0 0 0 16px;
+            display: flex; flex-direction: column;
+            padding: 8px 0 12px;
+            transform: translateX(110%);
+            transition: transform .3s cubic-bezier(.4,0,.2,1);
+            z-index: 1000;
+        }
+        .nav-drawer.open { transform: translateX(0); }
+        .nav-drawer a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 12px 24px; transition: background .15s; }
+        .nav-drawer a:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+        /* PAGE CONTENT */
+        .about-hero { background: var(--primary); color: white; padding: 70px 5%; text-align: center; }
+        .about-hero h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 10px; }
+        .about-hero p { opacity: 0.8; font-size: 1rem; }
+
+        .award-box {
+            max-width: 800px; margin: -30px auto 40px; background: white;
+            padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
         .award-img { width: 100%; max-width: 450px; border-radius: 12px; margin-bottom: 25px; }
-        h2 { font-family: 'Playfair Display'; color: var(--primary); margin-bottom: 15px; }
+        .award-box h2 { font-family: 'Playfair Display'; color: var(--primary); margin-bottom: 15px; font-size: 1.8rem; }
+        .award-box p { color: #6b7c6d; font-size: 1rem; }
+
         .content { max-width: 800px; margin: 0 auto; padding: 20px 5% 80px; line-height: 1.8; font-size: 1.1rem; text-align: center; }
+
+        footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px; text-align: center; font-size: 0.85rem; }
+
+        @media (max-width: 900px) {
+            header { height: 64px; padding: 0 16px; }
+            .brand-sub { display: none; }
+            nav { display: none; }
+            .hamburger { display: flex !important; }
+            body { padding-top: 64px; }
+            .about-hero { padding: 50px 5%; }
+            .about-hero h1 { font-size: 2rem; }
+            .award-box { margin: -20px 16px 30px; padding: 28px 20px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="index.html" class="logo-group">
-                <img src="logo.png" alt="Logo" class="logo-img">
-                <div class="brand-text">
-                    <div class="brand-main">Fantasy Fields</div>
-                    <div class="brand-sub">Landscaping</div>
-                </div>
-            </a>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="maintenance.html">Services</a>
-                <a href="gallery.html">Gallery</a>
-            </nav>
-        </div>
-    </header>
 
-    <div class="about-hero">
-        <h1>Our Story</h1>
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo-group">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-main">Fantasy Fields</span>
+                <span class="brand-sub">Landscaping</span>
+            </div>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+        <button class="hamburger" id="menuBtn" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+</header>
 
-    <div class="award-box">
-        <img src="Award%20winning%20service.jpeg" alt="Award Winning Service" class="award-img">
-        <h2>🏆 2025 Brant County Award Winner</h2>
-        <p>Recognized for excellence in local landscaping and property maintenance.</p>
-    </div>
+<nav class="nav-drawer" id="navDrawer">
+    <a href="index.html">Home</a>
+    <a href="index.html#contact">Contact</a>
+</nav>
 
-    <div class="content">
-        <p>Fantasy Fields is a student-run venture dedicated to professional-grade results with a personal touch. With over 1,000 hours of maintenance experience in the North End, we bring reliability and passion to every lawn we touch.</p>
-    </div>
+<div class="about-hero">
+    <h1>Our Story</h1>
+    <p>Student-run. North End proud.</p>
+</div>
 
-    <footer style="background: var(--primary); color: white; padding: 40px; text-align: center;">
-        <p>© 2026 Fantasy Fields Landscaping</p>
-    </footer>
+<div class="award-box">
+    <img src="Award%20winning%20service.jpeg" alt="Award Winning Service" class="award-img">
+    <h2>🏆 2025 Brant County Award Winner</h2>
+    <p>Recognized for excellence in local landscaping and property maintenance.</p>
+</div>
+
+<div class="content">
+    <p>Fantasy Fields is a student-run venture dedicated to professional-grade results with a personal touch. With over 1,000 hours of maintenance experience in the North End, we bring reliability and passion to every lawn we touch.</p>
+</div>
+
+<footer>© 2026 Fantasy Fields Landscaping</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('menuBtn').classList.toggle('open');
+        document.getElementById('navDrawer').classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+        const btn = document.getElementById('menuBtn');
+        const drawer = document.getElementById('navDrawer');
+        if (!btn.contains(e.target) && !drawer.contains(e.target)) {
+            btn.classList.remove('open');
+            drawer.classList.remove('open');
+        }
+    });
+</script>
 </body>
 </html>
