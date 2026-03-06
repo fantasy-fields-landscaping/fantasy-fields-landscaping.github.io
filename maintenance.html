@@ -240,7 +240,14 @@
         if (selections.garden) services += ", Garden Bed Care";
         if (selections.bush) services += ", Shrub Maintenance";
         const tier = document.getElementById('tier-title').innerText;
-        window.location.href = `index.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}#contact`;
+
+        // Map tier to the exact dropdown option value
+        let serviceOption = "Lawn Maintenance";
+        if (selections.garden && selections.bush) serviceOption = "Lawn, Garden and Shrub Maintenance";
+        else if (selections.garden) serviceOption = "Lawn and Garden Maintenance";
+        else if (selections.bush) serviceOption = "Lawn, Garden and Shrub Maintenance";
+
+        window.location.href = `index.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}&service=${encodeURIComponent(serviceOption)}#contact`;
     }
 </script>
 </body>
