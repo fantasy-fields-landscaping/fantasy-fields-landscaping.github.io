@@ -185,40 +185,13 @@
         .gsd-line:last-child { --dir: left; }
         .gsd-text { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--primary); white-space: nowrap; letter-spacing: 0.5px; }
 
-        /* SCROLL BANNER — inline, appears just above cards when user scrolls past divider */
-        @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(4px);} }
-        @keyframes fadeSlideIn { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
-        .scroll-banner {
-            display: none;
-            margin-bottom: 24px;
+        /* SERVICE SUBHEADER */
+        .service-subheader {
+            text-align: center;
+            font-size: 0.78rem;
+            color: #6b7c6d;
+            margin-bottom: 22px;
         }
-        .scroll-banner.visible {
-            display: flex;
-            justify-content: center;
-            animation: fadeSlideIn 0.35s ease forwards;
-        }
-        .scroll-banner-inner {
-            background: rgba(27, 47, 30, 0.72);
-            backdrop-filter: blur(6px);
-            color: #fff;
-            border-radius: 10px;
-            padding: 9px 18px;
-            display: flex; align-items: center; gap: 10px;
-            font-weight: 600; font-size: 0.82rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-            width: auto;
-            justify-content: center;
-        }
-        .scroll-banner-inner .arrow-anim { animation: bounce 1.1s ease-in-out infinite; display: inline-block; font-size: 1.1rem; }
-        .scroll-banner-inner .gold { color: var(--gold); }
-        .banner-close {
-            background: rgba(255,255,255,0.15); border: none; color: #fff;
-            border-radius: 50%; width: 22px; height: 22px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.8rem; cursor: pointer; margin-left: 4px; flex-shrink: 0;
-            transition: background 0.15s;
-        }
-        .banner-close:hover { background: rgba(255,255,255,0.3); }
 
         /* SERVICE CARDS */
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
@@ -251,6 +224,9 @@
         }
 
         .service-card-body { display: contents; } /* transparent on desktop */
+        .mobile-cta { display: none; }
+        .desktop-cta { display: inline-flex; }
+        .card-foot-strip { display: none; }
         .service-img { height: 200px; background: center/cover no-repeat; }
         .service-info { padding: 20px 22px 24px; display: flex; flex-direction: column; min-height: 76px; }
         .service-info > p { font-size: 0.9rem; color: #666; margin-bottom: 14px; }
@@ -344,15 +320,14 @@
             .jstep:nth-child(3) { border-top: 1px solid #ddd4be; }
             .jstep:nth-child(4) { border-top: 1px solid #ddd4be; border-right: none; }
             .jstep:nth-child(3)::after { display: block; }
-            /* Scroll banner mobile */
-            .scroll-banner-inner { font-size: 0.82rem; padding: 10px 16px; gap: 8px; }
+
             /* Cards */
             /* Stacked cards: full width, image left, button right */
             .services-grid { grid-template-columns: 1fr; gap: 14px; }
             .service-card { flex-direction: column; border-radius: 16px; }
             .service-card:hover { transform: none; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-            .card-header { height: 40px; padding: 0 14px; justify-content: center; }
-            .card-header h3 { font-size: 0.88rem; text-align: center; }
+            .card-header { height: auto; padding: 10px 14px; justify-content: space-between; gap: 10px; align-items: center; border-radius: 16px 16px 0 0; }
+            .card-header h3 { font-size: 1rem; text-align: center; flex: 1; letter-spacing: 0.2px; }
             .card-badge { display: none; }
             /* Image + info side by side below the green header */
             .service-card-body { display: flex; flex-direction: row; }
@@ -360,8 +335,28 @@
             .service-info { flex: 1; padding: 12px 14px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 160px; }
             .service-info > p { display: none; }
             .service-includes { display: none; }
-            .card-cta-link { align-self: flex-end; width: auto; padding: 7px 14px; border-radius: 8px; font-size: 0.78rem; gap: 5px; background: var(--accent); color: #fff; margin-top: auto; }
-            .card-cta-link .arrow-bubble { background: rgba(255,255,255,0.25); box-shadow: none; width: 22px; height: 22px; font-size: 0.82rem; }
+            .desktop-cta { display: none; }
+            .mobile-cta {
+                display: inline-flex;
+                background: var(--accent);
+                color: #fff;
+                border: 2px solid rgba(255,255,255,0.5);
+                border-radius: 20px;
+                padding: 6px 14px;
+                font-size: 0.76rem;
+                font-weight: 700;
+                gap: 6px;
+                flex-shrink: 0;
+                white-space: nowrap;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            .mobile-cta .arrow-bubble {
+                background: rgba(255,255,255,0.25);
+                box-shadow: none;
+                width: 18px; height: 18px; font-size: 0.72rem;
+            }
+            /* Thin green footer strip — mirrors the header, bookends the card */
+            .card-foot-strip { display: none; }
             /* Reviews */
             .reviews-section { padding: 28px 0 20px; overflow: hidden; }
             .rev-clone { display: block; }
@@ -468,19 +463,13 @@
         <span class="gsd-line"></span>
     </div>
 
-    <!-- Banner appears here, right below Get Started, above cards -->
-    <div class="scroll-banner" id="scrollBanner">
-      <div class="scroll-banner-inner" id="scrollBannerInner">
-        <span class="arrow-anim">👇</span>
-        <span>Choose a service below to get started <span class="gold">— takes 60 seconds</span></span>
-        <button class="banner-close" id="bannerClose" aria-label="Dismiss">✕</button>
-      </div>
-    </div>
+    <p class="service-subheader">Choose a service below to get started — it only takes 60 seconds</p>
 
     <div class="services-grid" id="bannerTrigger">
         <a href="maintenance.html" class="service-card">
             <div class="card-header">
                 <h3>Weekly Maintenance</h3>
+                <span class="card-cta-link mobile-cta">View Packages <span class="arrow-bubble">›</span></span>
             </div>
             <div class="service-card-body">
                 <div class="service-img" style="background-image: url('Updated%20Lawn%20Care%202.jpg');"></div>
@@ -492,13 +481,16 @@
                         <li>Add-on shrub and hedge trimming</li>
                         <li>Build your own plan — pay for what suits your needs</li>
                     </ul>
-                    <span class="card-cta-link">View Packages <span class="arrow-bubble">›</span></span>
+                    <span class="card-cta-link desktop-cta">View Packages <span class="arrow-bubble">›</span></span>
                 </div>
             </div>
+            <div class="card-foot-strip"></div>
+
         </a>
         <a href="landscaping.html" class="service-card">
             <div class="card-header">
                 <h3>Landscape Projects</h3>
+                <span class="card-cta-link mobile-cta">See Projects <span class="arrow-bubble">›</span></span>
             </div>
             <div class="service-card-body">
                 <div class="service-img" style="background-image: url('Landscape%20Design%20Project1.jpeg');"></div>
@@ -510,9 +502,11 @@
                         <li>Roto tilling</li>
                         <li>Major bush trimming</li>
                     </ul>
-                    <span class="card-cta-link">See Projects <span class="arrow-bubble">›</span></span>
+                    <span class="card-cta-link desktop-cta">See Projects <span class="arrow-bubble">›</span></span>
                 </div>
             </div>
+            <div class="card-foot-strip"></div>
+
         </a>
     </div>
 </section>
@@ -643,28 +637,7 @@
         }
     });
 
-    /* ── Scroll banner: show once user scrolls services grid into view ── */
-    (function() {
-        const bannerWrap = document.getElementById('scrollBanner');
-        const closeBtn   = document.getElementById('bannerClose');
-        let shown = false;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !shown) {
-                    shown = true;
-                    bannerWrap.classList.add('visible');
-                    observer.disconnect();
-                }
-            });
-        }, { threshold: 0.1 });
-
-        observer.observe(document.getElementById('bannerTrigger'));
-
-        closeBtn.addEventListener('click', () => {
-            bannerWrap.classList.remove('visible');
-        });
-    })();
 
     /* ── Infinite swipeable reviews ── */
     (function() {
