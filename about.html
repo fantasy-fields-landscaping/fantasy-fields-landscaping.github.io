@@ -51,7 +51,6 @@
         .nav-drawer a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 12px 24px; transition: background .15s; }
         .nav-drawer a:hover { background: rgba(255,255,255,.08); color: #fff; }
 
-        /* PAGE CONTENT */
         .about-hero { background: var(--primary); color: white; padding: 70px 5%; text-align: center; }
         .about-hero h1 { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 10px; }
         .about-hero p { opacity: 0.8; font-size: 1rem; }
@@ -67,6 +66,23 @@
         .award-box p { color: #6b7c6d; font-size: 1rem; }
 
         .content { max-width: 800px; margin: 0 auto; padding: 20px 5% 80px; line-height: 1.8; font-size: 1.1rem; text-align: center; }
+        .content p + p { margin-top: 20px; }
+
+        .get-started-btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 16px 40px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(139, 58, 45, 0.3);
+        }
+        .get-started-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
         footer { background: var(--primary); color: rgba(255,255,255,0.7); padding: 40px; text-align: center; font-size: 0.85rem; }
 
@@ -110,20 +126,22 @@
 
 <div class="about-hero">
     <h1>Our Story</h1>
-    <p>Student-run. North End proud.</p>
+    <p>How things became real.</p>
 </div>
 
 <div class="award-box">
     <img src="Award%20winning%20service.jpeg" alt="Award Winning Service" class="award-img">
-    <h2>🏆 2025 Brant County Award Winner</h2>
-    <p>Recognized for excellence in local landscaping and property maintenance.</p>
+    <h2>🏆 2025 Brant County Student Business Award</h2>
+    <p>Recognized for proficiency in business while attending school.</p>
 </div>
 
 <div class="content">
-    <p>Fantasy Fields is a student-run venture dedicated to professional-grade results with a personal touch. With over 1,000 hours of maintenance experience in the North End, we bring reliability and passion to every lawn we touch.</p>
+    <p>My name is Adrian Grant, and I'm the owner of Fantasy Fields Landscaping. What started as a simple side hustle to earn a few extra dollars quickly became something much greater. This business has evolved into a passion project and a career that I will continue to build and develop throughout my life.</p>
+    <p>Fantasy Fields is a student-run business dedicated to achieving professional-grade results through open communication and a genuine passion for what we do. With over 1,000 hours of experience serving the North End, we'd love to help you with your landscaping and maintenance needs.</p>
+    <a href="index.html#contact" class="get-started-btn">Get Started</a>
 </div>
 
-<footer>© 2026 Fantasy Fields Landscaping</footer>
+<footer>Fantasy Fields is a registered business in Ontario.</footer>
 
 <script>
     function toggleMenu() {
