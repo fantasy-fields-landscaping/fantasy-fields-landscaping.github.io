@@ -322,7 +322,7 @@
             .jstep:nth-child(3)::after { display: block; }
 
             /* Cards */
-            /* Stacked cards: full width, image left, button right */
+            /* Stacked cards: full width, image fills below header */
             .services-grid { grid-template-columns: 1fr; gap: 14px; }
             .service-card { flex-direction: column; border-radius: 16px; }
             .service-card:hover { transform: none; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
@@ -330,9 +330,9 @@
             .card-header h3 { font-size: 1rem; text-align: center; flex: 1; letter-spacing: 0.2px; }
             .card-badge { display: none; }
             /* Image + info side by side below the green header */
-            .service-card-body { display: flex; flex-direction: row; }
-            .service-img { width: 52%; min-width: 52%; height: 160px; flex-shrink: 0; }
-            .service-info { flex: 1; padding: 12px 14px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 160px; }
+            .service-card-body { display: flex; flex-direction: column; }
+            .service-img { width: 100%; height: 160px; flex-shrink: 0; }
+            .service-info { display: none; }
             .service-info > p { display: none; }
             .service-includes { display: none; }
             .desktop-cta { display: none; }
