@@ -198,13 +198,15 @@
             animation: fadeSlideIn 0.35s ease forwards;
         }
         .scroll-banner-inner {
-            background: var(--primary); color: #fff;
-            border-radius: 12px;
-            padding: 13px 24px;
-            display: flex; align-items: center; gap: 12px;
-            font-weight: 700; font-size: 0.95rem;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-            width: 100%;
+            background: rgba(27, 47, 30, 0.72);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            border-radius: 10px;
+            padding: 9px 18px;
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 600; font-size: 0.82rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            width: auto;
             justify-content: center;
         }
         .scroll-banner-inner .arrow-anim { animation: bounce 1.1s ease-in-out infinite; display: inline-block; font-size: 1.1rem; }
@@ -248,6 +250,7 @@
             letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;
         }
 
+        .service-card-body { display: contents; } /* transparent on desktop */
         .service-img { height: 200px; background: center/cover no-repeat; }
         .service-info { padding: 20px 22px 24px; display: flex; flex-direction: column; min-height: 76px; }
         .service-info > p { font-size: 0.9rem; color: #666; margin-bottom: 14px; }
@@ -277,10 +280,11 @@
         }
 
         /* REVIEWS */
-        .reviews-section { padding: 44px 5% 36px; background-color: var(--white); text-align: center; overflow: hidden; }
+        .reviews-section { padding: 28px 5% 24px; background-color: var(--white); text-align: center; overflow: hidden; }
         .reviews-section .section-title { font-size: 1.8rem; margin-bottom: 6px; }
         .rev-carousel-wrap { position: relative; max-width: 1200px; margin: 0 auto; overflow: visible; }
         .rev-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .rev-clone { display: none; } /* hide clones on desktop */
         .rev-dots { display: none; }
         .review-card { background: var(--bg-light); padding: 22px 24px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: left; display: flex; flex-direction: column; border: 1px solid #e8e0d0; height: 100%; }
         .reviewer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
@@ -343,19 +347,24 @@
             /* Scroll banner mobile */
             .scroll-banner-inner { font-size: 0.82rem; padding: 10px 16px; gap: 8px; }
             /* Cards */
-            .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            /* Stacked cards: full width, image left, button right */
+            .services-grid { grid-template-columns: 1fr; gap: 14px; }
+            .service-card { flex-direction: column; border-radius: 16px; }
             .service-card:hover { transform: none; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-            .card-header { padding: 0 14px; height: 58px; }
-            .card-header h3 { font-size: 0.9rem; }
-            .card-badge { font-size: 0.6rem; padding: 3px 8px; }
-            .service-img { height: 110px; }
-            .service-info { padding: 12px 12px 14px; min-height: 58px; }
+            .card-header { height: 40px; padding: 0 14px; justify-content: center; }
+            .card-header h3 { font-size: 0.88rem; text-align: center; }
+            .card-badge { display: none; }
+            /* Image + info side by side below the green header */
+            .service-card-body { display: flex; flex-direction: row; }
+            .service-img { width: 52%; min-width: 52%; height: 160px; flex-shrink: 0; }
+            .service-info { flex: 1; padding: 12px 14px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 160px; }
             .service-info > p { display: none; }
             .service-includes { display: none; }
-            .card-cta-link { width: 100%; justify-content: center; padding: 9px; border-radius: 8px; font-size: 0.8rem; gap: 6px; background: var(--accent); color: #fff; margin-top: 8px; }
-            .card-cta-link .arrow-bubble { background: rgba(255,255,255,0.25); box-shadow: none; width: 26px; height: 26px; font-size: 0.9rem; }
+            .card-cta-link { align-self: flex-end; width: auto; padding: 7px 14px; border-radius: 8px; font-size: 0.78rem; gap: 5px; background: var(--accent); color: #fff; margin-top: auto; }
+            .card-cta-link .arrow-bubble { background: rgba(255,255,255,0.25); box-shadow: none; width: 22px; height: 22px; font-size: 0.82rem; }
             /* Reviews */
-            .reviews-section { padding: 36px 0 28px; overflow: hidden; }
+            .reviews-section { padding: 28px 0 20px; overflow: hidden; }
+            .rev-clone { display: block; }
             .reviews-section .section-title,
             .reviews-section > p { padding: 0 5%; }
             .rev-carousel-wrap { overflow: hidden; width: 100%; }
@@ -427,7 +436,7 @@
     <div class="hero-content">
         <h1>Landscaping and Maintenance</h1>
         <p>Serving the North End Since 2022</p>
-        <a href="#services" class="btn">Get Started</a>
+        <a href="#services" class="btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'});return false;">Get Started</a>
     </div>
 </section>
 
@@ -472,35 +481,37 @@
         <a href="maintenance.html" class="service-card">
             <div class="card-header">
                 <h3>Weekly Maintenance</h3>
-                <span class="card-badge">Recurring</span>
             </div>
-            <div class="service-img" style="background-image: url('Updated%20Lawn%20Care%202.jpg');"></div>
-            <div class="service-info">
-                <p>"Set it and forget it." Regular maintenance of your property, weekly or bi-weekly.</p>
-                <ul class="service-includes">
-                    <li>Pristine mowing and edging</li>
-                    <li>Add-on garden bed care</li>
-                    <li>Add-on shrub and hedge trimming</li>
-                    <li>Build your own plan — pay for what suits your needs</li>
-                </ul>
-                <span class="card-cta-link">View Packages <span class="arrow-bubble">›</span></span>
+            <div class="service-card-body">
+                <div class="service-img" style="background-image: url('Updated%20Lawn%20Care%202.jpg');"></div>
+                <div class="service-info">
+                    <p>"Set it and forget it." Regular maintenance of your property, weekly or bi-weekly.</p>
+                    <ul class="service-includes">
+                        <li>Pristine mowing and edging</li>
+                        <li>Add-on garden bed care</li>
+                        <li>Add-on shrub and hedge trimming</li>
+                        <li>Build your own plan — pay for what suits your needs</li>
+                    </ul>
+                    <span class="card-cta-link">View Packages <span class="arrow-bubble">›</span></span>
+                </div>
             </div>
         </a>
         <a href="landscaping.html" class="service-card">
             <div class="card-header">
                 <h3>Landscape Projects</h3>
-                <span class="card-badge">One-Time</span>
             </div>
-            <div class="service-img" style="background-image: url('Landscape%20Design%20Project1.jpeg');"></div>
-            <div class="service-info">
-                <p>Bigger one-off projects for your property.</p>
-                <ul class="service-includes">
-                    <li>Spring and fall seasonal cleanups</li>
-                    <li>Garden bed design and installation</li>
-                    <li>Roto tilling</li>
-                    <li>Major bush trimming</li>
-                </ul>
-                <span class="card-cta-link">See Projects <span class="arrow-bubble">›</span></span>
+            <div class="service-card-body">
+                <div class="service-img" style="background-image: url('Landscape%20Design%20Project1.jpeg');"></div>
+                <div class="service-info">
+                    <p>Bigger one-off projects for your property.</p>
+                    <ul class="service-includes">
+                        <li>Spring and fall seasonal cleanups</li>
+                        <li>Garden bed design and installation</li>
+                        <li>Roto tilling</li>
+                        <li>Major bush trimming</li>
+                    </ul>
+                    <span class="card-cta-link">See Projects <span class="arrow-bubble">›</span></span>
+                </div>
             </div>
         </a>
     </div>
