@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Property Maintenance | Fantasy Fields Landscaping</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
             --primary: #1b2f1e; 
@@ -59,48 +59,211 @@
         .nav-drawer a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 12px 24px; transition: background .15s; }
         .nav-drawer a:hover { background: rgba(255,255,255,.08); color: #fff; }
 
-        /* MAIN LAYOUT */
-        .main-wrapper { display: flex; height: calc(100vh - 85px); width: 100vw; }
-
-        .sidebar { width: 65%; background: var(--primary); height: 100%; position: relative; overflow: hidden; }
-
-        .image-container { display: flex; width: 100%; height: 72vh; background: #000; }
-        .image-container img {
-            height: 100%; width: 0; object-fit: cover;
-            transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
-            opacity: 0; flex-shrink: 0;
+        /* ======= DESKTOP LAYOUT ======= */
+        .main-wrapper { 
+            display: flex; 
+            height: calc(100vh - 85px); 
+            width: 100%; 
         }
-        .image-container img.base { width: 100%; opacity: 0.9; }
-        .image-container img.active { opacity: 1; border-left: 2px solid rgba(255,255,255,0.2); }
+
+        /* LEFT SIDE: image fills full height */
+        .sidebar { 
+            width: 58%; 
+            background: var(--primary); 
+            height: 100%; 
+            position: relative; 
+            overflow: hidden; 
+            flex-shrink: 0;
+        }
+
+        .image-container { 
+            display: flex; 
+            width: 100%; 
+            height: 100%; 
+            background: #000; 
+            position: absolute;
+            top: 0; left: 0;
+        }
+        .image-container img {
+            height: 100%; 
+            width: 0; 
+            object-fit: cover;
+            transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s;
+            opacity: 0; 
+            flex-shrink: 0;
+        }
+        .image-container img.base { width: 100%; opacity: 0.75; }
+        .image-container img.active { opacity: 0.85; border-left: 2px solid rgba(255,255,255,0.2); }
+
+        /* Gradient overlay so text is always readable */
+        .sidebar-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(27,47,30,0.97) 0%,
+                rgba(27,47,30,0.55) 45%,
+                rgba(27,47,30,0.1) 100%
+            );
+            z-index: 2;
+        }
 
         .sidebar-content { 
-            padding: 40px 60px; 
-            background: linear-gradient(to top, var(--primary) 85%, transparent);
-            position: absolute; bottom: 0; width: 100%; z-index: 5;
-            display: flex; justify-content: space-between; align-items: flex-end;
+            position: absolute; 
+            bottom: 0; 
+            width: 100%; 
+            z-index: 5;
+            padding: 48px 56px;
         }
-        .title-block { flex: 1; }
-        .tier-indicator { font-family: 'Playfair Display'; font-size: 0.8rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
-        .sidebar-content h1 { font-family: 'Playfair Display'; font-size: 3.2rem; color: white; margin-bottom: 15px; }
-        .package-details { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
-        .package-details li { font-size: 0.85rem; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; }
+        .tier-indicator { 
+            font-family: 'Libre Baskerville', serif; 
+            font-size: 0.72rem; 
+            font-weight: 400;
+            color: var(--gold); 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            margin-bottom: 8px; 
+        }
+        .sidebar-content h1 { 
+            font-family: 'Libre Baskerville', serif; 
+            font-size: 3.2rem; 
+            font-weight: 700;
+            color: white; 
+            margin-bottom: 18px; 
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .package-details { 
+            list-style: none; 
+            display: flex; 
+            gap: 20px; 
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .package-details li { 
+            font-size: 0.82rem; 
+            color: rgba(255,255,255,0.9); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
         .package-details li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
-        .content-area { width: 35%; padding: 40px 4% 20px 4%; display: flex; flex-direction: column; justify-content: flex-start; background: var(--white); }
+        .btn-finalize { 
+            background: var(--accent); 
+            color: white; 
+            padding: 16px 36px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 6px; 
+            transition: 0.3s; 
+            font-size: 0.85rem; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            white-space: nowrap; 
+            display: inline-block;
+        }
+        .btn-finalize:hover { 
+            background: var(--accent-hover); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
+        }
 
-        .addon-sub-header { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.6; margin-bottom: 15px; }
+        /* RIGHT SIDE: add-ons panel fills full height, centered content */
+        .content-area { 
+            width: 42%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            background: var(--white); 
+            padding: 48px 52px;
+            gap: 0;
+        }
 
-        .addon-card { background: var(--white); padding: 15px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-        .addon-card:hover { border-color: var(--gold); background: #fafafa; }
-        .addon-card.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .addon-card h4 { font-family: 'Playfair Display'; font-size: 1rem; }
-        .addon-card p { font-size: 0.75rem !important; opacity: 0.8; }
-        .status-badge { font-weight: 700; font-size: 0.6rem; padding: 3px 8px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; }
-        .active .status-badge { border-color: white; color: white; }
+        .addon-header-block {
+            margin-bottom: 32px;
+        }
+        .addon-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        .addon-main-header { 
+            font-family: 'Cormorant Garamond';
+            font-size: 1.7rem; 
+            font-weight: 600; 
+            color: var(--primary); 
+            line-height: 1.2;
+        }
 
-        .btn-finalize { background: var(--accent); color: white; padding: 15px 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: none; cursor: pointer; border-radius: 6px; transition: 0.3s; font-size: 0.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-bottom: 15px; white-space: nowrap; }
-        .btn-finalize:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+        .addons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
 
+        .addon-card { 
+            background: var(--white); 
+            padding: 20px 22px; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            transition: all 0.2s; 
+            border: 2px solid rgba(0,0,0,0.1); 
+            border-radius: 10px; 
+        }
+        .addon-card:hover { 
+            border-color: var(--gold); 
+            background: #fafaf7;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        }
+        .addon-card.active { 
+            background: var(--primary); 
+            color: white; 
+            border-color: var(--primary); 
+        }
+        .addon-card-text h4 { 
+            font-family: 'Cormorant Garamond'; 
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .addon-card-text p { 
+            font-size: 0.8rem; 
+            opacity: 0.7; 
+        }
+
+        /* Desktop add/added badge — larger and more prominent */
+        .status-badge { 
+            font-weight: 700; 
+            font-size: 0.7rem; 
+            padding: 8px 16px; 
+            border: 2px solid var(--gold); 
+            color: var(--gold); 
+            border-radius: 6px; 
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 16px;
+            transition: all 0.2s;
+        }
+        .addon-card.active .status-badge { 
+            border-color: white; 
+            color: white; 
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* ======= MOBILE LAYOUT ======= */
         @media (max-width: 900px) {
             header { height: 64px; padding: 0 16px; }
             .brand-sub { display: none; }
@@ -110,16 +273,96 @@
         }
 
         @media (max-width: 1100px) {
-            .main-wrapper { flex-direction: column; height: auto; }
+            .main-wrapper { 
+                flex-direction: column; 
+                height: auto; 
+            }
             .sidebar, .content-area { width: 100%; }
-            .image-container { height: 25vh; }
-            .sidebar-content { position: relative; background: var(--primary); padding: 20px 5%; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
-            .sidebar-content h1 { font-size: 1.8rem; margin-bottom: 10px; }
-            .package-details { margin-bottom: 15px; }
-            .btn-finalize { width: 100%; margin-top: 5px; padding: 12px; font-size: 0.75rem; margin-bottom: 0; }
-            .content-area { padding: 20px 5%; background: var(--white); }
-            .addon-sub-header { margin-bottom: 10px; }
+
+            /* Shorter image strip on mobile */
+            .image-container { 
+                position: relative;
+                height: 260px; 
+            }
+            .sidebar {
+                height: auto;
+            }
+            .sidebar-overlay {
+                background: linear-gradient(
+                    to top,
+                    rgba(27,47,30,0.99) 0%,
+                    rgba(27,47,30,0.5) 55%,
+                    rgba(27,47,30,0.05) 100%
+                );
+            }
+            .sidebar-content { 
+                position: relative;
+                background: var(--primary); 
+                padding: 24px 20px 28px;
+            }
+            .sidebar-content h1 { 
+                font-size: 1.6rem; 
+                margin-bottom: 12px; 
+            }
+            .package-details { 
+                margin-bottom: 0; 
+                gap: 12px;
+            }
+            .package-details li { font-size: 0.82rem; }
+            /* Hide CTA on mobile sidebar — it's in the content area instead */
+            .sidebar-content .btn-finalize { 
+                display: none; 
+            }
+
+            /* Content area mobile */
+            .content-area { 
+                padding: 28px 20px 36px; 
+                background: var(--bg-light);
+                gap: 0;
+                justify-content: flex-start;
+            }
+
+            .addon-header-block {
+                margin-bottom: 20px;
+            }
+            .addon-eyebrow { font-size: 0.65rem; }
+            .addon-main-header { font-size: 1.3rem; }
+
+            .addons-list { gap: 12px; margin-bottom: 24px; }
+
+            /* Mobile add-on cards — bigger, tap-friendly */
+            .addon-card { 
+                padding: 20px 18px; 
+                border-radius: 12px;
+                border-width: 2px;
+            }
+            .addon-card-text h4 { font-size: 1.05rem; }
+            .addon-card-text p { font-size: 0.8rem; }
+
+            /* Big pill button on mobile */
+            .status-badge { 
+                font-size: 0.75rem; 
+                padding: 10px 20px; 
+                border-radius: 50px;
+                border-width: 2px;
+                letter-spacing: 1px;
+            }
+
+            /* Show CTA at bottom of content area on mobile */
+            .mobile-cta {
+                display: block !important;
+            }
+            .btn-finalize {
+                width: 100%;
+                padding: 18px;
+                font-size: 0.9rem;
+                letter-spacing: 2.5px;
+                border-radius: 10px;
+            }
         }
+
+        /* Mobile CTA hidden on desktop, shown on mobile */
+        .mobile-cta { display: none; }
     </style>
 </head>
 <body>
@@ -151,41 +394,58 @@
 </nav>
 
 <div class="main-wrapper">
+
+    <!-- LEFT: image + title -->
     <div class="sidebar">
         <div class="image-container" id="image-box">
-            <img src="Updated%20Lawn%20Care%202.jpg" class="base" id="img-base">
-            <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden">
-            <img src="Bush%20trimming%202.jpg" id="img-bush">
+            <img src="Updated%20Lawn%20Care%202.jpg" class="base" id="img-base" alt="Lawn Maintenance">
+            <img src="Garden%20Bed%20Maintenace.jpg" id="img-garden" alt="Garden Bed Care">
+            <img src="Bush%20trimming%202.jpg" id="img-bush" alt="Shrub Maintenance">
         </div>
+        <div class="sidebar-overlay"></div>
         <div class="sidebar-content">
-            <div class="title-block">
-                <div class="tier-indicator" id="tier-label">Base Plan</div>
-                <h1 id="tier-title">Lawn Maintenance</h1>
-                <ul class="package-details" id="details-list">
-                    <li>Scheduled mowing and edging</li>
-                </ul>
-            </div>
+            <div class="tier-indicator" id="tier-label">Base Plan</div>
+            <h1 id="tier-title">Lawn Maintenance</h1>
+            <ul class="package-details" id="details-list">
+                <li>Scheduled mowing and edging</li>
+            </ul>
+            <!-- Desktop CTA lives here -->
             <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
         </div>
     </div>
 
+    <!-- RIGHT: add-ons -->
     <div class="content-area">
-        <p class="addon-sub-header">Select your add-ons:</p>
-        <div class="addon-card" onclick="toggleOption(this, 'garden')">
-            <div>
-                <h4>Garden Bed Care</h4>
-                <p>Routine weeding of gardens</p>
+        <div class="addon-header-block">
+            <div class="addon-eyebrow">Customize Your Plan</div>
+            <div class="addon-main-header">
+                Add on to your service quote.
             </div>
-            <div class="status-badge" id="badge-garden">ADD</div>
         </div>
-        <div class="addon-card" onclick="toggleOption(this, 'bush')">
-            <div>
-                <h4>Shrub Maintenance</h4>
-                <p>Hedge trimming and ornamental shaping.</p>
+
+        <div class="addons-list">
+            <div class="addon-card" onclick="toggleOption(this, 'garden')">
+                <div class="addon-card-text">
+                    <h4>Garden Bed Care</h4>
+                    <p>Routine weeding of gardens</p>
+                </div>
+                <div class="status-badge" id="badge-garden">+ ADD</div>
             </div>
-            <div class="status-badge" id="badge-bush">ADD</div>
+            <div class="addon-card" onclick="toggleOption(this, 'bush')">
+                <div class="addon-card-text">
+                    <h4>Shrub Maintenance</h4>
+                    <p>Hedge trimming and ornamental shaping</p>
+                </div>
+                <div class="status-badge" id="badge-bush">+ ADD</div>
+            </div>
+        </div>
+
+        <!-- Mobile-only CTA -->
+        <div class="mobile-cta">
+            <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
         </div>
     </div>
+
 </div>
 
 <script>
@@ -207,7 +467,7 @@
     function toggleOption(element, type) {
         selections[type] = !selections[type];
         element.classList.toggle('active');
-        document.getElementById(`badge-${type}`).innerText = selections[type] ? "ADDED" : "ADD";
+        document.getElementById(`badge-${type}`).innerText = selections[type] ? "✓ ADDED" : "+ ADD";
         updateLayout();
     }
 
@@ -215,33 +475,52 @@
         const baseImg = document.getElementById('img-base');
         const gardenImg = document.getElementById('img-garden');
         const bushImg = document.getElementById('img-bush');
+
         let activeCount = 1;
         if (selections.garden) activeCount++;
         if (selections.bush) activeCount++;
+
         const shareWidth = (100 / activeCount) + "%";
         baseImg.style.width = shareWidth;
+
         if (selections.garden) { gardenImg.classList.add('active'); gardenImg.style.width = shareWidth; }
         else { gardenImg.classList.remove('active'); gardenImg.style.width = "0"; }
+
         if (selections.bush) { bushImg.classList.add('active'); bushImg.style.width = shareWidth; }
         else { bushImg.classList.remove('active'); bushImg.style.width = "0"; }
+
         const list = document.getElementById('details-list');
         const tierLabel = document.getElementById('tier-label');
         const tierTitle = document.getElementById('tier-title');
+
+        // Update checklist
         list.innerHTML = `<li>Scheduled mowing and edging</li>`;
         if (selections.garden) list.innerHTML += `<li>Garden Bed Care</li>`;
         if (selections.bush) list.innerHTML += `<li>Shrub Maintenance</li>`;
-        if (activeCount === 1) { tierLabel.innerText = "Base Plan"; tierTitle.innerText = "Lawn Maintenance"; }
-        else if (activeCount === 2) { tierLabel.innerText = "Tier 2"; tierTitle.innerText = "Enhanced Care"; }
-        else if (activeCount === 3) { tierLabel.innerText = "Tier 3"; tierTitle.innerText = "The Full Estate"; }
+
+        // Tier label + title logic
+        if (!selections.garden && !selections.bush) {
+            tierLabel.innerHTML = `Base Plan`;
+            tierTitle.innerText = "Lawn Maintenance";
+        } else if (selections.garden && selections.bush) {
+            tierLabel.innerHTML = `<span style="color:var(--gold);font-family:'Cormorant Garamond';letter-spacing:3px;text-transform:uppercase;font-size:0.85rem;">The Full Package</span>`;
+            tierTitle.innerText = "Lawn + Garden + Shrub Maintenance";
+        } else if (selections.garden) {
+            tierLabel.innerHTML = `Enhanced Care`;
+            tierTitle.innerText = "Lawn + Garden Bed Maintenance";
+        } else if (selections.bush) {
+            tierLabel.innerHTML = `Enhanced Care`;
+            tierTitle.innerText = "Lawn + Shrub Maintenance";
+        }
     }
 
     function sendToContact() {
         let services = "Lawn Mowing and Edging";
         if (selections.garden) services += ", Garden Bed Care";
         if (selections.bush) services += ", Shrub Maintenance";
+
         const tier = document.getElementById('tier-title').innerText;
 
-        // Map tier to the exact dropdown option value
         let serviceOption = "Lawn Maintenance";
         if (selections.garden && selections.bush) serviceOption = "Lawn, Garden and Shrub Maintenance";
         else if (selections.garden) serviceOption = "Lawn and Garden Maintenance";
