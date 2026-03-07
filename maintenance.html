@@ -68,7 +68,7 @@
 
         /* LEFT SIDE: image fills full height */
         .sidebar { 
-            width: 58%; 
+            width: 72%; 
             background: var(--primary); 
             height: 100%; 
             position: relative; 
@@ -94,6 +94,7 @@
         }
         .image-container img.base { width: 100%; opacity: 0.75; }
         .image-container img.active { opacity: 0.85; border-left: 2px solid rgba(255,255,255,0.2); }
+        #img-bush { object-position: left center; }
 
         /* Gradient overlay so text is always readable */
         .sidebar-overlay {
@@ -113,40 +114,43 @@
             bottom: 0; 
             width: 100%; 
             z-index: 5;
-            padding: 48px 56px;
+            padding: 36px 40px;
         }
         .tier-indicator { 
             font-family: 'Libre Baskerville', serif; 
-            font-size: 0.72rem; 
+            font-size: 0.65rem; 
             font-weight: 400;
             color: var(--gold); 
             letter-spacing: 3px; 
             text-transform: uppercase; 
-            margin-bottom: 8px; 
+            margin-bottom: 6px; 
         }
         .sidebar-content h1 { 
             font-family: 'Libre Baskerville', serif; 
-            font-size: 3.2rem; 
+            font-size: 1.45rem; 
             font-weight: 700;
             color: white; 
-            margin-bottom: 18px; 
-            line-height: 1.15;
+            margin-bottom: 14px; 
+            line-height: 1.2;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
+        /* Hide CTA from sidebar on desktop — it lives in the right panel */
+        .sidebar-content .btn-finalize { display: none; }
         .package-details { 
             list-style: none; 
             display: flex; 
-            gap: 20px; 
+            gap: 14px; 
             flex-wrap: wrap;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         .package-details li { 
-            font-size: 0.82rem; 
+            font-size: 0.75rem; 
             color: rgba(255,255,255,0.9); 
             display: flex; 
             align-items: center; 
-            gap: 8px; 
+            gap: 6px; 
         }
         .package-details li::before { content: '✓'; color: var(--gold); font-weight: bold; }
 
@@ -174,12 +178,12 @@
 
         /* RIGHT SIDE: add-ons panel fills full height, centered content */
         .content-area { 
-            width: 42%; 
+            width: 28%; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             background: var(--white); 
-            padding: 48px 52px;
+            padding: 40px 32px;
             gap: 0;
         }
 
@@ -301,8 +305,9 @@
                 padding: 24px 20px 28px;
             }
             .sidebar-content h1 { 
-                font-size: 1.6rem; 
-                margin-bottom: 12px; 
+                font-size: 1.3rem; 
+                margin-bottom: 12px;
+                white-space: normal;
             }
             .package-details { 
                 margin-bottom: 0; 
@@ -361,8 +366,8 @@
             }
         }
 
-        /* Mobile CTA hidden on desktop, shown on mobile */
-        .mobile-cta { display: none; }
+        .mobile-cta { display: block; }
+        .mobile-cta .btn-finalize { width: 100%; text-align: center; }
     </style>
 </head>
 <body>
