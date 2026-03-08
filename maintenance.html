@@ -4,6 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Property Maintenance | Fantasy Fields Landscaping</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fantasyfieldslandscaping.ca/maintenance.html">
+    <meta property="og:title" content="Property Maintenance | Fantasy Fields Landscaping">
+    <meta property="og:description" content="Weekly and bi-weekly lawn maintenance plans for North End Brantford. Mowing, edging, garden bed care, and shrub trimming.">
+    <meta property="og:image" content="https://fantasyfieldslandscaping.ca/logo.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -246,7 +258,7 @@
             opacity: 0.7; 
         }
 
-        /* Desktop add/added badge — larger and more prominent */
+        /* Desktop add/added badge */
         .status-badge { 
             font-weight: 700; 
             font-size: 0.7rem; 
@@ -314,7 +326,7 @@
                 gap: 12px;
             }
             .package-details li { font-size: 0.82rem; }
-            /* Hide CTA on mobile sidebar — it's in the content area instead */
+            /* Hide CTA on mobile sidebar */
             .sidebar-content .btn-finalize { 
                 display: none; 
             }
@@ -335,7 +347,7 @@
 
             .addons-list { gap: 12px; margin-bottom: 24px; }
 
-            /* Mobile add-on cards — bigger, tap-friendly */
+            /* Mobile add-on cards */
             .addon-card { 
                 padding: 20px 18px; 
                 border-radius: 12px;
@@ -414,7 +426,7 @@
             <ul class="package-details" id="details-list">
                 <li>Scheduled mowing and edging</li>
             </ul>
-            <!-- Desktop CTA lives here -->
+            <!-- Desktop CTA -->
             <button class="btn-finalize" onclick="sendToContact()">Request Service Quote</button>
         </div>
     </div>
@@ -520,18 +532,13 @@
     }
 
     function sendToContact() {
-        let services = "Lawn Mowing and Edging";
-        if (selections.garden) services += ", Garden Bed Care";
-        if (selections.bush) services += ", Shrub Maintenance";
-
-        const tier = document.getElementById('tier-title').innerText;
-
+        // Only pass the service option for the dropdown — no message autofill
         let serviceOption = "Lawn Maintenance";
         if (selections.garden && selections.bush) serviceOption = "Lawn, Garden and Shrub Maintenance";
         else if (selections.garden) serviceOption = "Lawn and Garden Maintenance";
         else if (selections.bush) serviceOption = "Lawn, Garden and Shrub Maintenance";
 
-        window.location.href = `index.html?package=${encodeURIComponent(tier)}&services=${encodeURIComponent(services)}&service=${encodeURIComponent(serviceOption)}#contact`;
+        window.location.href = `index.html?service=${encodeURIComponent(serviceOption)}#contact`;
     }
 </script>
 </body>
