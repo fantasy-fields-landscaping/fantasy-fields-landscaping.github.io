@@ -222,7 +222,6 @@
             box-shadow: 0 28px 55px rgba(0,0,0,0.18), 0 6px 16px rgba(0,0,0,0.1);
         }
 
-        /* Green header bar */
         .card-header {
             padding: 0 22px; height: 76px;
             display: flex; align-items: center; justify-content: center;
@@ -239,7 +238,6 @@
             letter-spacing: 1px; text-transform: uppercase; white-space: nowrap;
         }
 
-        /* Always hide mobile-cta on desktop */
         .mobile-cta { display: none !important; }
         .desktop-cta { display: inline-flex; }
         .card-foot-strip { display: none; }
@@ -337,7 +335,6 @@
             .jstep:nth-child(4) { border-top: 1px solid #ddd4be; border-right: none; }
             .jstep:nth-child(3)::after { display: block; }
 
-            /* Cards */
             .services-grid { grid-template-columns: 1fr; gap: 14px; }
             .service-card { flex-direction: column; border-radius: 16px; }
             .service-card:hover { transform: none; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
@@ -350,7 +347,6 @@
             .service-info > p { display: none; }
             .service-includes { display: none; }
             .desktop-cta { display: none; }
-            /* Re-enable mobile-cta on mobile */
             .mobile-cta {
                 display: inline-flex !important;
                 background: var(--accent);
@@ -371,7 +367,6 @@
                 width: 18px; height: 18px; font-size: 0.72rem;
             }
             .card-foot-strip { display: none; }
-            /* Reviews */
             .reviews-section { padding: 28px 0 20px; overflow: hidden; }
             .rev-clone { display: block; }
             .reviews-section .section-title,
@@ -610,6 +605,7 @@
             <option value="">What are you looking for? (optional)</option>
             <option value="Lawn Maintenance">Lawn Maintenance</option>
             <option value="Lawn and Garden Maintenance">Lawn and Garden Maintenance</option>
+            <option value="Lawn and Shrub Maintenance">Lawn and Shrub Maintenance</option>
             <option value="Lawn, Garden and Shrub Maintenance">Lawn, Garden and Shrub Maintenance</option>
             <option value="Seasonal Cleanup">Seasonal Cleanup</option>
             <option value="Garden Bed Design and Installation">Garden Bed Design and Installation</option>
@@ -745,7 +741,7 @@
         window.goSlide = n => goTo(n);
     })();
 
-    /* URL param pre-fill — only fills the dropdown, not the message box */
+    /* URL param pre-fill */
     window.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         const serviceOption = params.get('service');
